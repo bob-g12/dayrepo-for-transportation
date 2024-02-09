@@ -1,11 +1,11 @@
 <mxfile host="65bd71144e">
     <diagram id="lHrpgoKARu-_UrLN1xA2" name="ページ1">
-        <mxGraphModel dx="577" dy="1533" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1293" dy="2566" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="362" value="" style="whiteSpace=wrap;html=1;aspect=fixed;shadow=1;fontFamily=Helvetica;fontSize=8;startSize=0;fillColor=none;strokeColor=#FFFF00;" vertex="1" parent="1">
-                    <mxGeometry x="330" y="-200" width="967" height="967" as="geometry"/>
+                    <mxGeometry x="330" y="-200" width="1070" height="1070" as="geometry"/>
                 </mxCell>
                 <mxCell id="226" value="&lt;font style=&quot;font-size: 6px;&quot;&gt;googleアカウント&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
                     <mxGeometry x="80" y="30" width="200" height="20" as="geometry"/>
@@ -415,7 +415,106 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="364" value="&lt;font style=&quot;font-size: 18px;&quot;&gt;日報&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;shadow=1;strokeColor=#d6b656;fontFamily=Helvetica;fontSize=8;startSize=0;fillColor=#fff2cc;gradientColor=#ffd966;fontColor=#000000;" vertex="1" parent="1">
-                    <mxGeometry x="654.5" y="-160" width="318" height="100" as="geometry"/>
+                    <mxGeometry x="662" y="-160" width="318" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="365" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;日報(第二データ)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="726.5" y="510" width="523.5" height="20" as="geometry"/>
+                </mxCell>
+                <mxCell id="366" value="&lt;font style=&quot;font-size: 11px;&quot; color=&quot;#000000&quot;&gt;タイヤの損傷(空気圧/摩耗/亀裂/損傷)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="1">
+                    <mxGeometry x="726.5" y="530" width="213.5" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="367" value="&lt;font style=&quot;font-size: 11px;&quot; color=&quot;#000000&quot;&gt;タイヤの溝の深さ&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="1">
+                    <mxGeometry x="726.5" y="570" width="213.5" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="368" value="&lt;font style=&quot;font-size: 11px;&quot; color=&quot;#000000&quot;&gt;タイヤのナット・ボルト(緩み/脱落)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="1">
+                    <mxGeometry x="726.5" y="610" width="213.5" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="369" value="&lt;font style=&quot;font-size: 11px;&quot; color=&quot;#000000&quot;&gt;ラジエータの冷却水(液量)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="1">
+                    <mxGeometry x="726.5" y="650" width="213.5" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="370" value="&lt;font style=&quot;font-size: 11px;&quot; color=&quot;#000000&quot;&gt;ブレーキオイル(液量)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="1">
+                    <mxGeometry x="726.5" y="690" width="213.5" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="371" value="&lt;font style=&quot;font-size: 11px;&quot; color=&quot;#000000&quot;&gt;エアタンク(凝水)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="1">
+                    <mxGeometry x="726.5" y="730" width="213.5" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="372" value="&lt;font style=&quot;font-size: 11px;&quot; color=&quot;#000000&quot;&gt;エンジンオイル(液量)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="1">
+                    <mxGeometry x="989" y="570" width="213.5" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="373" value="&lt;font style=&quot;font-size: 11px;&quot; color=&quot;#000000&quot;&gt;バッテリー(液量)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="1">
+                    <mxGeometry x="989" y="610" width="213.5" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="374" value="&lt;font style=&quot;font-size: 11px;&quot; color=&quot;#000000&quot;&gt;ファン・ベルトの異常(張り/損傷)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="1">
+                    <mxGeometry x="989" y="650" width="213.5" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="375" value="&lt;font style=&quot;font-size: 11px;&quot; color=&quot;#000000&quot;&gt;駐車ブレーキ(かかり具合/引きしろ)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="1">
+                    <mxGeometry x="989" y="530" width="213.5" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="376" value="&lt;font style=&quot;font-size: 18px;&quot; color=&quot;#000000&quot;&gt;✅&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#36393d;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#eeeeee;" vertex="1" parent="1">
+                    <mxGeometry x="940" y="530" width="49" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="377" value="&lt;font style=&quot;font-size: 18px;&quot; color=&quot;#000000&quot;&gt;✅&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#36393d;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#eeeeee;" vertex="1" parent="1">
+                    <mxGeometry x="940" y="570" width="49" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="378" value="&lt;font style=&quot;font-size: 18px;&quot; color=&quot;#000000&quot;&gt;✅&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#36393d;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#eeeeee;" vertex="1" parent="1">
+                    <mxGeometry x="1202.5" y="530" width="49" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="379" value="&lt;font style=&quot;font-size: 18px;&quot; color=&quot;#000000&quot;&gt;✅&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#36393d;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#eeeeee;" vertex="1" parent="1">
+                    <mxGeometry x="1202.5" y="570" width="49" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="380" value="&lt;font style=&quot;font-size: 18px;&quot; color=&quot;#000000&quot;&gt;✅&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#36393d;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#eeeeee;" vertex="1" parent="1">
+                    <mxGeometry x="940" y="610" width="49" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="381" value="&lt;font style=&quot;font-size: 18px;&quot; color=&quot;#000000&quot;&gt;✅&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#36393d;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#eeeeee;" vertex="1" parent="1">
+                    <mxGeometry x="940" y="650" width="49" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="382" value="&lt;font style=&quot;font-size: 18px;&quot; color=&quot;#000000&quot;&gt;✅&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#36393d;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#eeeeee;" vertex="1" parent="1">
+                    <mxGeometry x="940" y="690" width="49" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="383" value="&lt;font style=&quot;font-size: 18px;&quot; color=&quot;#000000&quot;&gt;✅&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#36393d;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#eeeeee;" vertex="1" parent="1">
+                    <mxGeometry x="940" y="730" width="49" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="387" value="&lt;font style=&quot;font-size: 11px;&quot; color=&quot;#000000&quot;&gt;ウォッシャー液/ワイパー&lt;br&gt;(液量/噴射状態/払拭状態)&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="1">
+                    <mxGeometry x="989" y="690" width="213.5" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="388" value="&lt;font style=&quot;font-size: 11px;&quot; color=&quot;#000000&quot;&gt;エンジン(かかり具合/異音/状態)&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="1">
+                    <mxGeometry x="989" y="730" width="213.5" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="389" value="&lt;font style=&quot;font-size: 18px;&quot; color=&quot;#000000&quot;&gt;✅&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#36393d;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#eeeeee;" vertex="1" parent="1">
+                    <mxGeometry x="1202.5" y="730" width="49" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="390" value="&lt;font style=&quot;font-size: 18px;&quot; color=&quot;#000000&quot;&gt;✅&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#36393d;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#eeeeee;" vertex="1" parent="1">
+                    <mxGeometry x="1202.5" y="690" width="49" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="391" value="&lt;font style=&quot;font-size: 18px;&quot; color=&quot;#000000&quot;&gt;✅&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#36393d;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#eeeeee;" vertex="1" parent="1">
+                    <mxGeometry x="1202.5" y="650" width="49" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="392" value="&lt;font style=&quot;font-size: 18px;&quot; color=&quot;#000000&quot;&gt;✅&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#36393d;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#eeeeee;" vertex="1" parent="1">
+                    <mxGeometry x="1202.5" y="610" width="49" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="393" value="&lt;font style=&quot;font-size: 11px;&quot; color=&quot;#000000&quot;&gt;エアブレーキ(空気圧/排気音)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="1">
+                    <mxGeometry x="726.5" y="770" width="213.5" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="394" value="&lt;font style=&quot;font-size: 11px;&quot; color=&quot;#000000&quot;&gt;ブレーキペダルの踏みしろ&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="1">
+                    <mxGeometry x="726.5" y="810" width="213.5" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="395" value="&lt;font color=&quot;#000000&quot;&gt;&lt;span style=&quot;font-size: 11px;&quot;&gt;ライト&lt;br&gt;(ヘッドライト/ウインカー/車内灯/&lt;br&gt;ハザード/速度表示)&lt;br&gt;&lt;/span&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="1">
+                    <mxGeometry x="989" y="770" width="213.5" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="396" value="&lt;font style=&quot;font-size: 11px;&quot; color=&quot;#000000&quot;&gt;ブレーキチャンバのロッド/&lt;br&gt;ブレーキペダルのライニング&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="1">
+                    <mxGeometry x="989" y="810" width="213.5" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="397" value="&lt;font style=&quot;font-size: 18px;&quot; color=&quot;#000000&quot;&gt;✅&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#36393d;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#eeeeee;" vertex="1" parent="1">
+                    <mxGeometry x="940" y="770" width="49" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="398" value="&lt;font style=&quot;font-size: 18px;&quot; color=&quot;#000000&quot;&gt;✅&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#36393d;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#eeeeee;" vertex="1" parent="1">
+                    <mxGeometry x="940" y="810" width="49" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="399" value="&lt;font style=&quot;font-size: 18px;&quot; color=&quot;#000000&quot;&gt;✅&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#36393d;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#eeeeee;" vertex="1" parent="1">
+                    <mxGeometry x="1202.5" y="770" width="47.5" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="400" value="&lt;font style=&quot;font-size: 18px;&quot; color=&quot;#000000&quot;&gt;✅&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#36393d;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#eeeeee;" vertex="1" parent="1">
+                    <mxGeometry x="1202.5" y="810" width="49" height="40" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
