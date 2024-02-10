@@ -1,71 +1,66 @@
 <mxfile host="65bd71144e">
     <diagram id="lHrpgoKARu-_UrLN1xA2" name="ページ1">
-        <mxGraphModel dx="697" dy="1504" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="818" dy="1504" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="362" value="" style="whiteSpace=wrap;html=1;aspect=fixed;shadow=1;fontFamily=Helvetica;fontSize=8;startSize=0;fillColor=none;strokeColor=#FFFF00;" vertex="1" parent="1">
                     <mxGeometry x="330" y="-200" width="1070" height="1070" as="geometry"/>
                 </mxCell>
-                <mxCell id="226" value="&lt;font style=&quot;font-size: 6px;&quot;&gt;googleアカウント&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
-                    <mxGeometry x="80" y="30" width="200" height="20" as="geometry"/>
+                <mxCell id="226" value="&lt;font style=&quot;font-size: 6px;&quot;&gt;googleアカウント(google_account)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="30" width="200" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="228" value="&lt;font style=&quot;font-size: 6px;&quot;&gt;プロバイダー&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
-                    <mxGeometry x="80" y="50" width="40" height="20" as="geometry"/>
+                <mxCell id="229" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;&lt;u&gt;名前&lt;br&gt;(name)&lt;/u&gt;&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="50" width="40" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="229" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;名前&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
-                    <mxGeometry x="120" y="50" width="40" height="20" as="geometry"/>
+                <mxCell id="230" value="&lt;font style=&quot;font-size: 6px;&quot;&gt;ユーザーID&lt;br&gt;(user_ID)&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="120" y="50" width="40" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="230" value="&lt;font style=&quot;font-size: 6px;&quot;&gt;ユーザーID&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
-                    <mxGeometry x="160" y="50" width="40" height="20" as="geometry"/>
-                </mxCell>
-                <mxCell id="231" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;シークレット&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
-                    <mxGeometry x="200" y="50" width="40" height="20" as="geometry"/>
+                <mxCell id="231" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;シークレット&lt;br&gt;(secret)&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="160" y="50" width="40" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="232" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;sites&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
-                    <mxGeometry x="240" y="50" width="40" height="20" as="geometry"/>
+                    <mxGeometry x="200" y="50" width="40" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="258" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;fontFamily=Helvetica;fontSize=6;fontColor=default;startSize=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="226" target="249">
+                <mxCell id="258" style="edgeStyle=none;html=1;fontFamily=Helvetica;fontSize=6;fontColor=default;startSize=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=none;" edge="1" parent="1" target="249">
                     <mxGeometry relative="1" as="geometry">
                         <mxPoint x="60" y="200" as="targetPoint"/>
+                        <mxPoint x="40" y="40" as="sourcePoint"/>
                         <Array as="points">
-                            <mxPoint x="60" y="40"/>
-                            <mxPoint x="60" y="90"/>
-                            <mxPoint x="60" y="205"/>
+                            <mxPoint x="10" y="65"/>
+                            <mxPoint x="10" y="150"/>
+                            <mxPoint x="10" y="200"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="233" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;Google&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
-                    <mxGeometry x="80" y="70" width="40" height="40" as="geometry"/>
+                    <mxGeometry x="40" y="80" width="40" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="234" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;任意の名前&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
-                    <mxGeometry x="120" y="70" width="40" height="40" as="geometry"/>
+                <mxCell id="234" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;gokki&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="80" y="80" width="40" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="235" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;GoogleAPIのClient ID&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
-                    <mxGeometry x="160" y="70" width="40" height="40" as="geometry"/>
+                    <mxGeometry x="120" y="80" width="40" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="236" value="&lt;font style=&quot;font-size: 6px;&quot;&gt;127.0.0.1:8000を「設定されたsites」に&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
-                    <mxGeometry x="240" y="70" width="40" height="40" as="geometry"/>
+                    <mxGeometry x="200" y="80" width="40" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="237" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;GoogleAPIのClient Secret&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
-                    <mxGeometry x="200" y="70" width="40" height="40" as="geometry"/>
+                    <mxGeometry x="160" y="80" width="40" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="241" value="&lt;font style=&quot;font-size: 6px;&quot;&gt;アカウント&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
-                    <mxGeometry x="80" y="140" width="240" height="20" as="geometry"/>
+                <mxCell id="241" value="&lt;font style=&quot;font-size: 6px;&quot;&gt;アカウント&lt;/font&gt;&lt;span style=&quot;font-size: 6px;&quot;&gt;(account)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="140" width="280" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="242" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;google&lt;br&gt;アカウント&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
+                <mxCell id="243" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;姓&lt;br&gt;(last_name)&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
                     <mxGeometry x="80" y="160" width="40" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="243" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;姓&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
+                <mxCell id="244" value="&lt;font style=&quot;font-size: 6px;&quot;&gt;名&lt;br&gt;(first name)&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
                     <mxGeometry x="120" y="160" width="40" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="244" value="&lt;font style=&quot;font-size: 6px;&quot;&gt;名&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
-                    <mxGeometry x="160" y="160" width="40" height="30" as="geometry"/>
-                </mxCell>
-                <mxCell id="245" value="&lt;font style=&quot;font-size: 6px;&quot;&gt;パスワード&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
+                <mxCell id="245" value="&lt;font style=&quot;font-size: 6px;&quot;&gt;パスワード&lt;br&gt;(password)&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
                     <mxGeometry x="200" y="160" width="40" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="246" value="&lt;font style=&quot;font-size: 6px;&quot;&gt;承認&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
+                <mxCell id="246" value="&lt;font style=&quot;font-size: 6px;&quot;&gt;承認&lt;br&gt;(approval)&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
                     <mxGeometry x="240" y="160" width="40" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="274" style="edgeStyle=none;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=6;fontColor=#000000;startSize=0;" edge="1" parent="1" source="247" target="272">
@@ -78,17 +73,17 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="247" value="&lt;font style=&quot;font-size: 6px;&quot;&gt;管理権限&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
+                <mxCell id="247" value="&lt;font style=&quot;font-size: 6px;&quot;&gt;管理権限&lt;br&gt;(administrator)&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
                     <mxGeometry x="280" y="160" width="40" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="249" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
-                    <mxGeometry x="80" y="190" width="40" height="30" as="geometry"/>
+                    <mxGeometry x="40" y="190" width="40" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="250" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;佐々木&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
-                    <mxGeometry x="120" y="190" width="40" height="30" as="geometry"/>
+                    <mxGeometry x="80" y="190" width="40" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="251" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;智也&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
-                    <mxGeometry x="160" y="190" width="40" height="30" as="geometry"/>
+                    <mxGeometry x="120" y="190" width="40" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="252" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;YES or NO&lt;/span&gt;&lt;span style=&quot;font-size: 6px;&quot;&gt;&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
                     <mxGeometry x="280" y="190" width="40" height="30" as="geometry"/>
@@ -99,17 +94,17 @@
                 <mxCell id="254" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;password&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
                     <mxGeometry x="200" y="190" width="40" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="260" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;車両&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
-                    <mxGeometry x="80" y="260" width="80" height="20" as="geometry"/>
+                <mxCell id="260" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;車両(car)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="260" width="80" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="261" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;車両番号&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
+                <mxCell id="261" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;&lt;u&gt;車両番号&lt;br&gt;(car_number)&lt;/u&gt;&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="280" width="40" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="262" value="&lt;font style=&quot;font-size: 6px;&quot;&gt;走行距離&lt;br&gt;(mileage)&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
                     <mxGeometry x="80" y="280" width="40" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="262" value="&lt;font style=&quot;font-size: 6px;&quot;&gt;走行距離&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
-                    <mxGeometry x="120" y="280" width="40" height="30" as="geometry"/>
-                </mxCell>
                 <mxCell id="263" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;80-08&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
-                    <mxGeometry x="80" y="310" width="40" height="30" as="geometry"/>
+                    <mxGeometry x="40" y="310" width="40" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="271" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;fontFamily=Helvetica;fontSize=6;fontColor=#000000;startSize=0;" edge="1" parent="1" source="263">
                     <mxGeometry relative="1" as="geometry">
@@ -133,30 +128,30 @@
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="264" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;100000km&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
-                    <mxGeometry x="120" y="310" width="40" height="30" as="geometry"/>
+                    <mxGeometry x="80" y="310" width="40" height="30" as="geometry"/>
                 </mxCell>
                 <mxCell id="265" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;日報(連携データ)&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
                     <mxGeometry x="400" y="30" width="260" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="266" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;車両番号&lt;/font&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="1">
+                <mxCell id="266" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;車両番号&lt;br&gt;(car_number)&lt;br&gt;&lt;/font&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#bac8d3;strokeColor=#23445d;" vertex="1" parent="1">
                     <mxGeometry x="400" y="50" width="51" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="267" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;社員の名前&lt;/font&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#23445d;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#bac8d3;" vertex="1" parent="1">
+                <mxCell id="267" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;社員の名前&lt;br&gt;(name)&lt;br&gt;&lt;/font&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#23445d;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#bac8d3;" vertex="1" parent="1">
                     <mxGeometry x="450" y="50" width="51" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="268" value="&lt;font color=&quot;#000000&quot;&gt;&lt;span style=&quot;font-size: 6px;&quot;&gt;始メーター&lt;/span&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#23445d;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#bac8d3;" vertex="1" parent="1">
+                <mxCell id="268" value="&lt;font color=&quot;#000000&quot;&gt;&lt;span style=&quot;font-size: 6px;&quot;&gt;始メーター&lt;br&gt;&lt;/span&gt;&lt;/font&gt;&lt;span style=&quot;font-size: 6px;&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;(start_mileage)&lt;/font&gt;&lt;/span&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;span style=&quot;font-size: 6px;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#23445d;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#bac8d3;" vertex="1" parent="1">
                     <mxGeometry x="501" y="50" width="51" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="269" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 6px;&quot;&gt;始メーター&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#23445d;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#bac8d3;" vertex="1" parent="1">
+                <mxCell id="269" value="&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 6px;&quot;&gt;終メーター&lt;br&gt;&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 6px;&quot;&gt;(end_mileage)&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 6px;&quot;&gt;&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#23445d;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#bac8d3;" vertex="1" parent="1">
                     <mxGeometry x="552" y="50" width="51" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="270" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;選択式&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
+                <mxCell id="270" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;80-08&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
                     <mxGeometry x="401" y="90" width="49" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="272" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;自動入力&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
+                <mxCell id="272" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;佐々木 智也&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
                     <mxGeometry x="452" y="90" width="49" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="275" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;走行距離&lt;/font&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#23445d;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#bac8d3;" vertex="1" parent="1">
+                <mxCell id="275" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;走行距離&lt;br&gt;&lt;/font&gt;&lt;/span&gt;&lt;span style=&quot;color: rgb(0, 0, 0); font-size: 6px;&quot;&gt;(day_mileage)&lt;/span&gt;&lt;span style=&quot;font-size: 6px;&quot;&gt;&lt;font color=&quot;#000000&quot;&gt;&lt;br&gt;&lt;/font&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=#23445d;fontFamily=Helvetica;fontSize=12;startSize=0;fillColor=#bac8d3;" vertex="1" parent="1">
                     <mxGeometry x="603" y="50" width="57" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="284" style="edgeStyle=none;html=1;exitX=0.75;exitY=1;exitDx=0;exitDy=0;fontFamily=Helvetica;fontSize=6;fontColor=#000000;startSize=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="277" target="281">
@@ -168,7 +163,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="277" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;自動入力&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
+                <mxCell id="277" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;100000km&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
                     <mxGeometry x="502" y="90" width="49" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="280" style="edgeStyle=none;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Helvetica;fontSize=6;fontColor=#000000;startSize=0;" edge="1" parent="1" source="278" target="264">
@@ -189,7 +184,7 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="278" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;入力&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
+                <mxCell id="278" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;1000200km&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
                     <mxGeometry x="554" y="90" width="49" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="281" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;計算&lt;br&gt;(始メーターと&lt;br&gt;終メーターの差)&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
@@ -576,6 +571,32 @@
                 </mxCell>
                 <mxCell id="426" value="&lt;font style=&quot;font-size: 8px;&quot;&gt;自動入力&lt;br&gt;(計算)&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
                     <mxGeometry x="635" y="450" width="50" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="432" value="" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;fontFamily=Helvetica;fontSize=6;fontColor=default;startSize=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;endArrow=none;" edge="1" parent="1" source="226" target="242">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="80" y="205" as="targetPoint"/>
+                        <mxPoint x="80" y="40" as="sourcePoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="242" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;google&lt;br&gt;アカウント&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="160" width="40" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="433" value="" style="edgeStyle=none;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;fontFamily=Helvetica;fontSize=6;fontColor=default;startSize=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;startArrow=none;endArrow=none;" edge="1" parent="1" source="242" target="228">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="40" y="205" as="targetPoint"/>
+                        <mxPoint x="40" y="175" as="sourcePoint"/>
+                        <Array as="points"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="228" value="&lt;font style=&quot;&quot;&gt;&lt;font style=&quot;font-size: 6px;&quot;&gt;プロバイダー&lt;br&gt;(provider)&lt;/font&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="40" y="50" width="40" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="435" value="&lt;font style=&quot;font-size: 6px;&quot;&gt;&lt;u&gt;氏名&lt;br&gt;(full name)&lt;/u&gt;&lt;br&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="160" y="160" width="40" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="436" value="&lt;span style=&quot;font-size: 6px;&quot;&gt;佐々木 智也&lt;br&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;shadow=1;strokeColor=default;fontFamily=Helvetica;fontSize=12;fontColor=default;startSize=0;fillColor=default;" vertex="1" parent="1">
+                    <mxGeometry x="160" y="190" width="40" height="30" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>
