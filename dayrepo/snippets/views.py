@@ -20,5 +20,8 @@ def snippet_update_checklist(request):
 def pre_car_registration(request):
     return HttpResponse("車両登録前画面")
 
+def car_registration(request):
+    return HttpResponse("車両登録画面")
+
 def get_employee(request):
     return HttpResponse("社員情報画面")
