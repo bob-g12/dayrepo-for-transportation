@@ -7,6 +7,11 @@
 python manage.py runserver
 ```
 
+#### Django テストの実行
+``` sh
+python manage.py test
+```
+
 #### Django アプリケーションの作成
 ``` sh
 python manage.py startapp snippets
