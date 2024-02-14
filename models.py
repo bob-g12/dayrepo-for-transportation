@@ -12,7 +12,6 @@ class Account(models.Model):
         #管理画面でのモデルの名称
         verbose_name = 'アカウント'
     #項目作成
-    #user_id = models.Field('googleユーザーID')
     id = models.AutoField('アカウントID',primary_key=True,editable=False,max_length=6,blank=False, null=False)
     last_name = models.CharField('姓',max_length=25,blank=False, null=False)
     first_name = models.CharField('名',max_length=25,blank=False, null=False)
