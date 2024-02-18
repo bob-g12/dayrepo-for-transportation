@@ -14,7 +14,7 @@ class Account(models.Model):
     # 項目作成
 
     id = models.AutoField(
-        verbose_name="アカウントID",
+        verbose_name="アカウントid",
         primary_key=True,
         editable=True,
         blank=False,
@@ -75,7 +75,7 @@ class Checklist(models.Model):
     class Meta(object):
 
         # 作成されるテーブル名を指定
-        db_table = "checklist"
+        db_table = "checklists"
         # 管理画面でのモデルの名称
         verbose_name = "点検項目"
 
