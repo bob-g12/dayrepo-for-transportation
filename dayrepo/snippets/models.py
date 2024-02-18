@@ -11,7 +11,7 @@ class Account(models.Model):
         verbose_name = 'アカウント'
     #項目作成
 
-    id = models.AutoField(verbose_name='アカウントID',primary_key=True,editable=False,blank=False, null=False)
+    id = models.AutoField(verbose_name='アカウントID',primary_key=True,editable=True,blank=False, null=False)
     last_name = models.CharField(verbose_name='姓',max_length=25,blank=False, null=False)
     first_name = models.CharField(verbose_name='名',max_length=25,blank=False, null=False)
     password = models.SlugField(verbose_name='パスワード',max_length=20,blank=False, null=False)	
@@ -28,12 +28,12 @@ class Car(models.Model):
     class Meta(object):
         
         #作成されるテーブル名を指定
-        db_table = 'car'
+        db_table = 'cars'
         #管理画面でのモデルの名称
         verbose_name = '車両'
     #項目作成
 
-    id = models.AutoField(verbose_name='車両ID',primary_key=True,editable=False,blank=False, null=False)
+    id = models.AutoField(verbose_name='車両ID',primary_key=True,editable=True,blank=False, null=False)
     vehicle_number = models.CharField(verbose_name='車両番号',max_length=15,blank=False, null=False)
     now_mileage = models.IntegerField(verbose_name='走行距離',blank=False, null=False)
     def __str__(self):
