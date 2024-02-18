@@ -52,6 +52,7 @@ class Checklist(models.Model):
         verbose_name = '点検項目'
     #項目作成
 
+    # snippet テーブルがまだ未定義のため、一時コメントアウト
     #snippet_id = models.ForeignKey(Snippet, on_delete=models.CASCADE, null=False)
     is_tire_damage = models.BooleanField(verbose_name='タイヤの損傷(空気圧/摩耗/亀裂/損傷)',default=False,blank=True, null=False)
     is_tire_groove = models.BooleanField(verbose_name='タイヤの溝の深さ',default=False,blank=True, null=False)
