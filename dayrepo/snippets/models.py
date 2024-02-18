@@ -33,7 +33,13 @@ class Car(models.Model):
         verbose_name = '車両'
     #項目作成
 
+<<<<<<< HEAD
     id = models.AutoField(verbose_name='車両ID',primary_key=True,editable=True,blank=False, null=False)
+=======
+    id = models.AutoField(verbose_name='車両ID',primary_key=True,editable=False,blank=False, null=False)
+    # 車両番号はそのまま保存すると「名古屋　１２３　た　４５６７」のようになってしまうため、空白をハイフン埋めする方針でいく
+    # TODO: バリデーションの実装 issue -> https://github.com/bob-g12/dayrepo-for-transportation/issues/15
+>>>>>>> 71093a12d2f5dded3b5a1172e5e119f5343d5407
     vehicle_number = models.CharField(verbose_name='車両番号',max_length=15,blank=False, null=False)
     now_mileage = models.IntegerField(verbose_name='走行距離',blank=False, null=False)
     def __str__(self):
@@ -50,6 +56,7 @@ class Checklist(models.Model):
         verbose_name = '点検項目'
     #項目作成
 
+    # snippet テーブルがまだ未定義のため、一時コメントアウト
     #snippet_id = models.ForeignKey(Snippet, on_delete=models.CASCADE, null=False)
     is_tire_damage = models.BooleanField(verbose_name='タイヤの損傷(空気圧/摩耗/亀裂/損傷)',default=False,blank=True, null=False)
     is_tire_groove = models.BooleanField(verbose_name='タイヤの溝の深さ',default=False,blank=True, null=False)
