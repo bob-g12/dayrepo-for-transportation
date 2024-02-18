@@ -26,7 +26,7 @@ class Account(models.Model):
     first_name = models.CharField(
         verbose_name="名", max_length=25, blank=False, null=False
     )
-    password = models.SlugField(
+    password = models.CharField(
         verbose_name="パスワード", max_length=20, blank=False, null=False
     )
     is_administrator = models.BooleanField(
