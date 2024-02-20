@@ -14,7 +14,6 @@ class Account(models.Model):
     # 項目作成
 
     id = models.AutoField(
-
         verbose_name="アカウントid",
         primary_key=True,
         editable=True,
@@ -57,7 +56,6 @@ class Car(models.Model):
     # 項目作成
 
     id = models.AutoField(
-
         verbose_name="車両ID", primary_key=True, editable=True, blank=False, null=False
     )
     # 車両番号はそのまま保存すると「名古屋　１２３　た　４５６７」のようになってしまうため、空白をハイフン埋めする方針でいく
@@ -83,7 +81,6 @@ class Checklist(models.Model):
         verbose_name = "点検項目"
 
     # 項目作成
-
 
     # snippet テーブルがまだ未定義のため、一時コメントアウト
     # snippet_id = models.ForeignKey(Snippet, on_delete=models.CASCADE, null=False)
@@ -172,6 +169,8 @@ class Checklist(models.Model):
     def __str__(self):
 
         return str(self.snippet_id)
+
+
 class Snippet(models.Model):
 
     class Meta(object):
@@ -184,18 +183,22 @@ class Snippet(models.Model):
     # 項目作成
 
     id = models.AutoField(
-        verbose_name="日報ID", primary_key=True, editable=False, blank=False, null=False
+        verbose_name="日報ID", primary_key=True, editable=False, blank=False, null=False, default=False
     )
-    # account_id = models.ForeignKey(Account.id,verbose_name='アカウントID', on_delete=models.SET_NULL, null=False)
-    # start_mileage = models.ForeignKey(Car.now_mileage,verbose_name='出発時メーター', on_delete=models.SET_NULL, null=False)
+    account_id = models.ForeignKey(
+        Account, verbose_name="アカウントID", on_delete=models.DO_NOTHING, null=False, default=False
+    )
+    start_mileage = models.IntegerField(
+        verbose_name="出発時メーター", blank=False, null=False, default=False
+    )
     end_mileage = models.IntegerField(
-        verbose_name="到着時メーター", blank=False, null=False
+        verbose_name="到着時メーター", blank=False, null=False, default=False
     )
     start_time = models.TimeField(
-        verbose_name="始業時間", blank=False, null=False, max_length=10
+        verbose_name="始業時間", blank=False, null=False, max_length=10, default=False
     )
     end_time = models.TimeField(
-        verbose_name="終業時間", blank=False, null=False, max_length=10
+        verbose_name="終業時間", blank=False, null=False, max_length=10, default=False
     )
     start_point = models.CharField(
         verbose_name="出発地点", blank=False, null=False, max_length=10
@@ -207,7 +210,7 @@ class Snippet(models.Model):
         verbose_name="休憩地点", blank=False, null=False, max_length=10
     )
     weather = models.CharField(
-        verbose_name="天気", max_length=5, blank=False, null=False
+        verbose_name="天気", max_length=5, blank=False, null=False, default=False
     )
     gasoline_amount = models.FloatField(
         verbose_name="給油", max_length=4, blank=True, null=True
@@ -228,4 +231,3 @@ class Snippet(models.Model):
     def __str__(self):
 
         return str(self.id)
-
