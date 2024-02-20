@@ -14,9 +14,15 @@ class Account(models.Model):
     # 項目作成
 
     id = models.AutoField(
+<<<<<<< HEAD
         verbose_name="アカウントID",
         primary_key=True,
         editable=False,
+=======
+        verbose_name="アカウントid",
+        primary_key=True,
+        editable=True,
+>>>>>>> 8e0a2e86999975f6c6d039f6d29244915842bd26
         blank=False,
         null=False,
     )
@@ -26,7 +32,11 @@ class Account(models.Model):
     first_name = models.CharField(
         verbose_name="名", max_length=25, blank=False, null=False
     )
+<<<<<<< HEAD
     password = models.SlugField(
+=======
+    password = models.CharField(
+>>>>>>> 8e0a2e86999975f6c6d039f6d29244915842bd26
         verbose_name="パスワード", max_length=20, blank=False, null=False
     )
     is_administrator = models.BooleanField(
@@ -55,8 +65,16 @@ class Car(models.Model):
     # 項目作成
 
     id = models.AutoField(
+<<<<<<< HEAD
         verbose_name="車両ID", primary_key=True, editable=False, blank=False, null=False
     )
+=======
+        verbose_name="車両ID", primary_key=True, editable=True, blank=False, null=False
+    )
+    # 車両番号はそのまま保存すると「名古屋　１２３　た　４５６７」のようになってしまうため、空白をハイフン埋めする方針でいく
+    # TODO: バリデーションの実装 issue -> https://github.com/bob-g12/dayrepo-for-transportation/issues/15
+
+>>>>>>> 8e0a2e86999975f6c6d039f6d29244915842bd26
     vehicle_number = models.CharField(
         verbose_name="車両番号", max_length=15, blank=False, null=False
     )
@@ -78,7 +96,12 @@ class Checklist(models.Model):
 
     # 項目作成
 
+<<<<<<< HEAD
     # snippet_id = models.ForeignKey(.id, on_delete=models.CASCADE, null=False)
+=======
+    # snippet テーブルがまだ未定義のため、一時コメントアウト
+    # snippet_id = models.ForeignKey(Snippet, on_delete=models.CASCADE, null=False)
+>>>>>>> 8e0a2e86999975f6c6d039f6d29244915842bd26
     is_tire_damage = models.BooleanField(
         verbose_name="タイヤの損傷(空気圧/摩耗/亀裂/損傷)",
         default=False,
@@ -164,6 +187,7 @@ class Checklist(models.Model):
     def __str__(self):
 
         return str(self.snippet_id)
+<<<<<<< HEAD
 
 
 class Snippet(models.Model):
@@ -222,3 +246,5 @@ class Snippet(models.Model):
     def __str__(self):
 
         return str(self.id)
+=======
+>>>>>>> 8e0a2e86999975f6c6d039f6d29244915842bd26
