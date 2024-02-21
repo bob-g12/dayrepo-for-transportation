@@ -8,9 +8,7 @@ class Command(BaseCommand):
     help = "テストコマンド"
 
     def handle(self, *args, **options):               
-        print(args)
-        print(options)
-        print(options["get"])
+        print("options:", options)
         print("options[\"get\"]:", options["get"])
         print("options[\"create\"]:", options["create"])
         print("options[\"del\"]:", options["del"])
@@ -19,12 +17,10 @@ class Command(BaseCommand):
             return
 
         if options["create"] != None and options["create"] == "f":
-            print("おいでやす")
             AccountCommand.create_account_in_a_good_way()
             return
         
         if options["del"] != None and options["del"] == "all":
-            print("ぽんぽん")
             AccountCommand.all_delete()
             return
     

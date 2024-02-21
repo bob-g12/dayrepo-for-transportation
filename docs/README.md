@@ -5,3 +5,6 @@
 ## ページリンク
 よく使用するコマンドをまとめたドキュメントです。
 - [command.md](./command.md)
+
+独自にカスタマイズしたコマンドをまとめたドキュメントです。
+- [add_customcommand.md](./add_customcommand.md)
