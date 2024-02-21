@@ -180,24 +180,11 @@ class Snippet(models.Model):
         blank=True, 
         null=True
     )
-    oil = models.FloatField(verbose_name="オイル", max_length=4, blank=True, null=True)
-    is_trouble_situation = models.BooleanField(
-        verbose_name="事故/遅延等異常_状況", 
-        default=False, 
+    oil = models.FloatField(
+        verbose_name="オイル", 
+        max_length=4, 
         blank=True, 
-        null=False
-    )
-    is_trouble_cause = models.BooleanField(
-        verbose_name="事故/遅延等異常_原因", 
-        default=False, 
-        blank=True, 
-        null=False
-    )
-    is_trouble_support = models.BooleanField(
-        verbose_name="事故/遅延等異常_処置", 
-        default=False, 
-        blank=True, 
-        null=False
+        null=True
     )
     driving_time = models.TimeField(
         verbose_name="運転時間",
@@ -217,12 +204,58 @@ class Snippet(models.Model):
         null=False,
         max_length=10,
     )
-    create_at = models.DateTimeField(verbose_name="作成日時", auto_now_add=True)
-    update_at = models.DateTimeField(verbose_name="更新日時", auto_now=True)
+    create_at = models.DateTimeField(
+        verbose_name="作成日時", 
+        auto_now_add=True
+    )
+    update_at = models.DateTimeField(
+        verbose_name="更新日時", 
+        auto_now=True
+    )
 
     def __str__(self):
 
         return str(self.id)
+
+class Duties_trouble(models.Model):
+
+    class Meta(object):
+
+        # 作成されるテーブル名を指定
+        db_table = "duties_troubles"
+        # 管理画面でのモデルの名称
+        verbose_name = "業務トラブル"
+
+    # 項目作成
+    snippet_id = models.ForeignKey(
+        Snippet, 
+        on_delete=models.CASCADE, 
+        null=False,
+        default=False,
+    )
+    trouble_situation = models.CharField(
+        verbose_name="事故/遅延等異常_状況", 
+        blank=False, 
+        null=False, 
+        max_length=100
+    )
+    trouble_cause = models.CharField(
+        verbose_name="事故/遅延等異常_原因", 
+        blank=False, 
+        null=False, 
+        max_length=100
+    )
+    trouble_support = models.CharField(
+        verbose_name="事故/遅延等異常_処置", 
+        blank=False, 
+        null=False, 
+        max_length=100
+    )
+
+    def __str__(self):
+
+        return str(self.id)
+
 
 
 class Checklist(models.Model):
@@ -355,7 +388,6 @@ class Checklist(models.Model):
     def __str__(self):
 
         return str(self.snippet_id)
-
 
 class process(models.Model):
 
