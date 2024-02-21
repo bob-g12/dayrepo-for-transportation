@@ -146,6 +146,24 @@ class Snippet(models.Model):
     is_trouble_support = models.BooleanField(
         verbose_name="事故/遅延等異常_処置", default=False, blank=True, null=False
     )
+    driving_time =models.TimeField(
+        verbose_name="運転時間",
+        blank=False,
+        null=False,
+        max_length=10,
+    )
+    non_driving_time =models.TimeField(
+        verbose_name="運転以外の業務時間",
+        blank=False,
+        null=False,
+        max_length=10,
+    )
+    break_time =models.TimeField(
+        verbose_name="休憩時間",
+        blank=False,
+        null=False,
+        max_length=10,
+    )
     create_at = models.DateTimeField(verbose_name="作成日時", auto_now_add=True)
     update_at = models.DateTimeField(verbose_name="更新日時", auto_now=True)
 
