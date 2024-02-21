@@ -34,6 +34,11 @@ class Command(BaseCommand):
 class AccountCommand:
     def get_account_all():
         tmp = models.Account.objects.all()
+        
+        if len(tmp) == 0:
+            print("現在 Account テーブルのデータは 0 件です。")
+            return
+
         for i, t in enumerate(tmp):
             print(i+1, "個目")
             print("t.id:", t.id)
