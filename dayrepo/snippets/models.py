@@ -362,7 +362,7 @@ class process(models.Model):
     class Meta(object):
 
         # 作成されるテーブル名を指定
-        db_table = "processsss"
+        db_table = "processes"
         # 管理画面でのモデルの名称
         verbose_name = "工程"
 
