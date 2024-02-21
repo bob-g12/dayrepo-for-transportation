@@ -50,7 +50,7 @@ sqlite3 db.sqlite3
 > [!CAUTION]
 > リリース時 DB ファイル名は変更します。
 
-#### DB テーブル表示
+### DB テーブル表示
 ##### 縦表示
 ``` sh
 sqlite> .mode line
