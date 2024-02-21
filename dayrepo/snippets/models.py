@@ -121,6 +121,12 @@ class Snippet(models.Model):
         blank=False,
         null=False,
     )
+    duties_id = models.ForeignKey(
+        'Duties_trouble', 
+        on_delete=models.DO_NOTHING, 
+        null=False,
+        default=False,
+    )
     account_id = models.ForeignKey(
         Account,
         verbose_name="アカウントID",
@@ -227,11 +233,12 @@ class Duties_trouble(models.Model):
         verbose_name = "業務トラブル"
 
     # 項目作成
-    snippet_id = models.ForeignKey(
-        Snippet, 
-        on_delete=models.CASCADE, 
+    id = models.AutoField(
+        verbose_name="トラブルid",
+        primary_key=True,
+        editable=True,
+        blank=False,
         null=False,
-        default=False,
     )
     trouble_situation = models.CharField(
         verbose_name="事故/遅延等異常_状況", 
