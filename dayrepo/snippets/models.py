@@ -223,7 +223,7 @@ class Snippet(models.Model):
 
         return str(self.id)
 
-class Duties_trouble(models.Model):
+class DutiesTrouble(models.Model):
 
     class Meta(object):
 
