@@ -47,6 +47,7 @@ class AccountCommand:
             print("t.id:", t.id)
             print("t.first_name:", t.first_name)
             print("t.last_name:", t.last_name)
+            print("----")
 
     def create_account_in_a_good_way():
         existing_data = models.Account.objects.all()
@@ -72,10 +73,10 @@ class AccountCommand:
         )
 
     def all_delete():
-        yorn = input("全件削除を行いますか？[Y/n]:")
+        yorn = input("Account テーブルの全件削除を行いますか？[Y/n]:")
         if yorn == "y" or yorn == "Y" or yorn == "yes":
             models.Account.objects.all().delete()
-            print("Account テーブルの全件削除を行いました")
+            print("Account テーブルの全件削除を行いました。")
             return
 
         print("Account テーブルの全件削除を行いませんでした。")
