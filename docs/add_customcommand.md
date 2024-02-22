@@ -26,3 +26,22 @@ python manage.py baccount --create f
 ```sh
 python manage.py baccount --del all
 ```
+
+## bcar
+car テーブルを操作するコマンド
+
+### car テーブルのデータを全件表示
+```sh
+python manage.py bcar --get all
+```
+
+### car テーブルにテストデータを新規作成
+```sh
+python manage.py bcar --create f
+```
+
+### car テーブルのデータを全件削除
+```sh
+python manage.py bcar --del all
+```
+
