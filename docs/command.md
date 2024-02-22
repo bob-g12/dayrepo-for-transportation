@@ -80,7 +80,7 @@ git  branch
 ```
 ##### ブランチを移動
 ``` sh
-git checkout -b feature/"目的ののブランチ"
+git checkout -b feature/"目的のブランチ"
 ```
 ##### テーブル表示
 ``` sh
