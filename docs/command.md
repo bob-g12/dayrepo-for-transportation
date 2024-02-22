@@ -82,7 +82,3 @@ git  branch
 ``` sh
 git checkout -b feature/"目的ののブランチ"
 ```
-##### テーブル表示
-``` sh
-sqlite> select * from sqlite_master;
-```
