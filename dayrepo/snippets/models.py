@@ -122,7 +122,7 @@ class Snippet(models.Model):
         null=False,
     )
     duties_id = models.ForeignKey(
-        'Duties_trouble', 
+        'Dutiestrouble', 
         on_delete=models.DO_NOTHING, 
         null=False,
         default=False,
