@@ -280,7 +280,6 @@ class Checklist(models.Model):
         Snippet, 
         on_delete=models.DO_NOTHING,
         null=False,
-        default=False,
     )
     is_tire_damage = models.BooleanField(
         verbose_name="タイヤの損傷(空気圧/摩耗/亀裂/損傷)",
