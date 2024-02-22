@@ -115,7 +115,7 @@ class Snippet(models.Model):
     # 項目作成
 
     id = models.AutoField(
-        verbose_name="日報ID",
+        verbose_name="日報id",
         primary_key=True,
         editable=True,
         blank=False,
