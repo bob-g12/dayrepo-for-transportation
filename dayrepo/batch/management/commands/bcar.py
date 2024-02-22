@@ -50,13 +50,14 @@ class CarCommand:
             print("t.now_mileage:", t.now_mileage)
             print("----")
 
-    def get_vehicle_num_suffix(self, prefix: str, n: int) -> str:
-        return prefix + str(n).zfill(4)
+    def get_vehicle_num_suffix(self, prefix: str, hiragana: str, n: int) -> str:
+        num = str(n).zfill(7)
+        return prefix + "-" + num[:3] + "-"  + hiragana + "-"  + num[3:]
 
     def create_car_in_a_good_way(self):
         existing_data = models.Car.objects.all()
         n = len(existing_data) + 1
-        vn = self.get_vehicle_num_suffix("名古屋-123-た-", n)
+        vn = self.get_vehicle_num_suffix("名古屋", "た", n)
         t = models.Car(
             id=n,
             vehicle_number=vn,
@@ -65,7 +66,6 @@ class CarCommand:
         t.save()
         print("以下のデータを作成しました")
         print(
-            t,
             t.id,
             t.vehicle_number,
             t.now_mileage,
