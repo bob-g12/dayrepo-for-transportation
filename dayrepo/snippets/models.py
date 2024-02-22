@@ -276,7 +276,6 @@ class Checklist(models.Model):
 
     # 項目作成
 
-    # snippet テーブルがまだ未定義のため、一時コメントアウト
     snippet_id = models.ForeignKey(
         Snippet, 
         on_delete=models.CASCADE, 
