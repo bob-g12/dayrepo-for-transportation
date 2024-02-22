@@ -129,7 +129,7 @@ class Snippet(models.Model):
     )
     account_id = models.ForeignKey(
         Account,
-        verbose_name="アカウントID",
+        verbose_name="アカウントid",
         on_delete=models.DO_NOTHING,
         null=False,
         default=False,
