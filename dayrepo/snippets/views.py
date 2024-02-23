@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Snippet
+from django.views.generic import View
 
 # Create your views here.
 def top(request):
@@ -25,3 +27,12 @@ def car_registration(request):
 
 def get_employee(request):
     return HttpResponse("社員情報画面")
+
+class Snippet_listView(View):
+    def get(self,request):
+        # 記録してある投稿の全データを投稿時間を元にソートして表示
+        queryset = Snippet.objects.all().order_by('account_id')
+        # トップページのhtmlへ記録データを乗せ移行
+        return render(request, 'snippet_list.html', {'posts': queryset})
+    
+snippet_list = Snippet_listView.as_view()
