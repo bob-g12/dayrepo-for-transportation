@@ -217,6 +217,12 @@ class Snippet(models.Model):
         null=False,
         max_length=10,
     )
+    free_space = models.CharField(
+        verbose_name="備考欄",
+        max_length=254,
+        blank=True,
+        null=True,
+    )
     create_at = models.DateTimeField(
         verbose_name="作成日時", 
         auto_now_add=True
