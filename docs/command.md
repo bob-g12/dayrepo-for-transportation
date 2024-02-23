@@ -76,7 +76,7 @@ git push
 ### ブランチ
 #### 現在のブランチ確認
 ``` sh
-git  branch
+git branch
 ```
 ##### ブランチを移動
 ``` sh
