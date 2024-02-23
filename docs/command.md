@@ -49,3 +49,36 @@ sqlite3 db.sqlite3
 ```
 > [!CAUTION]
 > リリース時 DB ファイル名は変更します。
+
+### DB テーブル表示
+##### 縦表示
+``` sh
+sqlite> .mode line
+```
+##### テーブル表示
+``` sh
+sqlite> select * from sqlite_master;
+```
+## git
+### 基本操作
+#### ステージング
+``` sh
+git add . 
+```
+#### コミット
+``` sh
+git commit -m "コメント"
+```
+#### gitにコミット内容を更新
+``` sh
+git push
+```
+### ブランチ
+#### 現在のブランチ確認
+``` sh
+git branch
+```
+##### ブランチを移動
+``` sh
+git checkout -b feature/"目的のブランチ"
+```
