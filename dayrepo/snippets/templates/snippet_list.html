@@ -1,0 +1,10 @@
+{% block page_title %}日報一覧{% endblock %}
+{% block title %}日報一覧{% endblock %}
+{% block content %}
+    {% for post in posts %}      
+    <div class="post">
+        <p class="car_number">{{ post.free_space }}</p>
+        <hr>
+    </div>
+    {% endfor %}
+{% endblock %}
