@@ -134,6 +134,13 @@ class Snippet(models.Model):
         null=False,
         default=False,
     )
+    car_id = models.ForeignKey(
+        Car,
+        verbose_name="車両id",
+        on_delete=models.DO_NOTHING,
+        null=False,
+        default=False,
+    )
     start_mileage = models.IntegerField(
         verbose_name="出発時メーター",
         blank=False,
