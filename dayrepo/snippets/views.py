@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Snippet
 from django.views.generic import View
+from django.shortcuts import redirect
+from .models import Snippet
+from .forms import SnippetForm
 
 # Create your views here.
 def top(request):
@@ -36,3 +38,22 @@ class Snippet_listView(View):
         return render(request, 'snippet_list.html', {'posts': queryset})
     
 snippet_list = Snippet_listView.as_view()
+
+# 投稿機能
+class SnippetView(View):
+    # 新規入力画面へ
+    def get(self, request):  
+        # 投稿ボタンで投稿ページへ
+        return render(request, 'snippet_post.html', {'form': SnippetForm})
+    # 投稿機能
+    def post(self, request):
+        # formに書いた内容を格納する
+        form = SnippetForm(request.POST)
+        # 保存する前に一旦取り出す
+        post = form.save(commit=False)
+        # 保存
+        post.save()
+        # トップ画面へ
+        return redirect(to='snippet_list')
+    
+snippet_post = SnippetView.as_view()
