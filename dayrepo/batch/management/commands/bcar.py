@@ -15,15 +15,16 @@ class Command(BaseCommand):
         print('options["create"]:', options["create"])
         print('options["del"]:', options["del"])
         if options["get"] != None and options["get"] == "all":
-            AccountCommand.get_account_all()
+            CarCommand.get_car_all()
             return
 
         if options["create"] != None and options["create"] == "f":
-            AccountCommand.create_account_in_a_good_way()
+            t = CarCommand()
+            t.create_car_in_a_good_way()
             return
 
         if options["del"] != None and options["del"] == "all":
-            AccountCommand.all_delete()
+            CarCommand.all_delete()
             return
 
         print("一致するコマンドが存在しません。")
@@ -34,49 +35,47 @@ class Command(BaseCommand):
         parser.add_argument("--del", nargs="?", default="", type=str)
 
 
-class AccountCommand:
-    def get_account_all():
-        tmp = models.Account.objects.all()
+class CarCommand:
+    def get_car_all():
+        tmp = models.Car.objects.all()
 
         if len(tmp) == 0:
-            print("現在 Account テーブルのデータは 0 件です。")
+            print("現在 Car テーブルのデータは 0 件です。")
             return
 
         for i, t in enumerate(tmp):
             print(i + 1, "個目")
             print("t.id:", t.id)
-            print("t.first_name:", t.first_name)
-            print("t.last_name:", t.last_name)
+            print("t.vehicle_number:", t.vehicle_number)
+            print("t.now_mileage:", t.now_mileage)
             print("----")
 
-    def create_account_in_a_good_way():
-        existing_data = models.Account.objects.all()
+    def get_vehicle_num_suffix(self, prefix: str, hiragana: str, n: int) -> str:
+        num = str(n).zfill(7)
+        return prefix + "-" + num[:3] + "-"  + hiragana + "-"  + num[3:]
+
+    def create_car_in_a_good_way(self):
+        existing_data = models.Car.objects.all()
         n = len(existing_data) + 1
-        t = models.Account(
+        vn = self.get_vehicle_num_suffix("名古屋", "た", n)
+        t = models.Car(
             id=n,
-            last_name="last_name" + str(n),
-            first_name="first_name" + str(n),
-            password="password" + str(n),
-            is_administrator=True,
-            is_approval=True,
+            vehicle_number=vn,
+            now_mileage=1000,
         )
         t.save()
         print("以下のデータを作成しました")
         print(
-            t,
             t.id,
-            t.first_name,
-            t.last_name,
-            t.password,
-            t.is_administrator,
-            t.is_approval,
+            t.vehicle_number,
+            t.now_mileage,
         )
 
     def all_delete():
-        yorn = input("Account テーブルの全件削除を行いますか？[Y/n]:")
+        yorn = input("Car テーブルの全件削除を行いますか？[Y/n]:")
         if yorn == "y" or yorn == "Y" or yorn == "yes":
-            models.Account.objects.all().delete()
-            print("Account テーブルの全件削除を行いました。")
+            models.Car.objects.all().delete()
+            print("Car テーブルの全件削除を行いました。")
             return
 
-        print("Account テーブルの全件削除を行いませんでした。")
+        print("Car テーブルの全件削除を行いませんでした。")
