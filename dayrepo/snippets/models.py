@@ -115,15 +115,28 @@ class Snippet(models.Model):
     # 項目作成
 
     id = models.AutoField(
-        verbose_name="日報ID",
+        verbose_name="日報id",
         primary_key=True,
         editable=True,
         blank=False,
         null=False,
     )
+    duties_trouble_id = models.ForeignKey(
+        'DutiesTrouble', 
+        on_delete=models.DO_NOTHING, 
+        null=False,
+        default=False,
+    )
     account_id = models.ForeignKey(
         Account,
-        verbose_name="アカウントID",
+        verbose_name="アカウントid",
+        on_delete=models.DO_NOTHING,
+        null=False,
+        default=False,
+    )
+    car_id = models.ForeignKey(
+        Car,
+        verbose_name="車両id",
         on_delete=models.DO_NOTHING,
         null=False,
         default=False,
@@ -217,7 +230,11 @@ class Snippet(models.Model):
 
         return str(self.id)
 
+<<<<<<< HEAD
 class Duties_trouble(models.Model):
+=======
+class DutiesTrouble(models.Model):
+>>>>>>> e7135625985eecab6a8edbb9aaa43f5198753473
 
     class Meta(object):
 
@@ -227,11 +244,20 @@ class Duties_trouble(models.Model):
         verbose_name = "業務トラブル"
 
     # 項目作成
+<<<<<<< HEAD
     snippet_id = models.ForeignKey(
         Snippet, 
         on_delete=models.CASCADE, 
         null=False,
         default=False,
+=======
+    id = models.AutoField(
+        verbose_name="業務トラブルid",
+        primary_key=True,
+        editable=True,
+        blank=False,
+        null=False,
+>>>>>>> e7135625985eecab6a8edbb9aaa43f5198753473
     )
     trouble_situation = models.CharField(
         verbose_name="事故/遅延等異常_状況", 
@@ -269,6 +295,7 @@ class Checklist(models.Model):
 
     # 項目作成
 
+<<<<<<< HEAD
     # snippet テーブルがまだ未定義のため、一時コメントアウト
     snippet_id = models.ForeignKey(
         Snippet, 
@@ -280,22 +307,41 @@ class Checklist(models.Model):
         verbose_name="タイヤの損傷(空気圧/摩耗/亀裂/損傷)",
         default=False,
         blank=True,
+=======
+    snippet_id = models.ForeignKey(
+        Snippet, 
+        on_delete=models.DO_NOTHING,
+>>>>>>> e7135625985eecab6a8edbb9aaa43f5198753473
         null=False,
+    )
+    is_tire_damage = models.BooleanField(
+        verbose_name="タイヤの損傷(空気圧/摩耗/亀裂/損傷)",
+        blank=False,
+        null=False,
+        default=False,
+        
     )
     is_tire_groove = models.BooleanField(
         verbose_name="タイヤの溝の深さ", 
+<<<<<<< HEAD
         default=False, 
         blank=True, 
         null=False
+=======
+        blank=False,
+        null=False,
+        default=False,
+>>>>>>> e7135625985eecab6a8edbb9aaa43f5198753473
     )
     is_tire_parts = models.BooleanField(
         verbose_name="タイヤのナット・ボルト(緩み/脱落)",
-        default=False,
-        blank=True,
+        blank=False,
         null=False,
+        default=False,
     )
     is_radiator = models.BooleanField(
         verbose_name="ラジエータの冷却水(液量)", 
+<<<<<<< HEAD
         default=False, 
         blank=True, 
         null=False
@@ -311,27 +357,51 @@ class Checklist(models.Model):
         default=False, 
         blank=True, 
         null=False
+=======
+        blank=False,
+        null=False,
+        default=False,
+    )
+    is_brake_oil = models.BooleanField(
+        verbose_name="ブレーキオイル(液量)", 
+        blank=False,
+        null=False,
+        default=False,
+    )
+    is_air_tank = models.BooleanField(
+        verbose_name="エアタンク(凝水)", 
+        blank=False,
+        null=False,
+        default=False,
+>>>>>>> e7135625985eecab6a8edbb9aaa43f5198753473
     )
     is_air_brake = models.BooleanField(
         verbose_name="エアブレーキ(空気圧/排気音)",
-        default=False,
-        blank=True,
+        blank=False,
         null=False,
+        default=False,
     )
     is_brake_pedal = models.BooleanField(
         verbose_name="ブレーキペダルの踏みしろ", 
+<<<<<<< HEAD
         default=False, 
         blank=True, 
         null=False
+=======
+        blank=False,
+        null=False,
+        default=False,
+>>>>>>> e7135625985eecab6a8edbb9aaa43f5198753473
     )
     is_parking_brake = models.BooleanField(
         verbose_name="駐車ブレーキ(かかり具合/引きしろ)",
-        default=False,
-        blank=True,
+        blank=False,
         null=False,
+        default=False,
     )
     is_engine_oil = models.BooleanField(
         verbose_name="エンジンオイル(液量)", 
+<<<<<<< HEAD
         default=False, 
         blank=True, 
         null=False
@@ -341,39 +411,51 @@ class Checklist(models.Model):
         default=False, 
         blank=True, 
         null=False
+=======
+        blank=False,
+        null=False,
+        default=False,
+    )
+    is_battery = models.BooleanField(
+        verbose_name="バッテリー(液量)", 
+        blank=False,
+        null=False,
+        default=False,
+>>>>>>> e7135625985eecab6a8edbb9aaa43f5198753473
     )
     is_belt = models.BooleanField(
         verbose_name="ファン・ベルトの異常(張り/損傷)",
-        default=False,
-        blank=True,
+        blank=False,
         null=False,
+        default=False,
     )
     is_washer_fluid = models.BooleanField(
         verbose_name="ウォッシャー液/ワイパー(液量/噴射状態/払拭状態)",
-        default=False,
-        blank=True,
+        blank=False,
         null=False,
+        default=False,
     )
     is_engine = models.BooleanField(
         verbose_name="エンジン(かかり具合/異音/状態)",
-        default=False,
-        blank=True,
+        blank=False,
         null=False,
+        default=False,
     )
     is_light = models.BooleanField(
         verbose_name="ライト(ヘッドライト/ウインカー/車内灯/ハザード/速度表示)",
-        default=False,
-        blank=True,
+        blank=False,
         null=False,
+        default=False,
     )
     is_brake_details = models.BooleanField(
         verbose_name="ブレーキチャンバロッド/ブレーキペダルのライニング",
-        default=False,
-        blank=True,
+        blank=False,
         null=False,
+        default=False,
     )
     is_before_trouble = models.BooleanField(
         verbose_name="前日の異常", 
+<<<<<<< HEAD
         default=False, 
         blank=False, 
         null=False
@@ -383,6 +465,17 @@ class Checklist(models.Model):
         default=False, 
         blank=False, 
         null=False
+=======
+        blank=False,
+        null=False,
+        default=False,
+    )
+    is_today_trouble = models.BooleanField(
+        verbose_name="本日の異常", 
+        blank=False,
+        null=False,
+        default=False,
+>>>>>>> e7135625985eecab6a8edbb9aaa43f5198753473
     )
 
     def __str__(self):

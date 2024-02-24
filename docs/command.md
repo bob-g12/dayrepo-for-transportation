@@ -76,13 +76,9 @@ git push
 ### ブランチ
 #### 現在のブランチ確認
 ``` sh
-git  branch
+git branch
 ```
 ##### ブランチを移動
 ``` sh
-git checkout -b feature/"目的ののブランチ"
-```
-##### テーブル表示
-``` sh
-sqlite> select * from sqlite_master;
+git checkout -b feature/"目的のブランチ"
 ```
