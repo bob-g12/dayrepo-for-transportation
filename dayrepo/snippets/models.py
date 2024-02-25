@@ -141,6 +141,12 @@ class Snippet(models.Model):
         null=False,
         default=False,
     )
+    create_day = models.DateField(
+        verbose_name='稼働日',
+        blank=False, 
+        null=False,
+        max_length=20
+        )
     start_mileage = models.IntegerField(
         verbose_name="出発時メーター",
         blank=False,
