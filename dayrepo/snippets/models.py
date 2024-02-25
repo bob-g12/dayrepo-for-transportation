@@ -402,7 +402,7 @@ class Checklist(models.Model):
 
         return str(self.snippet_id)
 
-class process(models.Model):
+class Process(models.Model):
 
     class Meta(object):
 
