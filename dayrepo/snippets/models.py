@@ -232,6 +232,7 @@ class Snippet(models.Model):
 
 class DutiesTrouble(models.Model):
 
+
     class Meta(object):
 
         # 作成されるテーブル名を指定
@@ -282,7 +283,6 @@ class Checklist(models.Model):
         verbose_name = "点検項目"
 
     # 項目作成
-
     snippet_id = models.ForeignKey(
         Snippet, 
         on_delete=models.DO_NOTHING,
@@ -401,3 +401,87 @@ class Checklist(models.Model):
     def __str__(self):
 
         return str(self.snippet_id)
+
+class Process(models.Model):
+
+    class Meta(object):
+
+        # 作成されるテーブル名を指定
+        db_table = "processes"
+        # 管理画面でのモデルの名称
+        verbose_name = "工程"
+
+    # 項目作成
+
+    id = models.AutoField(
+        verbose_name="工程id", 
+        primary_key=True, 
+        editable=True, 
+        blank=False, 
+        null=False,
+    )
+    start_time = models.TimeField(
+        verbose_name="出発時間",
+        blank=False,
+        null=False,
+        max_length=10,
+    )
+    end_time = models.TimeField(
+        verbose_name="到着時間",
+        blank=False,
+        null=False,
+        max_length=10,
+    )
+    start_point = models.CharField(
+        verbose_name="出発地点", 
+        blank=False, 
+        null=False, 
+        max_length=20
+    )
+    end_point = models.CharField(
+        verbose_name="到着地点", 
+        blank=False, 
+        null=False, 
+        max_length=20
+    )
+    via_point = models.CharField(
+        verbose_name="経由地", 
+        blank=False, 
+        null=False, 
+        max_length=20
+    )
+    client = models.CharField(
+        verbose_name="荷主", 
+        blank=False, 
+        null=False, 
+        max_length=20
+    )
+    goods = models.CharField(
+        verbose_name="品名", 
+        blank=False, 
+        null=False, 
+        max_length=20
+    )
+    load_situation = models.IntegerField(
+        verbose_name="積載重量", 
+        blank=False, 
+        null=False
+    )
+    is_load_situation = models.IntegerField(
+        verbose_name="積載状況", 
+        blank=False, 
+        null=False
+    )
+    load_mileage = models.IntegerField(
+        verbose_name="積載走行距離", 
+        blank=True, 
+        null=True
+    )
+    load_situation = models.IntegerField(
+        verbose_name="空走行距離", 
+        blank=True, 
+        null=True
+    )
+    def __str__(self):
+
+        return str(self.id)
