@@ -146,7 +146,7 @@ class Snippet(models.Model):
         blank=False, 
         null=False,
         max_length=20
-        )
+    )
     start_mileage = models.IntegerField(
         verbose_name="出発時メーター",
         blank=False,
