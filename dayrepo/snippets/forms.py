@@ -1,14 +1,18 @@
 from django import forms
-from .models import Snippet, Car
+from .models import Snippet, Car, Account
 from django.core.exceptions import NON_FIELD_ERRORS
 
 
-class CustomSnippetModelChoiceField(forms.ModelChoiceField):
+class CustomSnippet_carsModelChoiceField(forms.ModelChoiceField):
     def label_from_instance(self, obj): # label_from_instance 関数をオーバーライド
-         return obj.vehicle_number # 表示したいカラム名を return
+        return obj.vehicle_number # 表示したいカラム名を return
+class CustomSnippet_accountsModelChoiceField(forms.ModelChoiceField):
+    def label_from_instance(self, obj): # label_from_instance 関数をオーバーライド
+        return obj.last_name +" "+ obj.first_name # 表示したいカラム名を return
 
 class SnippetForm(forms.ModelForm):
-    car_id = CustomSnippetModelChoiceField(queryset=Car.objects.all(), empty_label="車両番号を選択してください",label="車両番号")
+    car_id = CustomSnippet_carsModelChoiceField(queryset=Car.objects.all(), empty_label="車両番号を選択してください", label="車両番号")
+    account_id = CustomSnippet_accountsModelChoiceField(queryset=Account.objects.all(), empty_label="運転者を選択してください",label="運転者")
     class Meta:
         #モデルを指定
         model = Snippet

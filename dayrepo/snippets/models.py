@@ -62,7 +62,7 @@ class Account(models.Model):
 
     def __str__(self):
 
-        return str(self.id)
+        return str(self.first_name)
 
 
 class Car(models.Model):
