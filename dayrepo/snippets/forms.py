@@ -1,13 +1,18 @@
 from django import forms
-from .models import Snippet
+from .models import Snippet, Car
 from django.core.exceptions import NON_FIELD_ERRORS
 
 
+class CustomSnippetModelChoiceField(forms.ModelChoiceField):
+    def label_from_instance(self, obj): # label_from_instance 関数をオーバーライド
+         return obj.vehicle_number # 表示したいカラム名を return
 
 class SnippetForm(forms.ModelForm):
+    car_id = CustomSnippetModelChoiceField(queryset=Car.objects.all(), empty_label="車両番号を選択してください")
     class Meta:
         #モデルを指定
         model = Snippet
+        
         #フォームとして表示したいカラムを指定
         fields = (
             'account_id',
@@ -29,25 +34,4 @@ class SnippetForm(forms.ModelForm):
             'break_time',
             'free_space',
             )
-        widgets = {
-            'account_id':forms.Select(
-                choices=(
-                ('','アカウントを選択'),
-                ('0','gokki'),
-                ('1','やんけ'),
-                ('2','とっしー'),
-                ),
-                attrs={
-                'required' : 'アカウントを選択'
-            }),
-            'account_id':forms.Select(
-                choices=(
-                ('','車両を選択'),
-                ('0','札幌 ひ 20-20'),
-                ('1','船橋 ふ 19-19'),
-                ('2','八雲 や 89-89'),
-                ),
-                attrs={
-                'required' : '車両を選択'
-            }),
-        }
+        widgets = {}
