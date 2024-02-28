@@ -100,7 +100,7 @@ class Car(models.Model):
 
     def __str__(self):
 
-        return str(self.id)
+        return str(self.vehicle_number)
 
 
 class Snippet(models.Model):
