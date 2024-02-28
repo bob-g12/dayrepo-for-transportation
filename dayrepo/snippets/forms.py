@@ -8,7 +8,7 @@ class CustomSnippetModelChoiceField(forms.ModelChoiceField):
          return obj.vehicle_number # 表示したいカラム名を return
 
 class SnippetForm(forms.ModelForm):
-    car_id = CustomSnippetModelChoiceField(queryset=Car.objects.all(), empty_label="車両番号を選択してください")
+    car_id = CustomSnippetModelChoiceField(queryset=Car.objects.all(), empty_label="車両番号を選択してください",label="車両番号")
     class Meta:
         #モデルを指定
         model = Snippet
