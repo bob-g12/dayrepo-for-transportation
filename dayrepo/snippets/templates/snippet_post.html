@@ -4,8 +4,11 @@
 
 {% block content %}
     <form method="post">
+        <h1>日報基本情報入力</h1>
         {{ form.as_p }}
+        <h1>異常報告入力</h1>
         {{ form_trouble.as_p }}
+        <h1>工程入力</h1>
         {{ form_process.as_p }}
         {% csrf_token %}
         <button type="submit" class="button">投稿</button>
