@@ -1,5 +1,5 @@
 from django import forms
-from .models import Snippet, Car, Account
+from .models import Snippet, Car, Account, DutiesTrouble
 from django.core.exceptions import NON_FIELD_ERRORS
 
 
@@ -21,7 +21,7 @@ class SnippetForm(forms.ModelForm):
         fields = (
             'account_id',
             'car_id',
-            'duties_trouble_id',
+            'dutiestrouble_id',
             'create_day',
             'start_mileage',
             'end_mileage',
@@ -39,3 +39,14 @@ class SnippetForm(forms.ModelForm):
             'free_space',
             )
         widgets = {}
+
+class DutiesTroubleForm(forms.ModelForm):
+    class Meta:
+        #モデルを指定
+        model = DutiesTrouble
+
+        fields = (
+            'trouble_situation',
+            'trouble_cause',
+            'trouble_support',
+        )

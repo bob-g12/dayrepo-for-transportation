@@ -5,6 +5,7 @@
 {% block content %}
     <form method="post">
         {{ form.as_p }}
+        {{ form_trouble.as_p }}
         {% csrf_token %}
         <button type="submit" class="button">投稿</button>
     </form>
