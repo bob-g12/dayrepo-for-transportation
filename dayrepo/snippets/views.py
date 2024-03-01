@@ -32,7 +32,7 @@ class Snippet_listView(View):
     def get(self,request):
         # 記録してある投稿の全データを投稿時間を元にソートして表示
         queryset = Snippet.objects.all().order_by('account_id')
-        # トップページのhtmlへ記録データを乗せ移行
+        # トップページのhtmlへ投稿(日報)データをテンプレートに渡す
         return render(request, 'snippet_list.html', {'posts': queryset})
     
 snippet_list = Snippet_listView.as_view()
