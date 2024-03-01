@@ -28,7 +28,7 @@ def car_registration(request):
 def get_employee(request):
     return HttpResponse("社員情報画面")
 
-class Snippet_listView(View):
+class SnippetListView(View):
     def get(self,request):
         # 記録してある投稿の全データを投稿時間を元にソートして表示
         queryset = Snippet.objects.all().order_by('account_id')
