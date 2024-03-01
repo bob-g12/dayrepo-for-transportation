@@ -31,7 +31,7 @@ def get_employee(request):
 class Snippet_listView(View):
     def get(self,request):
         # 記録してある投稿の全データを投稿時間を元にソートして表示
-        queryset = Snippet.objects.all().order_by('account_id')
+        queryset = Snippet.objects.all().order_by('-create_at')
         # トップページのhtmlへ記録データを乗せ移行
         return render(request, 'snippet_list.html', {'posts': queryset})
     
