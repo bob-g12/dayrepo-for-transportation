@@ -28,11 +28,13 @@ def car_registration(request):
 def get_employee(request):
     return HttpResponse("社員情報画面")
 
-class Snippet_listView(View):
+class SnippetListView(View):
     def get(self,request):
         # 記録してある投稿の全データを投稿時間を元にソートして表示
+
         queryset = Snippet.objects.all().order_by('-create_at')
-        # トップページのhtmlへ記録データを乗せ移行
+        # トップページのhtmlへ投稿(日報)データをテンプレートに渡す
+
         return render(request, 'snippet_list.html', {'posts': queryset})
     
-snippet_list = Snippet_listView.as_view()
+snippet_list = SnippetListView.as_view()
