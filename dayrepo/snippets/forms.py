@@ -50,3 +50,22 @@ class DutiesTroubleForm(forms.ModelForm):
             'trouble_cause',
             'trouble_support',
         )
+
+class ProcessForm(forms.ModelForm):
+    class Meta:
+        #モデルを指定
+        model = Process
+
+        fields = (
+            'start_time',
+            'end_time',
+            'start_point',
+            'end_point',
+            'via_point',
+            'client',
+            'goods',
+            'load_situation',
+            'is_load_situation',
+            'load_mileage',
+            'load_situation',
+        )
