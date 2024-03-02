@@ -62,7 +62,7 @@ class Account(models.Model):
 
     def __str__(self):
 
-        return str(self.first_name)
+        return str(self.id)
 
 
 class Car(models.Model):
@@ -100,7 +100,7 @@ class Car(models.Model):
 
     def __str__(self):
 
-        return str(self.vehicle_number)
+        return str(self.id)
 
 
 class Snippet(models.Model):
@@ -121,7 +121,7 @@ class Snippet(models.Model):
         blank=False,
         null=False,
     )
-    dutiestrouble_id = models.ForeignKey(
+    duties_trouble_id = models.ForeignKey(
         'DutiesTrouble', 
         on_delete=models.DO_NOTHING, 
         null=False,
