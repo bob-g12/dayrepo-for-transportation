@@ -34,7 +34,6 @@ class SnippetListView(View):
 
         queryset = Snippet.objects.all().order_by('-create_at')
         # トップページのhtmlへ投稿(日報)データをテンプレートに渡す
-
         return render(request, 'snippet_list.html', {'posts': queryset})
     
 snippet_list = SnippetListView.as_view()
