@@ -3,16 +3,16 @@ from .models import Snippet, Car, Account, DutiesTrouble
 from django.core.exceptions import NON_FIELD_ERRORS
 
 
-class CustomSnippet_carsModelChoiceField(forms.ModelChoiceField):
+class CustomSnippetcarsModelChoiceField(forms.ModelChoiceField):
     def label_from_instance(self, obj): # label_from_instance 関数をオーバーライド
         return obj.vehicle_number # 表示したいカラム名を return
-class CustomSnippet_accountsModelChoiceField(forms.ModelChoiceField):
-    def label_from_instance(self, obj): # label_from_instance 関数をオーバーライド
-        return obj.last_name +" "+ obj.first_name # 表示したいカラム名を return
+class CustomSnippetaccountsModelChoiceField(forms.ModelChoiceField):
+    def label_from_instance(self, obj): 
+        return obj.last_name +" "+ obj.first_name 
 
 class SnippetForm(forms.ModelForm):
-    car_id = CustomSnippet_carsModelChoiceField(queryset=Car.objects.all(), empty_label="車両番号を選択してください", label="車両番号")
-    account_id = CustomSnippet_accountsModelChoiceField(queryset=Account.objects.all(), empty_label="運転者を選択してください",label="運転者")
+    car_id = CustomSnippetcarsModelChoiceField(queryset=Car.objects.all(), empty_label="車両番号を選択してください", label="車両番号")
+    account_id = CustomSnippetaccountsModelChoiceField(queryset=Account.objects.all(), empty_label="運転者を選択してください",label="運転者")
     class Meta:
         #モデルを指定
         model = Snippet
@@ -21,7 +21,7 @@ class SnippetForm(forms.ModelForm):
         fields = (
             'account_id',
             'car_id',
-            'dutiestrouble_id',
+            'duties_trouble_id',
             'create_day',
             'start_mileage',
             'end_mileage',
