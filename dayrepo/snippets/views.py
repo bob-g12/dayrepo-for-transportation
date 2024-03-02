@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.views.generic import View
 from django.shortcuts import redirect
 from .models import Snippet
-from .forms import SnippetForm, DutiesTroubleForm
+from .forms import SnippetForm, DutiesTroubleForm, ProcessForm
 
 # Create your views here.
 def top(request):
@@ -47,7 +47,7 @@ class SnippetView(View):
         return render(
             request,
             "snippet_post.html",
-            {"form": SnippetForm, "form_trouble": DutiesTroubleForm},
+            {"form": SnippetForm, "form_trouble": DutiesTroubleForm, "form_process":ProcessForm},
         )
 
     # 投稿機能
@@ -63,5 +63,5 @@ class SnippetView(View):
         # トップ画面へ
         return redirect(to="snippet_list")
 
-
 snippet_post = SnippetView.as_view()
+

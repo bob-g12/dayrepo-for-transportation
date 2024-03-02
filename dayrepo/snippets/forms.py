@@ -1,5 +1,5 @@
 from django import forms
-from .models import Snippet, Car, Account, DutiesTrouble
+from .models import Snippet, Car, Account, DutiesTrouble, Process
 from django.core.exceptions import NON_FIELD_ERRORS
 
 

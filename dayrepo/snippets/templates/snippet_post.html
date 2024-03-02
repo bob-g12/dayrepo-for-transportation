@@ -4,9 +4,20 @@
 
 {% block content %}
     <form method="post">
+        <h1>日報基本情報入力</h1>
         {{ form.as_p }}
+        <h1>異常報告入力</h1>
         {{ form_trouble.as_p }}
+        <h1>工程入力</h1>
+        <div>
+            {{ form_process.as_p }}
+        </div>
+        <button name="btn_add" type="submit">
+            追加する
+        </button>
         {% csrf_token %}
-        <button type="submit" class="snippet_button">投稿</button>
+        <button name="btn_post" type="submit" class="snippet_button">
+            投稿
+        </button>
     </form>
 {% endblock %}
