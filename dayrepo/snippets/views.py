@@ -55,12 +55,11 @@ class SnippetView(View):
         # formに書いた内容を格納する
         form = SnippetForm(request.POST)
         form_trouble = DutiesTroubleForm(request.POST)
-        # 保存する前に一旦取り出す
-        post = form.save(commit=False)
-        post_trouble = form_trouble.save(commit=False)
+        form_process = ProcessForm(request.POST)
         # 保存
-        post.save()
-        post_trouble.save()
+        form.save()
+        form_trouble.save()
+        form_process.save()
         # トップ画面へ
         return redirect(to="snippet_list")
 
