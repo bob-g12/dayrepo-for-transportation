@@ -10,5 +10,5 @@ urlpatterns = [
     path("car/new/", views.car_registration,name="car_registration"),
     path("employee/", views.get_employee,name="get_employee"),
     path("snippet-list/", views.snippet_list,name="snippet_list"),
-    path("snippet_post/", views.snippet_post,name="snippet_post"),
+    path("snippet-post/", views.snippet_post,name="snippet_post"),
 ]
