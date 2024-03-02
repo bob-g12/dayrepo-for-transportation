@@ -146,7 +146,7 @@ class Snippet(models.Model):
         blank=False, 
         null=False,
         max_length=20
-        )
+    )
     start_mileage = models.IntegerField(
         verbose_name="出発時メーター",
         blank=False,
@@ -222,6 +222,12 @@ class Snippet(models.Model):
         blank=False,
         null=False,
         max_length=10,
+    )
+    free_space = models.CharField(
+        verbose_name="備考欄",
+        max_length=254,
+        blank=True,
+        null=True,
     )
     create_at = models.DateTimeField(
         verbose_name="作成日時", 
