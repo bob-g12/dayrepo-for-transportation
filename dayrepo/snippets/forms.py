@@ -38,7 +38,7 @@ class SnippetForm(forms.ModelForm):
             'break_time',
             'free_space',
             )
-        widgets = {}
+        widgets = {} # 今後のフォーム編集で使用
 
 class DutiesTroubleForm(forms.ModelForm):
     class Meta:
