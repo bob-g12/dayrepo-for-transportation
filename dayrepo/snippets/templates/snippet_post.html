@@ -1,0 +1,19 @@
+
+{% block page_title %}投稿{% endblock %}
+{% block title %}投稿{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <h1>日報基本情報入力</h1>
+        {{ form.as_p }}
+        <h1>異常報告入力</h1>
+        {{ form_trouble.as_p }}
+        <button name="add_process_form" type="submit">
+            追加する
+        </button>
+        {% csrf_token %}
+        <button name="btn_post" type="submit" class="snippet_button">
+            投稿
+        </button>
+    </form>
+{% endblock %}
