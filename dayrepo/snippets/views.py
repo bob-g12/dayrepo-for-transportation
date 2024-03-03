@@ -39,6 +39,7 @@ class SnippetListView(View):
         return render(request, 'snippet_list.html', {'posts': queryset})
     
 snippet_list = SnippetListView.as_view()
+
 # 投稿機能
 class SnippetView(View):
     # 新規入力画面へ
@@ -49,7 +50,7 @@ class SnippetView(View):
             "snippet_post.html",
             {"form": SnippetForm, "form_trouble": DutiesTroubleForm, "form_process":ProcessForm},
         )
-
+   
     # 投稿機能
     def post(self, request):
         # formに書いた内容を格納する

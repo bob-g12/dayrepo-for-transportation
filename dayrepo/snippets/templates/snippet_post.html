@@ -10,11 +10,11 @@
         {{ form_trouble.as_p }}
         <h1>工程入力</h1>
         <div>
-            {{ form_process.as_p }}
-        </div>
-        <button name="add_process_form" type="submit">
+            {{ form_process.empty_form.as_p }}
+            <button name="add_process_form" type="button">
             追加する
-        </button>
+            </button>
+        </div>
         {% csrf_token %}
         <button name="btn_post" type="submit" class="snippet_button">
             投稿
