@@ -1,7 +1,6 @@
-
 {% block page_title %}投稿{% endblock %}
 {% block title %}投稿{% endblock %}
-
+{% load static %}
 {% block content %}
     <form method="post">
         <h1>日報基本情報入力</h1>
@@ -9,12 +8,15 @@
         <h1>異常報告入力</h1>
         {{ form_trouble.as_p }}
         <h1>工程入力</h1>
-        <div class="text">
-            {{ form_process.empty_form.as_p }}
-            <button name="add_process_form" type="button"id="btn_clone">
-            追加する
-            </button>
+        <script src="{% static 'js/process_add.js' %}"></script>
+            
+        <div id="form_area">
+          {{ form_process.as_p }}
+          <hr>
         </div>
+            
+        <input type="button" value="フォーム追加" onclick="addForm()">
+        
         {% csrf_token %}
         <button name="btn_post" type="submit" class="snippet_button">
             投稿
