@@ -125,21 +125,18 @@ class Snippet(models.Model):
         'DutiesTrouble', 
         on_delete=models.DO_NOTHING, 
         null=False,
-        default=False,
     )
     account_id = models.ForeignKey(
         Account,
         verbose_name="アカウントid",
         on_delete=models.DO_NOTHING,
         null=False,
-        default=False,
     )
     car_id = models.ForeignKey(
         Car,
         verbose_name="車両id",
         on_delete=models.DO_NOTHING,
         null=False,
-        default=False,
     )
     create_day = models.DateField(
         verbose_name='稼働日',
@@ -430,6 +427,11 @@ class Process(models.Model):
         primary_key=True, 
         editable=True, 
         blank=False, 
+        null=False,
+    )
+    snippet_id = models.ForeignKey(
+        Snippet, 
+        on_delete=models.DO_NOTHING, 
         null=False,
     )
     start_time = models.TimeField(
