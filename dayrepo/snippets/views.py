@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, QueryDict
 from django.views.generic import View
 from django.shortcuts import redirect
 from .models import Snippet
@@ -54,15 +54,39 @@ class SnippetView(View):
     # 投稿機能
     def post(self, request):
         # formに書いた内容を格納する
-        form = SnippetForm(request.POST)
+        """form = SnippetForm(request.POST)
         form_trouble = DutiesTroubleForm(request.POST)
         form_process = ProcessForm(request.POST)
+        form_process2 = ProcessForm({'start_time' : ['02:30:52']})"""
         print(request.POST)
-        
-        # 保存
+        tmp=request.POST
+        #print(dict(tmp))
+        form_snippet_start_time=tmp.getlist("start_time")[0]
+        print(form_snippet_start_time)
+        form_snippet=dict(tmp)
+        form_snippet["start_time"]=[form_snippet_start_time]
+
+        form_snippet_end_time=tmp.getlist("end_time")[0]
+        print(form_snippet_end_time)
+        form_snippet["end_time"]=[form_snippet_end_time]
+        print(form_snippet)
+
+        form_snippet_start_point=tmp.getlist("start_point")[0]
+        print(form_snippet_start_point)
+        form_snippet["start_point"]=[form_snippet_start_point]
+
+        form_snippet_end_point=tmp.getlist("end_point")[0]
+        print(form_snippet_end_point)
+        form_snippet["end_point"]=[form_snippet_end_point]
+        print(QueryDict(form_snippet))
+
+        snippet_save=QueryDict()
+        #snippet_save[]
+
+        """# 保存
         form.save()
         form_trouble.save()
-        form_process.save()
+        form_process.save()"""
         # トップ画面へ
         return redirect(to="snippet_list")
 
