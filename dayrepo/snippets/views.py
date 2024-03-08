@@ -5,40 +5,51 @@ from django.shortcuts import redirect
 from .models import Snippet
 from .forms import SnippetForm, DutiesTroubleForm, ProcessForm
 
+
 # Create your views here.
 def top(request):
     return HttpResponse("日報一覧画面")
 
+
 def snippet_new(request):
     return HttpResponse("日報新規登録画面 1つ目の編集項目の方")
+
 
 def snippet_new_checklist(request):
     return HttpResponse("日報新規登録画面 2つ目のチェックリストの方")
 
+
 def snippet_update(request):
     return HttpResponse("日報編集画面 1つ目の編集項目の方")
+
 
 def snippet_update_checklist(request):
     return HttpResponse("日報編集画面 2つ目のチェックリストの方")
 
+
 def pre_car_registration(request):
     return HttpResponse("車両登録前画面")
+
 
 def car_registration(request):
     return HttpResponse("車両登録画面")
 
+
 def get_employee(request):
     return HttpResponse("社員情報画面")
 
+
 class SnippetListView(View):
-    def get(self,request):
+    def get(self, request):
         # 記録してある投稿の全データを投稿時間を元にソートして表示
 
-        queryset = Snippet.objects.all().order_by('-create_at')
+        queryset = Snippet.objects.all().order_by("-create_at")
         # トップページのhtmlへ投稿(日報)データをテンプレートに渡す
-        return render(request, 'snippet_list.html', {'posts': queryset})
-    
+        return render(request, "snippet_list.html", {"posts": queryset})
+
+
 snippet_list = SnippetListView.as_view()
+
 
 # 投稿機能
 class SnippetView(View):
@@ -48,9 +59,13 @@ class SnippetView(View):
         return render(
             request,
             "snippet_post.html",
-            {"form": SnippetForm, "form_trouble": DutiesTroubleForm, "form_process":ProcessForm},
+            {
+                "form": SnippetForm,
+                "form_trouble": DutiesTroubleForm,
+                "form_process": ProcessForm,
+            },
         )
-   
+
     # 投稿機能
     def post(self, request):
         # formに書いた内容を格納する
@@ -59,37 +74,38 @@ class SnippetView(View):
         form_process = ProcessForm(request.POST)
         form_process2 = ProcessForm({'start_time' : ['02:30:52']})"""
         print(request.POST)
-        tmp=request.POST
+        tmp = request.POST
 
-        form_duties_trouble=DutiesTroubleForm(request.POST)
+        form_duties_trouble = DutiesTroubleForm(request.POST)
         res_duties_trouble = form_duties_trouble.save()
-        print("res_duties_trouble: ",res_duties_trouble)
-        print("res_duties_trouble: ",res_duties_trouble.id)
-        return 
-        #print(dict(tmp))
-        form_snippet_start_time=tmp.getlist("start_time")[0]
-        print(form_snippet_start_time)
-        form_snippet=dict(tmp)
-        form_snippet["start_time"]=[form_snippet_start_time]
+        print("res_duties_trouble: ", res_duties_trouble)
+        print("res_duties_trouble: ", res_duties_trouble.id)
 
-        form_snippet_end_time=tmp.getlist("end_time")[0]
+        form_process = DutiesTroubleForm(request.POST)
+
+        return
+        # print(dict(tmp))
+        form_snippet_start_time = tmp.getlist("start_time")[0]
+        print(form_snippet_start_time)
+        form_snippet = dict(tmp)
+        form_snippet["start_time"] = [form_snippet_start_time]
+
+        form_snippet_end_time = tmp.getlist("end_time")[0]
         print(form_snippet_end_time)
-        form_snippet["end_time"]=[form_snippet_end_time]
+        form_snippet["end_time"] = [form_snippet_end_time]
         print(form_snippet)
 
-        form_snippet_start_point=tmp.getlist("start_point")[0]
+        form_snippet_start_point = tmp.getlist("start_point")[0]
         print(form_snippet_start_point)
-        form_snippet["start_point"]=[form_snippet_start_point]
+        form_snippet["start_point"] = [form_snippet_start_point]
 
-        form_snippet_end_point=tmp.getlist("end_point")[0]
+        form_snippet_end_point = tmp.getlist("end_point")[0]
         print(form_snippet_end_point)
-        form_snippet["end_point"]=[form_snippet_end_point]
+        form_snippet["end_point"] = [form_snippet_end_point]
         print(QueryDict(form_snippet))
 
-        snippet_save=QueryDict()
-        #snippet_save[]
-
-
+        snippet_save = QueryDict()
+        # snippet_save[]
 
         """# 保存
         form.save()
@@ -98,5 +114,5 @@ class SnippetView(View):
         # トップ画面へ
         return redirect(to="snippet_list")
 
-snippet_post = SnippetView.as_view()
 
+snippet_post = SnippetView.as_view()
