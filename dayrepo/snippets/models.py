@@ -479,10 +479,11 @@ class Process(models.Model):
         blank=False, 
         null=False
     )
-    is_load_situation = models.IntegerField(
+    is_load_situation = models.BooleanField(
         verbose_name="積載状況", 
-        blank=False, 
-        null=False
+        blank=False,
+        null=False,
+        default=False,
     )
     load_mileage = models.IntegerField(
         verbose_name="積載走行距離", 
