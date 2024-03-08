@@ -60,6 +60,12 @@ class SnippetView(View):
         form_process2 = ProcessForm({'start_time' : ['02:30:52']})"""
         print(request.POST)
         tmp=request.POST
+
+        form_duties_trouble=DutiesTroubleForm(request.POST)
+        res_duties_trouble = form_duties_trouble.save()
+        print("res_duties_trouble: ",res_duties_trouble)
+        print("res_duties_trouble: ",res_duties_trouble.id)
+        return 
         #print(dict(tmp))
         form_snippet_start_time=tmp.getlist("start_time")[0]
         print(form_snippet_start_time)
@@ -82,6 +88,8 @@ class SnippetView(View):
 
         snippet_save=QueryDict()
         #snippet_save[]
+
+
 
         """# 保存
         form.save()
