@@ -57,6 +57,8 @@ class SnippetView(View):
         form = SnippetForm(request.POST)
         form_trouble = DutiesTroubleForm(request.POST)
         form_process = ProcessForm(request.POST)
+        print(request.POST)
+        
         # 保存
         form.save()
         form_trouble.save()
