@@ -76,13 +76,39 @@ class SnippetView(View):
         print(request.POST)
         tmp = request.POST
 
-        form_duties_trouble = DutiesTroubleForm(request.POST)
-        res_duties_trouble = form_duties_trouble.save()
-        print("res_duties_trouble: ", res_duties_trouble)
-        print("res_duties_trouble: ", res_duties_trouble.id)
+        # form_duties_trouble = DutiesTroubleForm(request.POST)
+        # res_duties_trouble = form_duties_trouble.save()
+        # print("res_duties_trouble: ", res_duties_trouble)
+        # print("res_duties_trouble: ", res_duties_trouble.id)
 
-        form_process = DutiesTroubleForm(request.POST)
-
+        #form_process = ProcessForm(request.POST)
+        #res_process = form_process.save()
+        form_process = dict(tmp)
+        form_process_start_time = tmp.getlist("start_time")[1]
+        form_process["start_time"] = [form_process_start_time]
+        form_process_end_time = tmp.getlist("end_time")[1]
+        form_process["end_time"] = [form_process_end_time]
+        form_process_start_point = tmp.getlist("start_point")[1]
+        form_process["start_point"] = [form_process_start_point]
+        form_process_end_point = tmp.getlist("end_point")[1]
+        form_process["end_point"] = [form_process_end_point]
+        
+        form_process_via_point = tmp.getlist("via_point")[0]
+        form_process["via_point"] = [form_process_via_point]
+        form_process_client = tmp.getlist("client")[0]
+        form_process["client"] = [form_process_client]
+        form_process_goods = tmp.getlist("goods")[0]
+        form_process["goods"] = [form_process_goods]
+        form_process_load_situation = tmp.getlist("load_situation")[0]
+        form_process["load_situation"] = [form_process_load_situation]
+        form_process_is_load_situation = tmp.getlist("is_load_situation")[0]
+        form_process["is_load_situation"] = [form_process_is_load_situation]
+        form_process_load_mileage = tmp.getlist("load_mileage")[0]
+        form_process["load_mileage"] = [form_process_load_mileage]
+        form_process_load_situation = tmp.getlist("load_situation")[0]
+        form_process["load_situation"] = [form_process_load_situation]
+        print()
+        print(form_process)
         return
         # print(dict(tmp))
         form_snippet_start_time = tmp.getlist("start_time")[0]
