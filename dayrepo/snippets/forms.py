@@ -33,7 +33,6 @@ class SnippetForm(forms.ModelForm):
         fields = (
             "account_id",
             "car_id",
-            "duties_trouble_id",
             "create_day",
             "start_mileage",
             "end_mileage",
