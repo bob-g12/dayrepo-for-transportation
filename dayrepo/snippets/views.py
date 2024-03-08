@@ -72,10 +72,27 @@ class SnippetView(View):
         print(request.POST)
         tmp = request.POST
 
-        # form_duties_trouble = DutiesTroubleForm(request.POST)
-        # res_duties_trouble = form_duties_trouble.save()
-        # print("res_duties_trouble: ", res_duties_trouble)
-        # print("res_duties_trouble: ", res_duties_trouble.id)
+        form_duties_trouble = DutiesTroubleForm(request.POST)
+        res_duties_trouble = form_duties_trouble.save()
+        print("res_duties_trouble: ", res_duties_trouble)
+
+        # print(dict(tmp))
+        form_snippet = dict(tmp)
+        form_snippet_start_time = tmp.getlist("start_time")[0]
+        form_snippet["start_time"] = [form_snippet_start_time]
+
+        form_snippet_end_time = tmp.getlist("end_time")[0]
+        form_snippet["end_time"] = [form_snippet_end_time]
+
+        form_snippet_start_point = tmp.getlist("start_point")[0]
+        form_snippet["start_point"] = [form_snippet_start_point]
+
+        form_snippet_end_point = tmp.getlist("end_point")[0]
+        form_snippet["end_point"] = [form_snippet_end_point]
+
+        snippet_save = QueryDict()
+        # snippet_save[]
+        print(snippet_save)
 
         #res_process = form_process.save()
         form_process = dict(tmp)
@@ -108,28 +125,6 @@ class SnippetView(View):
             print()
             print(form_process)
         return
-        # print(dict(tmp))
-        form_snippet_start_time = tmp.getlist("start_time")[0]
-        print(form_snippet_start_time)
-        form_snippet = dict(tmp)
-        form_snippet["start_time"] = [form_snippet_start_time]
-
-        form_snippet_end_time = tmp.getlist("end_time")[0]
-        print(form_snippet_end_time)
-        form_snippet["end_time"] = [form_snippet_end_time]
-        print(form_snippet)
-
-        form_snippet_start_point = tmp.getlist("start_point")[0]
-        print(form_snippet_start_point)
-        form_snippet["start_point"] = [form_snippet_start_point]
-
-        form_snippet_end_point = tmp.getlist("end_point")[0]
-        print(form_snippet_end_point)
-        form_snippet["end_point"] = [form_snippet_end_point]
-        print(QueryDict(form_snippet))
-
-        snippet_save = QueryDict()
-        # snippet_save[]
 
         # トップ画面へ
         return redirect(to="snippet_list")
