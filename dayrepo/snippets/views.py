@@ -70,7 +70,7 @@ class SnippetView(View):
     def post(self, request):
         print(request.POST)
         req = request.POST
-        
+
         # Snippets form
         account = Account(
             id = req.get("account_id"),
@@ -78,57 +78,50 @@ class SnippetView(View):
         car = Car(
             id = req.get("car_id"),
         )
-        gasoline=req.get("gasoline_amount")
-        if gasoline == "": gasoline = 0.0
-        
-        oil=req.get("oil")
-        if oil == "": oil = 0.0
-        s = Snippet(
+        gasoline = req.get("gasoline_amount")
+        if gasoline == "":
+            gasoline = 0.0
+
+        oil = req.get("oil")
+        if oil == "":
+            oil = 0.0
+        snippet = Snippet(
             # account, car について
             # 別テーブルからデータを取得する際に
             # モデルデータで挿入する必要がある
             account_id=account,
-            car_id=car,
-
+            car_id = car,
             # 末尾の [0] について
             # 入力項目のうち同一名のデータは、
             # request.POST に配列で記録され、
-            # snippet においては index[0] を使用する　
-            start_time=req.getlist("start_time")[0],
-            end_time=req.getlist("end_time")[0],
-            start_point=req.getlist("start_point")[0],
-            end_point=req.getlist("end_point")[0],
-
-            create_day=req.get("create_day"),
-            start_mileage=req.get("start_mileage"),
-            end_mileage=req.get("end_mileage"),
-            break_spot=req.get("break_spot"),
-            weather=req.get("weather"),
-            gasoline_amount=gasoline,
+            # snippet においては index[0] を使用する
+            start_time = req.getlist("start_time")[0],
+            end_time = req.getlist("end_time")[0],
+            start_point = req.getlist("start_point")[0],
+            end_point = req.getlist("end_point")[0],
+            create_day = req.get("create_day"),
+            start_mileage = req.get("start_mileage"),
+            end_mileage = req.get("end_mileage"),
+            break_spot = req.get("break_spot"),
+            weather = req.get("weather"),
+            gasoline_amount = gasoline,
             oil=oil,
-            driving_time=req.get("driving_time"),
-            non_driving_time=req.get("non_driving_time"),
-            break_time=req.get("break_time"),
-            free_space=req.get("free_space"),
+            driving_time = req.get("driving_time"),
+            non_driving_time = req.get("non_driving_time"),
+            break_time = req.get("break_time"),
+            free_space = req.get("free_space"),
         )
-        s.save()
-        snippet_id = s.id
-        
-        
+        snippet.save()
+
         # DutiesTrouble form
-
-        # d = DutiesTrouble(
-
-        # )
-
-        form_duties_trouble = DutiesTroubleForm(
-            request.POST,
-            snippet_id=snippet_id,
+        duties_trouble = DutiesTrouble(
+            snippet_id = snippet,
+            trouble_situation = req.get("trouble_situation"),
+            trouble_cause = req.get("trouble_cause"),
+            trouble_support = req.get("trouble_support"),
         )
-        form_duties_trouble.save()
-        print("form_duties_trouble: ", form_duties_trouble.id)
-        
-        
+        duties_trouble.save()
+
         # Process form
         form_process_count = len(req.getlist("via_point"))
         print(form_process_count)
