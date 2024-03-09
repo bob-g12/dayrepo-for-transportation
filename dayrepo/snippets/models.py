@@ -278,7 +278,7 @@ class DutiesTrouble(models.Model):
 
     def __str__(self):
         
-        return f'{self.id},{self.trouble_cause},{self.trouble_situation},{self.trouble_support}'
+        return f'{self.id},{self.snippet_id},{self.trouble_cause},{self.trouble_situation},{self.trouble_support}'
 
 
 class Checklist(models.Model):
