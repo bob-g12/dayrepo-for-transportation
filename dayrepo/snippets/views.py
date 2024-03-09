@@ -78,16 +78,25 @@ class SnippetView(View):
         car = Car(
             id = req.get("car_id"),
         )
-        t = Snippet(
+        s = Snippet(
+            # account, car について
+            # 別テーブルからデータを取得する際に
+            # モデルデータで挿入する必要がある
             account_id=account,
             car_id=car,
-            create_day=req.get("create_day"),
-            start_mileage=req.get("start_mileage"),
-            end_mileage=req.get("end_mileage"),
+
+            # 末尾の [0] について
+            # 入力項目のうち同一名のデータは、
+            # request.POST に配列で記録され、
+            # snippet においては index[0] を使用する　
             start_time=req.getlist("start_time")[0],
             end_time=req.getlist("end_time")[0],
             start_point=req.getlist("start_point")[0],
             end_point=req.getlist("end_point")[0],
+
+            create_day=req.get("create_day"),
+            start_mileage=req.get("start_mileage"),
+            end_mileage=req.get("end_mileage"),
             break_spot=req.get("break_spot"),
             weather=req.get("weather"),
             gasoline_amount=req.get("gasoline_amount"),
@@ -97,8 +106,8 @@ class SnippetView(View):
             break_time=req.get("break_time"),
             free_space=req.get("free_space"),
         )
-        t.save()
-        snippet_id = t.pk
+        s.save()
+        snippet_id = s.id
         
         
         # DutiesTrouble form
