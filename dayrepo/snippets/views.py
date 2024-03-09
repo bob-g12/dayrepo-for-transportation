@@ -78,6 +78,11 @@ class SnippetView(View):
         car = Car(
             id = req.get("car_id"),
         )
+        gasoline=req.get("gasoline_amount")
+        if gasoline == "": gasoline = 0.0
+        
+        oil=req.get("oil")
+        if oil == "": oil = 0.0
         s = Snippet(
             # account, car について
             # 別テーブルからデータを取得する際に
@@ -99,8 +104,8 @@ class SnippetView(View):
             end_mileage=req.get("end_mileage"),
             break_spot=req.get("break_spot"),
             weather=req.get("weather"),
-            gasoline_amount=req.get("gasoline_amount"),
-            oil=req.get("oil"),
+            gasoline_amount=gasoline,
+            oil=oil,
             driving_time=req.get("driving_time"),
             non_driving_time=req.get("non_driving_time"),
             break_time=req.get("break_time"),
@@ -111,11 +116,17 @@ class SnippetView(View):
         
         
         # DutiesTrouble form
-        # form_duties_trouble = DutiesTroubleForm(request.POST)
-        # form_duties_trouble.save()
-        # print("form_duties_trouble: ", form_duties_trouble.auto_id)
-        # res_duties_trouble = form_duties_trouble.save()
-        # print("res_duties_trouble: ", res_duties_trouble)
+
+        # d = DutiesTrouble(
+
+        # )
+
+        form_duties_trouble = DutiesTroubleForm(
+            request.POST,
+            snippet_id=snippet_id,
+        )
+        form_duties_trouble.save()
+        print("form_duties_trouble: ", form_duties_trouble.id)
         
         
         # Process form
