@@ -121,11 +121,6 @@ class Snippet(models.Model):
         blank=False,
         null=False,
     )
-    duties_trouble_id = models.ForeignKey(
-        'DutiesTrouble', 
-        on_delete=models.DO_NOTHING, 
-        null=False,
-    )
     account_id = models.ForeignKey(
         Account,
         verbose_name="アカウントid",
@@ -257,6 +252,11 @@ class DutiesTrouble(models.Model):
         blank=False,
         null=False,
     )
+    snippet_id = models.ForeignKey(
+        Snippet, 
+        on_delete=models.DO_NOTHING, 
+        null=False,
+    )
     trouble_situation = models.CharField(
         verbose_name="事故/遅延等異常_状況", 
         blank=False, 
@@ -277,9 +277,8 @@ class DutiesTrouble(models.Model):
     )
 
     def __str__(self):
-
-        return str(self.id)
-
+        
+        return f'{self.id},{self.trouble_cause},{self.trouble_situation},{self.trouble_support}'
 
 
 class Checklist(models.Model):
