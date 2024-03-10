@@ -1,4 +1,4 @@
-var i = 1 ;
+let i = 1 ;
 function addForm() {
   var content_area = document.getElementById("form_area");
   var clone_element = content_area.cloneNode(true);
