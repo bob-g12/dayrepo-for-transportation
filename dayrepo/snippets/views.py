@@ -81,10 +81,10 @@ class SnippetView(View):
         gasoline = req.get("gasoline_amount")
         if gasoline == "":
             gasoline = 0.0
-
         oil = req.get("oil")
         if oil == "":
             oil = 0.0
+
         snippet = Snippet(
             # account, car について
             # 別テーブルからデータを取得する際に
