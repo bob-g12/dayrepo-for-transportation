@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, QueryDict
+from django.http import HttpResponse
 from django.views.generic import View
 from django.shortcuts import redirect
 from .models import Account, Car, Snippet, DutiesTrouble, Checklist, Process
