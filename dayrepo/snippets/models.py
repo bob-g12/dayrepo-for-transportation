@@ -121,25 +121,17 @@ class Snippet(models.Model):
         blank=False,
         null=False,
     )
-    duties_trouble_id = models.ForeignKey(
-        'DutiesTrouble', 
-        on_delete=models.DO_NOTHING, 
-        null=False,
-        default=False,
-    )
     account_id = models.ForeignKey(
         Account,
         verbose_name="アカウントid",
         on_delete=models.DO_NOTHING,
         null=False,
-        default=False,
     )
     car_id = models.ForeignKey(
         Car,
         verbose_name="車両id",
         on_delete=models.DO_NOTHING,
         null=False,
-        default=False,
     )
     create_day = models.DateField(
         verbose_name='稼働日',
@@ -260,6 +252,11 @@ class DutiesTrouble(models.Model):
         blank=False,
         null=False,
     )
+    snippet_id = models.ForeignKey(
+        Snippet, 
+        on_delete=models.DO_NOTHING, 
+        null=False,
+    )
     trouble_situation = models.CharField(
         verbose_name="事故/遅延等異常_状況", 
         blank=False, 
@@ -280,9 +277,8 @@ class DutiesTrouble(models.Model):
     )
 
     def __str__(self):
-
-        return str(self.id)
-
+        
+        return f'{self.id},{self.snippet_id},{self.trouble_cause},{self.trouble_situation},{self.trouble_support}'
 
 
 class Checklist(models.Model):
@@ -432,6 +428,11 @@ class Process(models.Model):
         blank=False, 
         null=False,
     )
+    snippet_id = models.ForeignKey(
+        Snippet, 
+        on_delete=models.DO_NOTHING, 
+        null=False,
+    )
     start_time = models.TimeField(
         verbose_name="出発時間",
         blank=False,
@@ -479,17 +480,18 @@ class Process(models.Model):
         blank=False, 
         null=False
     )
-    is_load_situation = models.IntegerField(
+    is_load_situation = models.BooleanField(
         verbose_name="積載状況", 
-        blank=False, 
-        null=False
+        blank=False,
+        null=False,
+        default=False,
     )
     load_mileage = models.IntegerField(
         verbose_name="積載走行距離", 
         blank=True, 
         null=True
     )
-    load_situation = models.IntegerField(
+    hollow_mileage = models.IntegerField(
         verbose_name="空走行距離", 
         blank=True, 
         null=True

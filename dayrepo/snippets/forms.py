@@ -33,7 +33,6 @@ class SnippetForm(forms.ModelForm):
         fields = (
             "account_id",
             "car_id",
-            "duties_trouble_id",
             "create_day",
             "start_mileage",
             "end_mileage",
@@ -62,4 +61,23 @@ class DutiesTroubleForm(forms.ModelForm):
             "trouble_situation",
             "trouble_cause",
             "trouble_support",
+        )
+
+class ProcessForm(forms.ModelForm):
+    class Meta:
+        #モデルを指定
+        model = Process
+
+        fields = (
+            'start_time',
+            'end_time',
+            'start_point',
+            'end_point',
+            'via_point',
+            'client',
+            'goods',
+            'load_situation',
+            'is_load_situation',
+            'load_mileage',
+            'hollow_mileage',
         )
