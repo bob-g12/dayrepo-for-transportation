@@ -123,7 +123,6 @@ class SnippetView(View):
 
         # Process form
         form_process_count = len(req.getlist("via_point"))
-        print(form_process_count)
         for i in range(form_process_count):
             process = Process(
 
