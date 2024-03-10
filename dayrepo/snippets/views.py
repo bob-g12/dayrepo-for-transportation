@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, QueryDict
 from django.views.generic import View
 from django.shortcuts import redirect
-from .models import Snippet, DutiesTrouble, Account, Car
+from .models import Account, Car, Snippet, DutiesTrouble, Checklist, Process
 from .forms import SnippetForm, DutiesTroubleForm, ProcessForm
 
 
@@ -126,20 +126,29 @@ class SnippetView(View):
         form_process_count = len(req.getlist("via_point"))
         print(form_process_count)
         for i in range(form_process_count):
-            form_process_start_time = req.getlist("start_time")[i + 1]
-            form_process_end_time = req.getlist("end_time")[i + 1]
-            form_process_start_point = req.getlist("start_point")[i + 1]
-            form_process_end_point = req.getlist("end_point")[i + 1]
+            process = Process(
 
-            form_process_via_point = req.getlist("via_point")[i]
-            form_process_client = req.getlist("client")[i]
-            form_process_goods = req.getlist("goods")[i]
-            form_process_load_situation = req.getlist("load_situation")[i]
-            form_process_is_load_situation = req.getlist("is_load_situation")[i]
-            form_process_load_mileage = req.getlist("load_mileage")[i]
-            form_process_load_situation = req.getlist("load_situation")[i]
-            print()
+                snippet_id = snippet,
 
+                start_time = req.getlist("start_time")[i + 1],
+                end_time = req.getlist("end_time")[i + 1],
+                start_point = req.getlist("start_point")[i + 1],
+                end_point = req.getlist("end_point")[i + 1],
+
+                via_point = req.getlist("via_point")[i],
+                client = req.getlist("client")[i],
+                goods = req.getlist("goods")[i],
+                load_situation = req.getlist("load_situation")[i],
+                load_mileage = req.getlist("load_mileage")[i],
+                hollow_mileage = req.getlist("hollow_mileage")[i],
+                is_load_situation = req.getlist("is_load_situation")[i],
+            )
+            if process.is_load_situation == "on":
+                process.is_load_situation = True
+            else:
+                process.is_load_situation = False
+
+            process.save()
         # トップ画面へ
         return redirect(to="snippet_list")
 
