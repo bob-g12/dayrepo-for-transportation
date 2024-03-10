@@ -1,5 +1,5 @@
 let i = 1 ;
-function addForm() {
+const addForm = () => {
   let content_area = document.getElementById("form_area");
   let clone_element = content_area.cloneNode(true);
   clone_element.id = i;
