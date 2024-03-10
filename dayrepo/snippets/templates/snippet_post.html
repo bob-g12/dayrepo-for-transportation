@@ -8,7 +8,6 @@
         <h2>異常報告入力</h2>
         {{ form_trouble.as_p }}
         <h2>工程入力</h2>
-        <script src="{% static 'js/process_add.js' %}"></script>
             
         <div id="form_area">
           {{ form_process.as_p }}
@@ -22,4 +21,5 @@
             投稿
         </button>
     </form>
+<script src="{% static 'js/process_add.js' %}"></script>
 {% endblock %}
