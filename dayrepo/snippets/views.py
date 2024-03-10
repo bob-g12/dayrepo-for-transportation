@@ -4,6 +4,7 @@ from django.views.generic import View
 from django.shortcuts import redirect
 from .models import Account, Car, Snippet, DutiesTrouble, Checklist, Process
 from .forms import SnippetForm, DutiesTroubleForm, ProcessForm, ChecklistForm
+from django.db import models
 
 
 # Create your views here.
@@ -173,102 +174,12 @@ class ChecklistView(View):
 
         # Checklist Form
         checklist = ChecklistForm(request.POST)
-        print("受け取ったデータ表示")
-        print(checklist)
-        print(request.POST)
-        if checklist.is_air_brake == "on":
-            checklist.is_air_brake = True
-        else:
-            checklist.is_air_brake = False
-
-        if checklist.is_air_tank == "on":
-            checklist.is_air_tank = True
-        else:
-            checklist.is_air_tank = False
-
-        if checklist.is_battery == "on":
-            checklist.is_battery = True
-        else:
-            checklist.is_battery = False
-
-        if checklist.is_before_trouble == "on":
-            checklist.is_before_trouble = True
-        else:
-            checklist.is_before_trouble = False
-
-        if checklist.is_belt == "on":
-            checklist.is_belt = True
-        else:
-            checklist.is_belt = False
-
-        if checklist.is_brake_details == "on":
-            checklist.is_brake_details = True
-        else:
-            checklist.is_brake_details = False
-
-        if checklist.is_brake_oil == "on":
-            checklist.is_brake_oil = True
-        else:
-            checklist.is_brake_oil = False
-
-        if checklist.is_brake_pedal == "on":
-            checklist.is_brake_pedal = True
-        else:
-            checklist.is_brake_pedal = False
-
-        if checklist.is_engine == "on":
-            checklist.is_engine = True
-        else:
-            checklist.is_engine = False
-
-        if checklist.is_engine_oil == "on":
-            checklist.is_engine_oil = True
-        else:
-            checklist.is_engine_oil = False
-
-        if checklist.is_light == "on":
-            checklist.is_light = True
-        else:
-            checklist.is_light = False
-
-        if checklist.is_parking_brake == "on":
-            checklist.is_parking_brake = True
-        else:
-            checklist.is_parking_brake = False
-
-        if checklist.is_radiator == "on":
-            checklist.is_radiator = True
-        else:
-            checklist.is_radiator = False
-
-        if checklist.is_tire_damage == "on":
-            checklist.is_tire_damage = True
-        else:
-            checklist.is_tire_damage = False
-
-        if checklist.is_tire_groove == "on":
-            checklist.is_tire_groove = True
-        else:
-            checklist.is_tire_groove = False
-
-        if checklist.is_tire_parts == "on":
-            checklist.is_tire_parts = True
-        else:
-            checklist.is_tire_parts = False
-
-        if checklist.is_today_trouble == "on":
-            checklist.is_today_trouble = True
-        else:
-            checklist.is_today_trouble = False
-
-        if checklist.is_washer_fluid == "on":
-            checklist.is_washer_fluid = True
-        else:
-            checklist.is_washer_fluid = False
-
-        print()
-        print("ちぇえええええええええええええええええええっく",checklist)
+        # ※Process formとのbool入力処理の違い
+        # Process formではboolの入力値が"on"/"off"になっていたが、
+        # formの引数にrequest.POSTを指定した場合、"True"/"False"で
+        # 登録してくれる(結論、変換しなくていい)
         checklist.save()
+        
         return redirect(to="snippet_post")
     
 checklist_post = ChecklistView.as_view()
