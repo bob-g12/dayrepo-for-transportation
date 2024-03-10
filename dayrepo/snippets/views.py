@@ -125,7 +125,6 @@ class SnippetView(View):
         form_process_count = len(req.getlist("via_point"))
         for i in range(form_process_count):
             process = Process(
-
                 snippet_id = snippet,
 
                 start_time = req.getlist("start_time")[i + 1],
