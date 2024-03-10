@@ -491,7 +491,7 @@ class Process(models.Model):
         blank=True, 
         null=True
     )
-    load_situation = models.IntegerField(
+    hollow_mileage = models.IntegerField(
         verbose_name="空走行距離", 
         blank=True, 
         null=True

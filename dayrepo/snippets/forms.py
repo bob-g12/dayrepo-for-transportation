@@ -79,5 +79,5 @@ class ProcessForm(forms.ModelForm):
             'load_situation',
             'is_load_situation',
             'load_mileage',
-            'load_situation',
+            'hollow_mileage',
         )
