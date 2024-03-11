@@ -51,7 +51,7 @@ class SnippetListView(View):
 snippet_list = SnippetListView.as_view()
 
 
-# snippet投稿機能
+# snippet画面のPOST後処理
 class SnippetView(View):
     # 新規入力画面へ
     def get(self, request):
@@ -71,7 +71,7 @@ class SnippetView(View):
         print(request.POST)
         req = request.POST
 
-        # Snippets form
+        # Snippets form　スニペットフォーム保存
         account = Account(
             id = req.get("account_id"),
         )
@@ -113,7 +113,7 @@ class SnippetView(View):
         )
         snippet.save()
 
-        # DutiesTrouble form
+        # DutiesTrouble form　業務トラブルフォーム保存
         duties_trouble = DutiesTrouble(
             snippet_id = snippet,
             trouble_situation = req.get("trouble_situation"),
@@ -122,7 +122,7 @@ class SnippetView(View):
         )
         duties_trouble.save()
 
-        # Process form
+        # Process form　工程テーブルフォーム保存
         form_process_count = len(req.getlist("via_point"))
         print(form_process_count)
         for i in range(form_process_count):
@@ -155,7 +155,7 @@ class SnippetView(View):
 
 snippet_post = SnippetView.as_view()
 
-# checklist投稿機能
+# checklistフォーム保存処理
 class ChecklistView(View):
     # 新規入力画面
     def get(self, request):
