@@ -122,7 +122,7 @@ class SnippetView(View):
         )
         duties_trouble.save()
 
-        # Process form　工程テーブルフォーム保存
+        # 工程テーブルフォーム保存
         form_process_count = len(req.getlist("via_point"))
         for i in range(form_process_count):
             process = Process(
