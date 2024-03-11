@@ -31,9 +31,7 @@ class SnippetForm(forms.ModelForm):
 
         # フォームとして表示したいカラムを指定
         fields = (
-            "account_id",
-            "car_id",
-            "create_day",
+            "checklist_id",
             "start_mileage",
             "end_mileage",
             "start_time",
@@ -48,6 +46,7 @@ class SnippetForm(forms.ModelForm):
             "non_driving_time",
             "break_time",
             "free_space",
+            'is_today_trouble',
         )
         widgets = {}  # 今後のフォーム編集で使用
 
@@ -88,6 +87,9 @@ class ChecklistForm(forms.ModelForm):
         model = Checklist
 
         fields = (
+            "account_id",
+            "car_id",
+            "create_day",
             'is_tire_damage',
             'is_tire_groove',
             'is_tire_parts',
@@ -105,5 +107,4 @@ class ChecklistForm(forms.ModelForm):
             'is_light',
             'is_brake_details',
             'is_before_trouble',
-            'is_today_trouble',
         )
