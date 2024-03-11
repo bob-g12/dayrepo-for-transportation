@@ -2,7 +2,7 @@
 {% block title %}投稿{% endblock %}
 {% load static %}
 {% block content %}
-<form method="post">
+    <form method="post">
         <h1>点検項目項目<h2>※出発前に車両</h2></h1>
         {{ form.as_p }}
         {% csrf_token %}
