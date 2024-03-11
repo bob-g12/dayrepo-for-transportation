@@ -51,7 +51,7 @@ class SnippetListView(View):
 snippet_list = SnippetListView.as_view()
 
 
-# snippet画面のPOST後処理
+# snippet画面の表示/POST後処理
 class SnippetView(View):
     # 新規入力画面へ
     def get(self, request):
@@ -154,7 +154,7 @@ class SnippetView(View):
 
 snippet_post = SnippetView.as_view()
 
-# checklistフォーム保存処理
+# checklist入力画面表示/POST処理
 class ChecklistView(View):
     # 新規入力画面
     def get(self, request):
