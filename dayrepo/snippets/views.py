@@ -170,7 +170,7 @@ class ChecklistView(View):
     # 投稿機能
     def post(self, request):
 
-        # Checklist Form
+        # チェックリストテーブルへの保存
         checklist = ChecklistForm(request.POST)
         # 【Process form との bool 入力処理の違い】
         # チェックボックス(bool)のリクエスト値は
