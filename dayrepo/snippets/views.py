@@ -173,10 +173,12 @@ class ChecklistView(View):
 
         # Checklist Form
         checklist = ChecklistForm(request.POST)
-        # ※Process formとのbool入力処理の違い
-        # Process formではboolの入力値が"on"/"off"になっていたが、
-        # formの引数にrequest.POSTを指定した場合、"True"/"False"で
-        # 登録してくれる(結論、変換しなくていい)
+        # 【Process form との bool 入力処理の違い】
+        # チェックボックス(bool)のリクエスト値は
+        # 内部的に "on" か "off" で受け取っていた。
+        # Process form 側では if 文による True/False への変換を行ったが
+        # form クラスの引数に request.POST を渡す場合、
+        # 変換しなくてもいい感じに bool で登録してくれる
         checklist.save()
         
         return redirect(to="snippet_post")
