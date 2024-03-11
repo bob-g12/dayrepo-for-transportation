@@ -4,7 +4,6 @@ from django.views.generic import View
 from django.shortcuts import redirect
 from .models import Account, Car, Snippet, DutiesTrouble, Checklist, Process
 from .forms import SnippetForm, DutiesTroubleForm, ProcessForm, ChecklistForm
-from django.db import models
 
 
 # Create your views here.
