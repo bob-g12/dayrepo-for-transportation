@@ -113,7 +113,7 @@ class SnippetView(View):
         )
         snippet.save()
 
-        # DutiesTrouble form　業務トラブルフォーム保存
+        # 業務トラブルフォーム保存
         duties_trouble = DutiesTrouble(
             snippet_id = snippet,
             trouble_situation = req.get("trouble_situation"),
