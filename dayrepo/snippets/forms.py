@@ -3,28 +3,25 @@ from .models import Account, Car, Snippet, DutiesTrouble, Checklist, Process
 from django.core.exceptions import NON_FIELD_ERRORS
 
 
-class CustomSnippetCarsModelChoiceField(forms.ModelChoiceField):
+class CustomChecklistCarsModelChoiceField(forms.ModelChoiceField):
     def label_from_instance(self, obj):  # label_from_instance 関数をオーバーライド
         return obj.vehicle_number  # 表示したいカラム名を return
 
 
-class CustomSnippetAccountsModelChoiceField(forms.ModelChoiceField):
+class CustomChecklistAccountsModelChoiceField(forms.ModelChoiceField):
     def label_from_instance(self, obj):
         return obj.last_name + " " + obj.first_name
 
-
+class CustomSnippetChecklistsModelChoiceField(forms.ModelChoiceField):
+    def label_from_instance(self, obj):
+        return obj.last_name + " " + obj.first_name #☆Checklistにある車両番号、氏名、稼働日全部表示するわがままフォーム
+    
 class SnippetForm(forms.ModelForm):
-    car_id = CustomSnippetCarsModelChoiceField(
+    checklist_id = CustomSnippetChecklistsModelChoiceField(
         queryset=Car.objects.all(),
-        empty_label="車両番号を選択してください",
-        label="車両番号",
+        empty_label="点検データを選択してください",
+        label="点検データ",
     )
-    account_id = CustomSnippetAccountsModelChoiceField(
-        queryset=Account.objects.all(),
-        empty_label="運転者を選択してください",
-        label="運転者",
-    )
-
     class Meta:
         # モデルを指定
         model = Snippet
@@ -82,6 +79,16 @@ class ProcessForm(forms.ModelForm):
         )
 
 class ChecklistForm(forms.ModelForm):
+    car_id = CustomChecklistCarsModelChoiceField(
+        queryset=Car.objects.all(),
+        empty_label="車両番号を選択してください",
+        label="車両番号",
+    )
+    account_id = CustomChecklistAccountsModelChoiceField(
+        queryset=Account.objects.all(),
+        empty_label="運転者を選択してください",
+        label="運転者",
+    )
     class Meta:
         #モデルを指定
         model = Checklist
