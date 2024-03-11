@@ -45,8 +45,8 @@ class SnippetForm(forms.ModelForm):
             "driving_time",
             "non_driving_time",
             "break_time",
-            "free_space",
             'is_today_trouble',
+            "free_space",
         )
         widgets = {}  # 今後のフォーム編集で使用
 
