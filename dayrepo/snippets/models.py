@@ -121,23 +121,11 @@ class Snippet(models.Model):
         blank=False,
         null=False,
     )
-    account_id = models.ForeignKey(
-        Account,
-        verbose_name="アカウントid",
-        on_delete=models.DO_NOTHING,
+    checklist_id = models.ForeignKey(
+        "Checklist", 
+        verbose_name="チェックリストid",
+        on_delete=models.DO_NOTHING, 
         null=False,
-    )
-    car_id = models.ForeignKey(
-        Car,
-        verbose_name="車両id",
-        on_delete=models.DO_NOTHING,
-        null=False,
-    )
-    create_day = models.DateField(
-        verbose_name='稼働日',
-        blank=False, 
-        null=False,
-        max_length=20
     )
     start_mileage = models.IntegerField(
         verbose_name="出発時メーター",
@@ -292,6 +280,24 @@ class Checklist(models.Model):
         editable=True,
         blank=False,
         null=False,
+    )
+    account_id = models.ForeignKey(
+        Account,
+        verbose_name="アカウントid",
+        on_delete=models.DO_NOTHING,
+        null=False,
+    )
+    car_id = models.ForeignKey(
+        Car,
+        verbose_name="車両id",
+        on_delete=models.DO_NOTHING,
+        null=False,
+    )
+    create_day = models.DateField(
+        verbose_name='稼働日',
+        blank=False, 
+        null=False,
+        max_length=20
     )
     is_tire_damage = models.BooleanField(
         verbose_name="タイヤの損傷(空気圧/摩耗/亀裂/損傷)",
