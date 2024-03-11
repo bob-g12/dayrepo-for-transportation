@@ -124,7 +124,6 @@ class SnippetView(View):
 
         # Process form　工程テーブルフォーム保存
         form_process_count = len(req.getlist("via_point"))
-        print(form_process_count)
         for i in range(form_process_count):
             process = Process(
 
