@@ -71,7 +71,7 @@ class SnippetView(View):
         print(request.POST)
         req = request.POST
 
-        # Snippets form　スニペットフォーム保存
+        # スニペットフォーム保存
         account = Account(
             id = req.get("account_id"),
         )
