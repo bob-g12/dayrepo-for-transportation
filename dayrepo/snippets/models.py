@@ -209,6 +209,12 @@ class Snippet(models.Model):
         blank=True,
         null=True,
     )
+    is_today_trouble = models.BooleanField(
+        verbose_name="本日の異常", 
+        blank=False,
+        null=False,
+        default=False,
+    )
     create_at = models.DateTimeField(
         verbose_name="作成日時", 
         auto_now_add=True
@@ -402,13 +408,6 @@ class Checklist(models.Model):
         null=False,
         default=False,
     )
-    is_today_trouble = models.BooleanField(
-        verbose_name="本日の異常", 
-        blank=False,
-        null=False,
-        default=False,
-    )
-
     def __str__(self):
 
         return str(self.snippet_id)
