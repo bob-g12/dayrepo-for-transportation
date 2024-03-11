@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.views.generic import View
 from django.shortcuts import redirect
 from .models import Account, Car, Snippet, DutiesTrouble, Checklist, Process
-from .forms import SnippetForm, DutiesTroubleForm, ProcessForm
+from .forms import SnippetForm, DutiesTroubleForm, ProcessForm, ChecklistForm
 
 
 # Create your views here.
@@ -51,7 +51,7 @@ class SnippetListView(View):
 snippet_list = SnippetListView.as_view()
 
 
-# 投稿機能
+# snippet画面の表示/POST後処理
 class SnippetView(View):
     # 新規入力画面へ
     def get(self, request):
@@ -70,7 +70,7 @@ class SnippetView(View):
     def post(self, request):
         req = request.POST
 
-        # Snippets form
+        # スニペットフォーム保存
         account = Account(
             id = req.get("account_id"),
         )
@@ -112,7 +112,7 @@ class SnippetView(View):
         )
         snippet.save()
 
-        # DutiesTrouble form
+        # 業務トラブルフォーム保存
         duties_trouble = DutiesTrouble(
             snippet_id = snippet,
             trouble_situation = req.get("trouble_situation"),
@@ -121,7 +121,7 @@ class SnippetView(View):
         )
         duties_trouble.save()
 
-        # Process form
+        # 工程テーブルフォーム保存
         form_process_count = len(req.getlist("via_point"))
         for i in range(form_process_count):
             process = Process(
@@ -151,3 +151,33 @@ class SnippetView(View):
 
 
 snippet_post = SnippetView.as_view()
+
+# checklist入力画面表示/POST処理
+class ChecklistView(View):
+    # 新規入力画面
+    def get(self, request):
+        # 点検ページへ
+        return render(
+            request,
+            "snippet_checklist.html",
+            {
+                "form": ChecklistForm,
+            },
+        )
+
+    # 投稿機能
+    def post(self, request):
+
+        # チェックリストテーブルへの保存
+        checklist = ChecklistForm(request.POST)
+        # 【Process form との bool 入力処理の違い】
+        # チェックボックス(bool)のリクエスト値は
+        # 内部的に "on" か "off" で受け取っていた。
+        # Process form 側では if 文による True/False への変換を行ったが
+        # form クラスの引数に request.POST を渡す場合、
+        # 変換しなくてもいい感じに bool で登録してくれる
+        checklist.save()
+        
+        return redirect(to="snippet_post")
+    
+checklist_post = ChecklistView.as_view()

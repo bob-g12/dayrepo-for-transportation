@@ -1,5 +1,5 @@
 from django import forms
-from .models import Snippet, Car, Account, DutiesTrouble, Process
+from .models import Account, Car, Snippet, DutiesTrouble, Checklist, Process
 from django.core.exceptions import NON_FIELD_ERRORS
 
 
@@ -80,4 +80,30 @@ class ProcessForm(forms.ModelForm):
             'is_load_situation',
             'load_mileage',
             'hollow_mileage',
+        )
+
+class ChecklistForm(forms.ModelForm):
+    class Meta:
+        #モデルを指定
+        model = Checklist
+
+        fields = (
+            'is_tire_damage',
+            'is_tire_groove',
+            'is_tire_parts',
+            'is_radiator',
+            'is_brake_oil',
+            'is_air_tank',
+            'is_air_brake',
+            'is_brake_pedal',
+            'is_parking_brake',
+            'is_engine_oil',
+            'is_battery',
+            'is_belt',
+            'is_washer_fluid',
+            'is_engine',
+            'is_light',
+            'is_brake_details',
+            'is_before_trouble',
+            'is_today_trouble',
         )

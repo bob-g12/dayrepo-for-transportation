@@ -252,11 +252,6 @@ class DutiesTrouble(models.Model):
         blank=False,
         null=False,
     )
-    snippet_id = models.ForeignKey(
-        Snippet, 
-        on_delete=models.DO_NOTHING, 
-        null=False,
-    )
     trouble_situation = models.CharField(
         verbose_name="事故/遅延等異常_状況", 
         blank=False, 
@@ -291,9 +286,11 @@ class Checklist(models.Model):
         verbose_name = "点検項目"
 
     # 項目作成
-    snippet_id = models.ForeignKey(
-        Snippet, 
-        on_delete=models.DO_NOTHING,
+    id = models.AutoField(
+        verbose_name="チェックリストid",
+        primary_key=True,
+        editable=True,
+        blank=False,
         null=False,
     )
     is_tire_damage = models.BooleanField(
