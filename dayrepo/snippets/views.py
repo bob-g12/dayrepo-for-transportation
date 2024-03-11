@@ -71,11 +71,10 @@ class SnippetView(View):
         req = request.POST
 
         # スニペットフォーム保存
-        account = Account(
-            id = req.get("account_id"),
-        )
-        car = Car(
-            id = req.get("car_id"),
+            # checklists_id挿入のための
+            # モデルデータ作成
+        checklist = Checklist(
+            id = req.get("checklists_id"),
         )
         gasoline = req.get("gasoline_amount")
         if gasoline == "":
@@ -85,15 +84,11 @@ class SnippetView(View):
             oil = 0.0
 
         snippet = Snippet(
-            # account, car について
-            # 別テーブルからデータを取得する際に
-            # モデルデータで挿入する必要がある
-            account_id=account,
-            car_id = car,
             # 末尾の [0] について
             # 入力項目のうち同一名のデータは、
             # request.POST に配列で記録され、
             # snippet においては index[0] を使用する
+            checklist_id = checklist,
             start_time = req.getlist("start_time")[0],
             end_time = req.getlist("end_time")[0],
             start_point = req.getlist("start_point")[0],
@@ -108,6 +103,7 @@ class SnippetView(View):
             driving_time = req.get("driving_time"),
             non_driving_time = req.get("non_driving_time"),
             break_time = req.get("break_time"),
+            is_today_trouble = req.get("is_today_trouble"),
             free_space = req.get("free_space"),
         )
         snippet.save()
@@ -167,9 +163,27 @@ class ChecklistView(View):
 
     # 投稿機能
     def post(self, request):
-
+        req = request.POST
+        # account, car について
+            # 別テーブルからデータを取得する際に
+            # モデルデータで挿入する必要がある
+                # 下記２項目ではそれぞれAccount/Car
+                # テーブルからidを受け取る
+        account = Account(
+            id = req.get("account_id"),
+        )
+        car = Car(
+            id = req.get("car_id"),
+        )
         # チェックリストテーブルへの保存
-        checklist = ChecklistForm(request.POST)
+            # 引数1: フォーム画面記入データ
+            # 引数2: アカウント情報
+            # 引数3: 車両情報
+        checklist = ChecklistForm(
+            request.POST, 
+            account, 
+            car, 
+        )
         # 【Process form との bool 入力処理の違い】
         # チェックボックス(bool)のリクエスト値は
         # 内部的に "on" か "off" で受け取っていた。
