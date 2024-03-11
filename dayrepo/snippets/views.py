@@ -157,7 +157,7 @@ snippet_post = SnippetView.as_view()
 class ChecklistView(View):
     # 新規入力画面
     def get(self, request):
-        # 投稿ボタンで投稿ページへ
+        # 点検ページへ
         return render(
             request,
             "snippet_checklist.html",
