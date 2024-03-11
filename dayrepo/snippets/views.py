@@ -68,7 +68,6 @@ class SnippetView(View):
 
     # 投稿機能
     def post(self, request):
-        print(request.POST)
         req = request.POST
 
         # スニペットフォーム保存
