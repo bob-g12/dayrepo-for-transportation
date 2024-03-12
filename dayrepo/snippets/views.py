@@ -112,6 +112,11 @@ class SnippetView(View):
         else:
             snippet.is_today_trouble = False
         snippet.save()
+        
+        # checklist 更新
+        checklist = Checklist.objects.get(pk=checklist.id)
+        checklist.is_snippet_make = True
+        checklist.save()
 
         # 業務トラブルフォーム保存
         duties_trouble = DutiesTrouble(
