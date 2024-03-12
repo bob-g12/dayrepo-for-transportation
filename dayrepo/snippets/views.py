@@ -42,12 +42,15 @@ def get_employee(request):
 class SnippetListView(View):
     def get(self, request):
         # 記録してある投稿の全データを投稿時間を元にソートして表示
+        # snippets は存在する時点で提出済みとみなす
+        snippets = Snippet.objects.all().order_by("-create_at")
 
-        queryset = Snippet.objects.all().order_by("-create_at")
-        # ☆チェックリスト全部表示してるので後に修正必須！！！☆
-        checklist_set = Checklist.objects.all().order_by("-create_at")
+        # bool -> True = 1. False = 0
+        # 未提出 = is_snippet_make が False
+        not_submitted_checklist = Checklist.objects.all().order_by("-create_at").filter(is_snippet_make=0)
+        
         # トップページのhtmlへ投稿(日報)データをテンプレートに渡す
-        return render(request, "snippet_list.html", {"posts": queryset,"not_posts":checklist_set})
+        return render(request, "snippet_list.html", {"posts": snippets,"not_posts":not_submitted_checklist})
 
 
 snippet_list = SnippetListView.as_view()
