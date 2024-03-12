@@ -44,7 +44,7 @@ class SnippetListView(View):
         # 記録してある投稿の全データを投稿時間を元にソートして表示
 
         queryset = Snippet.objects.all().order_by("-create_at")
-
+        # ☆チェックリスト全部表示してるので後に修正必須！！！☆
         checklist_set = Checklist.objects.all().order_by("-create_at")
         # トップページのhtmlへ投稿(日報)データをテンプレートに渡す
         return render(request, "snippet_list.html", {"posts": queryset,"not_posts":checklist_set})
