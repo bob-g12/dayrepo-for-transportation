@@ -76,7 +76,7 @@ class SnippetView(View):
             # checklists_id挿入のための
             # モデルデータ作成
         checklist = Checklist(
-            id = req.get("checklists_id"),
+            id = req.get("checklist_id"),
         )
         gasoline = req.get("gasoline_amount")
         if gasoline == "":
@@ -107,6 +107,10 @@ class SnippetView(View):
             is_today_trouble = req.get("is_today_trouble"),
             free_space = req.get("free_space"),
         )
+        if snippet.is_today_trouble == "on":
+            snippet.is_today_trouble = True
+        else:
+            snippet.is_today_trouble = False
         snippet.save()
 
         # 業務トラブルフォーム保存
