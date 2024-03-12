@@ -166,26 +166,10 @@ class ChecklistView(View):
 
     # 投稿機能
     def post(self, request):
-        req = request.POST
-        # account, car について
-            # 別テーブルからデータを取得する際に
-            # モデルデータで挿入する必要がある
-                # 下記２項目ではそれぞれAccount/Car
-                # テーブルからidを受け取る
-        account = Account(
-            id = req.get("account_id"),
-        )
-        car = Car(
-            id = req.get("car_id"),
-        )
         # チェックリストテーブルへの保存
             # 引数1: フォーム画面記入データ
-            # 引数2: アカウント情報
-            # 引数3: 車両情報
         checklist = ChecklistForm(
             request.POST, 
-            account, 
-            car, 
         )
         # 【Process form との bool 入力処理の違い】
         # チェックボックス(bool)のリクエスト値は
@@ -193,7 +177,8 @@ class ChecklistView(View):
         # Process form 側では if 文による True/False への変換を行ったが
         # form クラスの引数に request.POST を渡す場合、
         # 変換しなくてもいい感じに bool で登録してくれる
-        checklist.save()
+        if checklist.is_valid():
+            checklist.save()
         
         return redirect(to="snippet_post")
     
