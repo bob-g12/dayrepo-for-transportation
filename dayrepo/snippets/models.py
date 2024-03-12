@@ -422,6 +422,12 @@ class Checklist(models.Model):
         verbose_name="更新日時", 
         auto_now=True
     )
+    is_snippet_make = models.BooleanField(
+        verbose_name="スニペット入力は作成済みか？", 
+        blank=False,
+        null=False,
+        default=False,
+    )
     def __str__(self):
 
         return f'{self.account_id.first_name},{self.account_id.last_name}{self.car_id.vehicle_number},{self.create_day}'

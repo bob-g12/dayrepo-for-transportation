@@ -95,7 +95,6 @@ class SnippetView(View):
             end_time = req.getlist("end_time")[0],
             start_point = req.getlist("start_point")[0],
             end_point = req.getlist("end_point")[0],
-            create_day = req.get("create_day"),
             start_mileage = req.get("start_mileage"),
             end_mileage = req.get("end_mileage"),
             break_spot = req.get("break_spot"),
@@ -144,6 +143,8 @@ class SnippetView(View):
                 process.is_load_situation = False
 
             process.save()
+        Snippet.is_snippet_make = True
+        print(Snippet.is_snippet_make)
         # トップ画面へ
         return redirect(to="snippet_list")
 
