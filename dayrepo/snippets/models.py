@@ -246,6 +246,12 @@ class DutiesTrouble(models.Model):
         blank=False,
         null=False,
     )
+    snippet_id = models.ForeignKey(
+        Snippet, 
+        verbose_name="スニペットid",
+        on_delete=models.DO_NOTHING, 
+        null=False,
+    )
     trouble_situation = models.CharField(
         verbose_name="事故/遅延等異常_状況", 
         blank=False, 
@@ -267,7 +273,7 @@ class DutiesTrouble(models.Model):
 
     def __str__(self):
         
-        return f'{self.id},{self.snippet_id},{self.trouble_cause},{self.trouble_situation},{self.trouble_support}'
+        return f'{self.snippet_id},{self.trouble_cause},{self.trouble_situation},{self.trouble_support}'
 
 
 class Checklist(models.Model):
@@ -408,9 +414,17 @@ class Checklist(models.Model):
         null=False,
         default=False,
     )
+    create_at = models.DateTimeField(
+        verbose_name="作成日時", 
+        auto_now_add=True
+    )
+    update_at = models.DateTimeField(
+        verbose_name="更新日時", 
+        auto_now=True
+    )
     def __str__(self):
 
-        return f'{self.id},{self.account_id},{self.car_id},{self.create_day}'
+        return f'{self.account_id.first_name},{self.account_id.last_name}{self.car_id.vehicle_number},{self.create_day}'
 
 class Process(models.Model):
 
