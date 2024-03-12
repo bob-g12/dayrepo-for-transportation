@@ -410,7 +410,7 @@ class Checklist(models.Model):
     )
     def __str__(self):
 
-        return str(self.snippet_id)
+        return f'{self.id},{self.account_id},{self.car_id},{self.create_day}'
 
 class Process(models.Model):
 
