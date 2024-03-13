@@ -51,15 +51,6 @@ class Account(models.Model):
         blank=False, 
         null=False
     )
-    create_at = models.DateTimeField(
-        verbose_name="作成日時", 
-        auto_now_add=True
-    )
-    update_at = models.DateTimeField(
-        verbose_name="更新日時", 
-        auto_now=True
-    )
-
     def __str__(self):
 
         return str(self.id)
@@ -226,7 +217,7 @@ class Snippet(models.Model):
 
     def __str__(self):
 
-        return str(self.id), "運転者" + str(self.weather)
+        return f'{self.id}, {self.checklist_id.account_id.last_name},{self.checklist_id.account_id.first_name},{self.checklist_id.car_id.vehicle_number}'
 
 class DutiesTrouble(models.Model):
 
@@ -419,6 +410,14 @@ class Checklist(models.Model):
         blank=False,
         null=False,
         default=False,
+    )
+    create_at = models.DateTimeField(
+        verbose_name="作成日時", 
+        auto_now_add=True
+    )
+    update_at = models.DateTimeField(
+        verbose_name="更新日時", 
+        auto_now=True
     )
     def __str__(self):
 
