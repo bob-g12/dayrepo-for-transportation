@@ -414,14 +414,6 @@ class Checklist(models.Model):
         null=False,
         default=False,
     )
-    create_at = models.DateTimeField(
-        verbose_name="作成日時", 
-        auto_now_add=True
-    )
-    update_at = models.DateTimeField(
-        verbose_name="更新日時", 
-        auto_now=True
-    )
     is_snippet_make = models.BooleanField(
         verbose_name="スニペット入力は作成済みか？", 
         blank=False,

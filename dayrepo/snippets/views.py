@@ -45,7 +45,7 @@ class SnippetListView(View):
 
         queryset = Snippet.objects.all().order_by("-create_at")
         # ☆チェックリスト全部表示してるので後に修正必須！！！☆
-        checklist_set = Checklist.objects.all().order_by("-create_at")
+        checklist_set = Checklist.objects.all().order_by("-id")
         # トップページのhtmlへ投稿(日報)データをテンプレートに渡す
         return render(request, "snippet_list.html", {"posts": queryset,"not_posts":checklist_set})
 
@@ -76,7 +76,7 @@ class SnippetView(View):
             # checklists_id挿入のための
             # モデルデータ作成
         checklist = Checklist(
-            id = req.get("checklists_id"),
+            id = req.get("checklist_id"),
         )
         gasoline = req.get("gasoline_amount")
         if gasoline == "":
@@ -107,6 +107,10 @@ class SnippetView(View):
             is_today_trouble = req.get("is_today_trouble"),
             free_space = req.get("free_space"),
         )
+        if snippet.is_today_trouble == "on":
+            snippet.is_today_trouble = True
+        else:
+            snippet.is_today_trouble = False
         snippet.save()
 
         # 業務トラブルフォーム保存
@@ -123,12 +127,10 @@ class SnippetView(View):
         for i in range(form_process_count):
             process = Process(
                 snippet_id = snippet,
-
                 start_time = req.getlist("start_time")[i + 1],
                 end_time = req.getlist("end_time")[i + 1],
                 start_point = req.getlist("start_point")[i + 1],
                 end_point = req.getlist("end_point")[i + 1],
-
                 via_point = req.getlist("via_point")[i],
                 client = req.getlist("client")[i],
                 goods = req.getlist("goods")[i],
@@ -143,8 +145,6 @@ class SnippetView(View):
                 process.is_load_situation = False
 
             process.save()
-        Snippet.is_snippet_make = True
-        print(Snippet.is_snippet_make)
         # トップ画面へ
         return redirect(to="snippet_list")
 
@@ -185,7 +185,7 @@ class ChecklistView(View):
         checklist = ChecklistForm(
             request.POST, 
             account, 
-            car, 
+            car,
         )
         # 【Process form との bool 入力処理の違い】
         # チェックボックス(bool)のリクエスト値は
@@ -194,7 +194,6 @@ class ChecklistView(View):
         # form クラスの引数に request.POST を渡す場合、
         # 変換しなくてもいい感じに bool で登録してくれる
         checklist.save()
-        
         return redirect(to="snippet_post")
     
 checklist_post = ChecklistView.as_view()
