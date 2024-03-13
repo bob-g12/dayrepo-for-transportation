@@ -2,7 +2,6 @@
 {% block title %}日報一覧{% endblock %}
 {% block content %}
     <h2>未提出日報一覧</h2>
-    <h3>チェックリスト全部表示してます、規制してください(忘れずに！)</h3>
     {% for not_post in not_posts %}
     <div class="not_post">
         <p class="checklist">{{ not_post }}</p>

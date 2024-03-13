@@ -221,7 +221,6 @@ class Snippet(models.Model):
 
 class DutiesTrouble(models.Model):
 
-
     class Meta(object):
 
         # 作成されるテーブル名を指定
