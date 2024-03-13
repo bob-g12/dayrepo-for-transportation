@@ -405,7 +405,7 @@ class Checklist(models.Model):
         default=False,
     )
     is_snippet_make = models.BooleanField(
-        verbose_name="スニペット入力は作成済みか？", 
+        verbose_name="対象の日報データ有無", 
         blank=False,
         null=False,
         default=False,
