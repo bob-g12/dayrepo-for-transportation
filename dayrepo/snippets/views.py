@@ -45,16 +45,12 @@ class SnippetListView(View):
         # snippets は存在する時点で提出済みとみなす
         snippets = Snippet.objects.all().order_by("-create_at")
 
-<<<<<<< HEAD
-        queryset = Snippet.objects.all().order_by("-create_at")
-        # ☆チェックリスト全部表示してるので後に修正必須！！！☆
-        checklist_set = Checklist.objects.all().order_by("-id")
-=======
+
         # bool -> True = 1. False = 0
         # 未提出 = is_snippet_make が False
         not_submitted_checklist = Checklist.objects.all().order_by("-create_at").filter(is_snippet_make=0)
         
->>>>>>> f2ecbc104ec9f70bed523f81de10cd6d03dcc7ae
+
         # トップページのhtmlへ投稿(日報)データをテンプレートに渡す
         return render(request, "snippet_list.html", {"posts": snippets,"not_posts":not_submitted_checklist})
 
@@ -184,11 +180,6 @@ class ChecklistView(View):
             # 引数1: フォーム画面記入データ
         checklist = ChecklistForm(
             request.POST, 
-<<<<<<< HEAD
-            account, 
-            car,
-=======
->>>>>>> f2ecbc104ec9f70bed523f81de10cd6d03dcc7ae
         )
         # 【Process form との bool 入力処理の違い】
         # チェックボックス(bool)のリクエスト値は
@@ -196,13 +187,10 @@ class ChecklistView(View):
         # Process form 側では if 文による True/False への変換を行ったが
         # form クラスの引数に request.POST を渡す場合、
         # 変換しなくてもいい感じに bool で登録してくれる
-<<<<<<< HEAD
-        checklist.save()
-=======
         if checklist.is_valid():
             checklist.save()
         
->>>>>>> f2ecbc104ec9f70bed523f81de10cd6d03dcc7ae
+
         return redirect(to="snippet_post")
     
 checklist_post = ChecklistView.as_view()
