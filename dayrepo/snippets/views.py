@@ -42,12 +42,21 @@ def get_employee(request):
 class SnippetListView(View):
     def get(self, request):
         # 記録してある投稿の全データを投稿時間を元にソートして表示
+        # snippets は存在する時点で提出済みとみなす
+        snippets = Snippet.objects.all().order_by("-create_at")
 
+<<<<<<< HEAD
         queryset = Snippet.objects.all().order_by("-create_at")
         # ☆チェックリスト全部表示してるので後に修正必須！！！☆
         checklist_set = Checklist.objects.all().order_by("-id")
+=======
+        # bool -> True = 1. False = 0
+        # 未提出 = is_snippet_make が False
+        not_submitted_checklist = Checklist.objects.all().order_by("-create_at").filter(is_snippet_make=0)
+        
+>>>>>>> f2ecbc104ec9f70bed523f81de10cd6d03dcc7ae
         # トップページのhtmlへ投稿(日報)データをテンプレートに渡す
-        return render(request, "snippet_list.html", {"posts": queryset,"not_posts":checklist_set})
+        return render(request, "snippet_list.html", {"posts": snippets,"not_posts":not_submitted_checklist})
 
 
 snippet_list = SnippetListView.as_view()
@@ -112,6 +121,11 @@ class SnippetView(View):
         else:
             snippet.is_today_trouble = False
         snippet.save()
+        
+        # checklist 更新
+        checklist = Checklist.objects.get(pk=checklist.id)
+        checklist.is_snippet_make = True
+        checklist.save()
 
         # 業務トラブルフォーム保存
         duties_trouble = DutiesTrouble(
@@ -166,26 +180,15 @@ class ChecklistView(View):
 
     # 投稿機能
     def post(self, request):
-        req = request.POST
-        # account, car について
-            # 別テーブルからデータを取得する際に
-            # モデルデータで挿入する必要がある
-                # 下記２項目ではそれぞれAccount/Car
-                # テーブルからidを受け取る
-        account = Account(
-            id = req.get("account_id"),
-        )
-        car = Car(
-            id = req.get("car_id"),
-        )
         # チェックリストテーブルへの保存
             # 引数1: フォーム画面記入データ
-            # 引数2: アカウント情報
-            # 引数3: 車両情報
         checklist = ChecklistForm(
             request.POST, 
+<<<<<<< HEAD
             account, 
             car,
+=======
+>>>>>>> f2ecbc104ec9f70bed523f81de10cd6d03dcc7ae
         )
         # 【Process form との bool 入力処理の違い】
         # チェックボックス(bool)のリクエスト値は
@@ -193,7 +196,13 @@ class ChecklistView(View):
         # Process form 側では if 文による True/False への変換を行ったが
         # form クラスの引数に request.POST を渡す場合、
         # 変換しなくてもいい感じに bool で登録してくれる
+<<<<<<< HEAD
         checklist.save()
+=======
+        if checklist.is_valid():
+            checklist.save()
+        
+>>>>>>> f2ecbc104ec9f70bed523f81de10cd6d03dcc7ae
         return redirect(to="snippet_post")
     
 checklist_post = ChecklistView.as_view()
