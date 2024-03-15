@@ -93,11 +93,12 @@ class SnippetView(View):
             oil = 0.0
 
         snippet = Snippet(
+            checklist_id = checklist,
+            
             # 末尾の [0] について
             # 入力項目のうち同一名のデータは、
             # request.POST に配列で記録され、
             # snippet においては index[0] を使用する
-            checklist_id = checklist,
             start_time = req.getlist("start_time")[0],
             end_time = req.getlist("end_time")[0],
             start_point = req.getlist("start_point")[0],
