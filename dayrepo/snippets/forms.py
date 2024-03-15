@@ -97,7 +97,7 @@ class ChecklistForm(forms.ModelForm):
         fields = (
             "account_id",
             "car_id",
-            "create_day",
+            "working_day",
             'is_tire_damage',
             'is_tire_groove',
             'is_tire_parts',
