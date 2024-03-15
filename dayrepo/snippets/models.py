@@ -295,7 +295,7 @@ class Checklist(models.Model):
         on_delete=models.DO_NOTHING,
         null=False,
     )
-    create_day = models.DateField(
+    working_day = models.DateField(
         verbose_name='稼働日',
         blank=False, 
         null=False,
