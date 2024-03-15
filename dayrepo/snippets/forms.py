@@ -20,7 +20,7 @@ class CustomSnippetChecklistsModelChoiceField(forms.ModelChoiceField):
 class SnippetForm(forms.ModelForm):
     checklist_id = CustomSnippetChecklistsModelChoiceField(
         queryset= Checklist.objects.all().filter(is_snippet_make=0),
-        empty_label="点検データを選択してください",
+        empty_label="今回使用する点検データを選択してください",
         label="点検データ",
     )
     class Meta:
