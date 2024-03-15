@@ -53,7 +53,7 @@ class SnippetListView(View):
         not_submitted_checklist = Checklist.objects.all().order_by("-create_at").filter(is_snippet_make=0)
         
 
-        # トップページのhtmlへ投稿(日報)データをテンプレートに渡す
+        # トップページのhtmlへ日報データをテンプレートに渡す
         return render(request, "snippet_list.html", {"posts": snippets,"not_posts":not_submitted_checklist})
 
 
