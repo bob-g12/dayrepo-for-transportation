@@ -3,10 +3,11 @@
 {% block content %}
     <h2>未提出日報一覧</h2>
     {% for not_post in not_posts %}
-    <p class="checklist">{{ not_post }}</p>
-    <hr>
+    <div class="not_post">
+        <p class="checklist">{{ not_post }}</p>
+        <hr>
+    </div>
     {% endfor %}
-        
     <h2>提出済み日報一覧</h2>
     {% for post in posts %}      
     <div class="post">
