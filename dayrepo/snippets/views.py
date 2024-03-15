@@ -180,7 +180,6 @@ class ChecklistView(View):
     # 投稿機能
     def post(self, request):
         # チェックリストテーブルへの保存
-            # 引数1: フォーム画面記入データ
         checklist = ChecklistForm(
             request.POST, 
         )
