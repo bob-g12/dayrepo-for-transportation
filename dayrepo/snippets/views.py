@@ -49,7 +49,7 @@ class SnippetListView(View):
         # bool -> True = 1. False = 0
         # 未提出 = is_snippet_make が False
             # filter(is_snippet_make=0) で is_snippet_make が 0 のデータ、
-            # つまりsnippetsで選択されていないデータのみを引き渡す
+            # つまり snippets で選択されていないデータのみを取得する
         not_submitted_checklist = Checklist.objects.all().order_by("-create_at").filter(is_snippet_make=0)
         
 
