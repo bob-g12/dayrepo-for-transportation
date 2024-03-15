@@ -1,10 +1,14 @@
 {% block page_title %}日報一覧{% endblock %}
 {% block title %}日報一覧{% endblock %}
 {% block content %}
+    <h2>未提出日報一覧</h2>
+    {% for not_post in not_posts %}
+    <p class="checklist">{{ not_post }}</p>
+    <hr>
+    {% endfor %}
+    <h2>提出済み日報一覧</h2>
     {% for post in posts %}      
-    <div class="post">
-        <p class="snippet_list">{{ post.free_space }}</p>
-        <hr>
-    </div>
+    <p class="snippet_list">{{ post }}</p>
+    <hr>
     {% endfor %}
 {% endblock %}

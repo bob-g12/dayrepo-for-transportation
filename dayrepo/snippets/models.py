@@ -51,15 +51,6 @@ class Account(models.Model):
         blank=False, 
         null=False
     )
-    create_at = models.DateTimeField(
-        verbose_name="作成日時", 
-        auto_now_add=True
-    )
-    update_at = models.DateTimeField(
-        verbose_name="更新日時", 
-        auto_now=True
-    )
-
     def __str__(self):
 
         return str(self.id)
@@ -121,23 +112,11 @@ class Snippet(models.Model):
         blank=False,
         null=False,
     )
-    account_id = models.ForeignKey(
-        Account,
-        verbose_name="アカウントid",
-        on_delete=models.DO_NOTHING,
+    checklist_id = models.ForeignKey(
+        "Checklist", 
+        verbose_name="チェックリストid",
+        on_delete=models.DO_NOTHING, 
         null=False,
-    )
-    car_id = models.ForeignKey(
-        Car,
-        verbose_name="車両id",
-        on_delete=models.DO_NOTHING,
-        null=False,
-    )
-    create_day = models.DateField(
-        verbose_name='稼働日',
-        blank=False, 
-        null=False,
-        max_length=20
     )
     start_mileage = models.IntegerField(
         verbose_name="出発時メーター",
@@ -221,6 +200,12 @@ class Snippet(models.Model):
         blank=True,
         null=True,
     )
+    is_today_trouble = models.BooleanField(
+        verbose_name="本日の異常", 
+        blank=False,
+        null=False,
+        default=False,
+    )
     create_at = models.DateTimeField(
         verbose_name="作成日時", 
         auto_now_add=True
@@ -232,10 +217,9 @@ class Snippet(models.Model):
 
     def __str__(self):
 
-        return str(self.id)
+        return f'{self.id}, {self.checklist_id.account_id.last_name},{self.checklist_id.account_id.first_name},{self.checklist_id.car_id.vehicle_number}'
 
 class DutiesTrouble(models.Model):
-
 
     class Meta(object):
 
@@ -250,6 +234,12 @@ class DutiesTrouble(models.Model):
         primary_key=True,
         editable=True,
         blank=False,
+        null=False,
+    )
+    snippet_id = models.ForeignKey(
+        Snippet, 
+        verbose_name="スニペットid",
+        on_delete=models.DO_NOTHING, 
         null=False,
     )
     trouble_situation = models.CharField(
@@ -273,7 +263,7 @@ class DutiesTrouble(models.Model):
 
     def __str__(self):
         
-        return f'{self.id},{self.snippet_id},{self.trouble_cause},{self.trouble_situation},{self.trouble_support}'
+        return f'{self.snippet_id},{self.trouble_cause},{self.trouble_situation},{self.trouble_support}'
 
 
 class Checklist(models.Model):
@@ -292,6 +282,24 @@ class Checklist(models.Model):
         editable=True,
         blank=False,
         null=False,
+    )
+    account_id = models.ForeignKey(
+        Account,
+        verbose_name="アカウントid",
+        on_delete=models.DO_NOTHING,
+        null=False,
+    )
+    car_id = models.ForeignKey(
+        Car,
+        verbose_name="車両id",
+        on_delete=models.DO_NOTHING,
+        null=False,
+    )
+    working_day = models.DateField(
+        verbose_name='稼働日',
+        blank=False, 
+        null=False,
+        max_length=20
     )
     is_tire_damage = models.BooleanField(
         verbose_name="タイヤの損傷(空気圧/摩耗/亀裂/損傷)",
@@ -396,16 +404,23 @@ class Checklist(models.Model):
         null=False,
         default=False,
     )
-    is_today_trouble = models.BooleanField(
-        verbose_name="本日の異常", 
+    is_snippet_make = models.BooleanField(
+        verbose_name="対象の日報データ有無", 
         blank=False,
         null=False,
         default=False,
     )
-
+    create_at = models.DateTimeField(
+        verbose_name="作成日時", 
+        auto_now_add=True
+    )
+    update_at = models.DateTimeField(
+        verbose_name="更新日時", 
+        auto_now=True
+    )
     def __str__(self):
 
-        return str(self.snippet_id)
+        return f'{self.id},{self.account_id.first_name},{self.account_id.last_name}{self.car_id.vehicle_number},{self.create_day}'
 
 class Process(models.Model):
 

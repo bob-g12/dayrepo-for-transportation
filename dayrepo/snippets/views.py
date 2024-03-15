@@ -42,10 +42,19 @@ def get_employee(request):
 class SnippetListView(View):
     def get(self, request):
         # 記録してある投稿の全データを投稿時間を元にソートして表示
+        # snippets は存在する時点で提出済みとみなす
+        snippets = Snippet.objects.all().order_by("-create_at")
 
-        queryset = Snippet.objects.all().order_by("-create_at")
-        # トップページのhtmlへ投稿(日報)データをテンプレートに渡す
-        return render(request, "snippet_list.html", {"posts": queryset})
+
+        # bool -> True = 1. False = 0
+        # 未提出 = is_snippet_make が False
+            # filter(is_snippet_make=0) で is_snippet_make が 0 のデータ、
+            # つまり snippets で選択されていないデータのみを取得する
+        not_submitted_checklist = Checklist.objects.all().order_by("-create_at").filter(is_snippet_make=0)
+        
+
+        # トップページのhtmlへ日報データをテンプレートに渡す
+        return render(request, "snippet_list.html", {"posts": snippets,"not_posts":not_submitted_checklist})
 
 
 snippet_list = SnippetListView.as_view()
@@ -71,11 +80,10 @@ class SnippetView(View):
         req = request.POST
 
         # スニペットフォーム保存
-        account = Account(
-            id = req.get("account_id"),
-        )
-        car = Car(
-            id = req.get("car_id"),
+            # checklists_id挿入のための
+            # モデルデータ作成
+        checklist = Checklist(
+            id = req.get("checklist_id"),
         )
         gasoline = req.get("gasoline_amount")
         if gasoline == "":
@@ -85,11 +93,8 @@ class SnippetView(View):
             oil = 0.0
 
         snippet = Snippet(
-            # account, car について
-            # 別テーブルからデータを取得する際に
-            # モデルデータで挿入する必要がある
-            account_id=account,
-            car_id = car,
+            checklist_id = checklist,
+            
             # 末尾の [0] について
             # 入力項目のうち同一名のデータは、
             # request.POST に配列で記録され、
@@ -98,7 +103,6 @@ class SnippetView(View):
             end_time = req.getlist("end_time")[0],
             start_point = req.getlist("start_point")[0],
             end_point = req.getlist("end_point")[0],
-            create_day = req.get("create_day"),
             start_mileage = req.get("start_mileage"),
             end_mileage = req.get("end_mileage"),
             break_spot = req.get("break_spot"),
@@ -108,9 +112,19 @@ class SnippetView(View):
             driving_time = req.get("driving_time"),
             non_driving_time = req.get("non_driving_time"),
             break_time = req.get("break_time"),
+            is_today_trouble = req.get("is_today_trouble"),
             free_space = req.get("free_space"),
         )
+        if snippet.is_today_trouble == "on":
+            snippet.is_today_trouble = True
+        else:
+            snippet.is_today_trouble = False
         snippet.save()
+        
+        # チェックリストフォーム保存
+        checklist = Checklist.objects.get(pk=checklist.id)
+        checklist.is_snippet_make = True # 提出済みへ変更
+        checklist.save()
 
         # 業務トラブルフォーム保存
         duties_trouble = DutiesTrouble(
@@ -126,12 +140,10 @@ class SnippetView(View):
         for i in range(form_process_count):
             process = Process(
                 snippet_id = snippet,
-
                 start_time = req.getlist("start_time")[i + 1],
                 end_time = req.getlist("end_time")[i + 1],
                 start_point = req.getlist("start_point")[i + 1],
                 end_point = req.getlist("end_point")[i + 1],
-
                 via_point = req.getlist("via_point")[i],
                 client = req.getlist("client")[i],
                 goods = req.getlist("goods")[i],
@@ -167,17 +179,20 @@ class ChecklistView(View):
 
     # 投稿機能
     def post(self, request):
-
         # チェックリストテーブルへの保存
-        checklist = ChecklistForm(request.POST)
+        checklist = ChecklistForm(
+            request.POST, 
+        )
         # 【Process form との bool 入力処理の違い】
         # チェックボックス(bool)のリクエスト値は
         # 内部的に "on" か "off" で受け取っていた。
         # Process form 側では if 文による True/False への変換を行ったが
         # form クラスの引数に request.POST を渡す場合、
         # 変換しなくてもいい感じに bool で登録してくれる
-        checklist.save()
+        if checklist.is_valid():
+            checklist.save()
         
+
         return redirect(to="snippet_post")
     
 checklist_post = ChecklistView.as_view()
