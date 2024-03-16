@@ -196,3 +196,28 @@ class ChecklistView(View):
         return redirect(to="snippet_post")
     
 checklist_post = ChecklistView.as_view()
+
+import openpyxl
+
+    
+def excelfile_download(request):
+    """
+    Excel output from template
+    """
+    # Excelのテンプレートファイルの読み込み
+    wb = openpyxl.load_workbook('../docs/otamesi.xlsx')
+
+    sheet = wb['Sheet1']
+    sheet['D2'] = '入力'
+    sheet['E2'] = 'ここ、E2'
+    # Excelを返すためにcontent_typeに「application/vnd.ms-excel」をセットします。
+
+    response = HttpResponse(content_type='application/vnd.ms-excel')
+    response['Content-Disposition'] = 'attachment; filename=%s' % 'otamesi.xlsx'
+
+    # データの書き込みを行なったExcelファイルを保存する
+    wb.save(response)
+
+    # 生成したHttpResponseをreturnする
+    return response
+ 
