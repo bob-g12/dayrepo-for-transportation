@@ -220,3 +220,4 @@ def excelfile_download(request):
 
     # 生成したHttpResponseをreturnする
     return response
+ 
