@@ -212,9 +212,14 @@ def excelfile_download(request,snippet_id):
     wb = openpyxl.load_workbook('../docs/snippet.xlsx')
 
     sheet = wb['snippet_sheet']
-    sheet['E6'] = '入力'
+    sheet['E6'] = snippet_date.start_time
+    if snippet_date.is_today_trouble == True:
+        sheet['AB41'] = "✔"
+    sheet['AO8'] = snippet_date.checklist_id.account_id.last_name + " " + snippet_date.checklist_id.account_id.first_name
     
-    print("スニペット",snippet_date)
+    
+    
+    print("スニペット",snippet_date.start_time)
     # Excelを返すためにcontent_typeに「application/vnd.ms-excel」をセットします。
 
     response = HttpResponse(content_type='application/vnd.ms-excel')
