@@ -9,6 +9,7 @@
     <h2>提出済み日報一覧</h2>
     {% for post in posts %}      
     <p class="snippet_list">{{ post }}</p>
+    <button onclick="location.href=='{% url 'excel_editing' post.id %}'">保存</button>
     <hr>
     {% endfor %}
 {% endblock %}
