@@ -201,11 +201,13 @@ import openpyxl
 
 from django.shortcuts import redirect ,get_object_or_404
     
-def excelfile_download(request,id):
+def excelfile_download(request,snippet_id):
     """
     Excel output from template
     """
-    snippet_date = get_object_or_404(Snippet, pk=id)
+    pk=snippet_id
+    print("ぴーけー",pk)
+    snippet_date = get_object_or_404(Snippet, pk=snippet_id)
     # Excelのテンプレートファイルの読み込み
     wb = openpyxl.load_workbook('../docs/snippet.xlsx')
 
