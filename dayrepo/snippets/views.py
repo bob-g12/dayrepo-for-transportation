@@ -212,13 +212,13 @@ def excelfile_download(request,snippet_id):
     wb = openpyxl.load_workbook('../docs/snippet.xlsx')
 
     sheet = wb['snippet_sheet']
-    sheet['D2'] = '入力'
-    sheet['E2'] = 'ここ、E2'
+    sheet['E6'] = '入力'
+    
     print("スニペット",snippet_date)
     # Excelを返すためにcontent_typeに「application/vnd.ms-excel」をセットします。
 
     response = HttpResponse(content_type='application/vnd.ms-excel')
-    response['Content-Disposition'] = 'attachment; filename=%s' % 'otamesi.xlsx'
+    response['Content-Disposition'] = 'attachment; filename=%s' % 'snippet.xlsx'
 
     # データの書き込みを行なったExcelファイルを保存する
     wb.save(response)
