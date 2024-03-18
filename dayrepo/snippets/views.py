@@ -199,17 +199,20 @@ checklist_post = ChecklistView.as_view()
 
 import openpyxl
 
+from django.shortcuts import redirect ,get_object_or_404
     
-def excelfile_download(request):
+def excelfile_download(request,id):
     """
     Excel output from template
     """
+    snippet_date = get_object_or_404(Snippet, pk=id)
     # Excelのテンプレートファイルの読み込み
-    wb = openpyxl.load_workbook('../docs/otamesi.xlsx')
+    wb = openpyxl.load_workbook('../docs/snippet.xlsx')
 
-    sheet = wb['Sheet1']
+    sheet = wb['snippet_sheet']
     sheet['D2'] = '入力'
     sheet['E2'] = 'ここ、E2'
+    print("スニペット",snippet_date)
     # Excelを返すためにcontent_typeに「application/vnd.ms-excel」をセットします。
 
     response = HttpResponse(content_type='application/vnd.ms-excel')
