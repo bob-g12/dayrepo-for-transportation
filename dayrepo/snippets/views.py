@@ -209,7 +209,7 @@ def excelfile_download(request,snippet_id):
     # listのボタンで選択したSnippetデータを変数で受け取る
     snippet_date = get_object_or_404(Snippet, pk=snippet_id)
     # Excelのテンプレートファイルの読み込み
-    wb = openpyxl.load_workbook('../docs/snippet.xlsx')
+    wb = openpyxl.load_workbook('./snippets/excel_file/snippet.xlsx')
     # 入力対象のシート、セルの位置、入寮内容の指定
     sheet = wb['snippet_sheet']
     sheet['E6'] = snippet_date.start_time
