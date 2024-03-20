@@ -221,4 +221,3 @@ def excelfile_download(request,snippet_pk):
     wb.save(response)
     # 生成したHttpResponseをreturnする
     return response
-
