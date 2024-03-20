@@ -420,7 +420,7 @@ class Checklist(models.Model):
     )
     def __str__(self):
 
-        return f'{self.id},{self.account_id.first_name},{self.account_id.last_name}{self.car_id.vehicle_number},{self.create_day}'
+        return f'{self.id},{self.account_id.first_name},{self.account_id.last_name}{self.car_id.vehicle_number},{self.working_day}'
 
 class Process(models.Model):
 
