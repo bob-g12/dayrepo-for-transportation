@@ -297,6 +297,7 @@ def excelfile_download(request, snippet_pk):
     breek_in_hour += snippet_date.break_time.hour
     sheet["BI18"] = str(breek_in_hour) + ":" + str(breek_in_minute)
     sheet["BF36"] = snippet_date.free_space
+    sheet["H21"] = snippet_date.break_spot
     # チェックリストテーブル
     # 左列
     if snippet_date.checklist_id.is_before_trouble == True:
