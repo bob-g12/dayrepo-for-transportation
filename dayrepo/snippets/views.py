@@ -199,19 +199,16 @@ class ChecklistView(View):
     
 checklist_post = ChecklistView.as_view()
 
-# Excelファイル出力    
-def excelfile_download(request,snippet_id):
-    """
-    Excel output from template
-    """
-    pk=snippet_id
+# listページからExcelファイルを出力    
+def excelfile_download(request,snippet_pk):
+    pk=snippet_pk
     print("ぴーけー",pk)
-    # listのボタンで選択したSnippetデータを変数で受け取る
-    snippet_date = get_object_or_404(Snippet, pk=snippet_id)
+    # 引数で受け取った値を変数に代入
+    snippet_date = get_object_or_404(Snippet, pk=snippet_pk)
     # Excelのテンプレートファイルの読み込み
-    wb = openpyxl.load_workbook('./snippets/excel_file/snippet.xlsx')
+    wb = openpyxl.load_workbook('./snippets/static/excel/report.xlsx')
     # 入力対象のシート、セルの位置、入寮内容の指定
-    sheet = wb['snippet_sheet']
+    sheet = wb['report_sheet']
     sheet['E6'] = snippet_date.start_time
     if snippet_date.is_today_trouble == True:
         sheet['AB41'] = "✔"
@@ -219,7 +216,7 @@ def excelfile_download(request,snippet_id):
     print("スニペット",snippet_date.start_time)
     # Excelを返すためにcontent_typeに「application/vnd.ms-excel」をセットします。
     response = HttpResponse(content_type='application/vnd.ms-excel')
-    response['Content-Disposition'] = 'attachment; filename=%s' % 'snippet.xlsx'
+    response['Content-Disposition'] = 'attachment; filename = report.xlsx'
     # データの書き込みを行なったExcelファイルを保存する
     wb.save(response)
     # 生成したHttpResponseをreturnする
