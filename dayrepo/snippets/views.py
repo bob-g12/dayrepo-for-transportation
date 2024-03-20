@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import View
-from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import redirect, get_object_or_404, get_list_or_404
 from .models import Account, Car, Snippet, DutiesTrouble, Checklist, Process
 from .forms import SnippetForm, DutiesTroubleForm, ProcessForm, ChecklistForm
 import openpyxl
@@ -205,13 +205,196 @@ def excelfile_download(request,snippet_pk):
     print("ぴーけー",pk)
     # 引数で受け取った値を変数に代入
     snippet_date = get_object_or_404(Snippet, pk=snippet_pk)
+    trouble_date = get_object_or_404(DutiesTrouble, snippet_id = snippet_pk)
+    process_date = get_list_or_404(Process, snippet_id = snippet_pk)
+    process_count = len(process_date)
+    print("いえい",process_date,process_count)
     # Excelのテンプレートファイルの読み込み
     wb = openpyxl.load_workbook('./snippets/static/excel/report.xlsx')
     # 入力対象のシート、セルの位置、入寮内容の指定
     sheet = wb['report_sheet']
-    sheet['E6'] = snippet_date.start_time
-    if snippet_date.is_today_trouble == True:
+    # snippetテーブル
+    sheet['E6'] = str(snippet_date.start_time.hour) + ":" + str(snippet_date.start_time.minute)
+    sheet['E8'] = str(snippet_date.end_time.hour) + ":" + str(snippet_date.end_time.minute)
+    sheet['I6'] = snippet_date.start_point
+    sheet['W6'] = snippet_date.end_point
+    sheet['Q6'] = str(snippet_date.start_time.hour) + ":" + str(snippet_date.start_time.minute)
+    sheet['AE6'] = str(snippet_date.end_time.hour) + ":" + str(snippet_date.end_time.minute)
+    weekday = snippet_date.checklist_id.working_day.isoweekday()
+    if weekday == 1:
+        weekday = "月"
+    elif weekday == 2:
+        weekday = "火"
+    elif weekday == 3:
+        weekday = "水"
+    elif weekday == 4:
+        weekday = "木"
+    elif weekday == 5:
+        weekday = "金"
+    elif weekday == 6:
+        weekday = "土"
+    elif weekday == 7:
+        weekday = "日"
+    sheet['A3'] = str(snippet_date.checklist_id.working_day.year) + " 年  " + str(snippet_date.checklist_id.working_day.month) + " 月  " + str(snippet_date.checklist_id.working_day.day) + " 日  " + "( " + weekday + " 曜日)  " + "天候 (" + snippet_date.weather + ")"
+    sheet['AR3'] = snippet_date.checklist_id.car_id.vehicle_number
+    sheet['I9'] = snippet_date.start_mileage
+    sheet['S9'] = snippet_date.end_mileage
+    today_mileage = snippet_date.end_mileage - snippet_date.start_mileage
+    if today_mileage >= 0:
+        sheet['AB9'] = today_mileage
+    if snippet_date.gasoline_amount != False:
+        sheet['E36'] = snippet_date.gasoline_amount
+    if snippet_date.oil != False:
+        sheet['I36'] = snippet_date.oil
+    sheet['BD18'] = str(snippet_date.driving_time.hour) + ":" + str(snippet_date.driving_time.minute)
+    sheet['BD19'] = str(snippet_date.non_driving_time.hour) + ":" + str(snippet_date.non_driving_time.minute)
+    sheet['BD20'] = str(snippet_date.break_time.hour) + ":" + str(snippet_date.break_time.minute)
+    work_minute = snippet_date.driving_time.minute + snippet_date.non_driving_time.minute
+    work_hour = 0
+    if work_minute >= 60:
+        work_minute -= 60
+        work_hour += 1
+    work_hour += snippet_date.driving_time.hour + snippet_date.non_driving_time.hour
+    sheet['BG18'] = str(work_hour) + ":" + str(work_minute)
+    breek_in_minute = work_minute + snippet_date.break_time.minute
+    breek_in_hour = work_hour
+    if breek_in_minute >= 60:
+        breek_in_minute -= 60
+        breek_in_hour += 1
+    breek_in_hour += snippet_date.break_time.hour
+    sheet['BI18'] = str(breek_in_hour) + ":" + str(breek_in_minute)
+    sheet['BF36'] = snippet_date.free_space
+    # チェックリストテーブル
+    # 左列
+    if snippet_date.checklist_id.is_before_trouble == True:
         sheet['AB41'] = "✔"
+    if snippet_date.checklist_id.is_tire_damage == True:
+        sheet['AB42'] = "✔"
+    if snippet_date.checklist_id.is_tire_groove == True:
+        sheet['AB43'] = "✔"
+    if snippet_date.checklist_id.is_tire_parts == True:
+        sheet['AB44'] = "✔"
+    if snippet_date.checklist_id.is_radiator == True:
+        sheet['AB45'] = "✔"
+    if snippet_date.checklist_id.is_brake_oil == True:
+        sheet['AB46'] = "✔"
+    if snippet_date.checklist_id.is_air_tank == True:
+        sheet['AB47'] = "✔"
+    if snippet_date.checklist_id.is_engine_oil == True:
+        sheet['AB48'] = "✔"
+    if snippet_date.checklist_id.is_battery == True:
+        sheet['AB49'] = "✔"
+    if snippet_date.checklist_id.is_belt == True:
+        sheet['AB50'] = "✔"
+    if snippet_date.checklist_id.is_parking_brake == True:
+        sheet['AB51'] = "✔"
+    # 右列
+    if snippet_date.checklist_id.is_washer_fluid == True:
+        sheet['BJ41'] = "✔"
+    if snippet_date.checklist_id.is_engine == True:
+        sheet['BJ42'] = "✔"
+    if snippet_date.checklist_id.is_air_brake == True:
+        sheet['BJ43'] = "✔"
+    if snippet_date.checklist_id.is_light == True:
+        sheet['BJ44'] = "✔"
+    if snippet_date.checklist_id.is_brake_pedal == True:
+        sheet['BJ45'] = "✔"
+    if snippet_date.checklist_id.is_brake_details == True:
+        sheet['BJ46'] = "✔"
+
+    # トラブルテーブル
+    if trouble_date.trouble_situation != False:
+        sheet['AC36'] = trouble_date.trouble_situation
+    if trouble_date.trouble_cause != False:
+        sheet['AC37'] = trouble_date.trouble_cause
+    if trouble_date.trouble_support != False:
+        sheet['AU36'] = trouble_date.trouble_support
+    
+    # 工程テーブル
+    
+    for i in range(process_count):
+        if i == 0:
+            sheet['C23'] = process_date[i].start_point
+            sheet['G23'] = process_date[i].via_point
+            sheet['O23'] = process_date[i].end_point
+            sheet['X23'] = process_date[i].client
+            sheet['AJ23'] = process_date[i].goods
+            sheet['AS23'] = process_date[i].load_situation
+            if process_date[i].is_load_situation != False:
+                sheet['BD23'] = "良"
+            if process_date[i].load_mileage != False:
+                sheet['BG23'] = process_date[i].load_mileage
+            if process_date[i].hollow_mileage != False:
+                sheet['BI23'] = process_date[i].hollow_mileage
+        if i == 1:
+            sheet['C25'] = process_date[i].start_point
+            sheet['G25'] = process_date[i].via_point
+            sheet['O25'] = process_date[i].end_point
+            sheet['X25'] = process_date[i].client
+            sheet['AJ25'] = process_date[i].goods
+            sheet['AS25'] = process_date[i].load_situation
+            if process_date[i].is_load_situation != False:
+                sheet['BD25'] = "良"
+            if process_date[i].load_mileage != False:
+                sheet['BG25'] = process_date[i].load_mileage
+            if process_date[i].hollow_mileage != False:
+                sheet['BI25'] = process_date[i].hollow_mileage
+        if i == 2:
+            sheet['C27'] = process_date[i].start_point
+            sheet['G27'] = process_date[i].via_point
+            sheet['O27'] = process_date[i].end_point
+            sheet['X27'] = process_date[i].client
+            sheet['AJ27'] = process_date[i].goods
+            sheet['AS27'] = process_date[i].load_situation
+            if process_date[i].is_load_situation != False:
+                sheet['BD27'] = "良"
+            if process_date[i].load_mileage != False:
+                sheet['BG27'] = process_date[i].load_mileage
+            if process_date[i].hollow_mileage != False:
+                sheet['BI27'] = process_date[i].hollow_mileage
+        if i == 3:
+            sheet['C29'] = process_date[i].start_point
+            sheet['G29'] = process_date[i].via_point
+            sheet['O29'] = process_date[i].end_point
+            sheet['X29'] = process_date[i].client
+            sheet['AJ29'] = process_date[i].goods
+            sheet['AS29'] = process_date[i].load_situation
+            if process_date[i].is_load_situation != False:
+                sheet['BD29'] = "良"
+            if process_date[i].load_mileage != False:
+                sheet['BG29'] = process_date[i].load_mileage
+            if process_date[i].hollow_mileage != False:
+                sheet['BI29'] = process_date[i].hollow_mileage
+        if i == 4:
+            sheet['C31'] = process_date[i].start_point
+            sheet['G31'] = process_date[i].via_point
+            sheet['O31'] = process_date[i].end_point
+            sheet['X31'] = process_date[i].client
+            sheet['AJ31'] = process_date[i].goods
+            sheet['AS31'] = process_date[i].load_situation
+            if process_date[i].is_load_situation != False:
+                sheet['BD31'] = "良"
+            if process_date[i].load_mileage != False:
+                sheet['BG31'] = process_date[i].load_mileage
+            if process_date[i].hollow_mileage != False:
+                sheet['BI31'] = process_date[i].hollow_mileage
+        if i == 5:
+            sheet['C33'] = process_date[i].start_point
+            sheet['G33'] = process_date[i].via_point
+            sheet['O33'] = process_date[i].end_point
+            sheet['X33'] = process_date[i].client
+            sheet['AJ33'] = process_date[i].goods
+            sheet['AS33'] = process_date[i].load_situation
+            if process_date[i].is_load_situation != False:
+                sheet['BD33'] = "良"
+            if process_date[i].load_mileage != False:
+                sheet['BG33'] = process_date[i].load_mileage
+            if process_date[i].hollow_mileage != False:
+                sheet['BI33'] = process_date[i].hollow_mileage
+
+
+
+
     sheet['AO8'] = snippet_date.checklist_id.account_id.last_name + " " + snippet_date.checklist_id.account_id.first_name
     print("スニペット",snippet_date.start_time)
     # Excelを返すためにcontent_typeに「application/vnd.ms-excel」をセットします。
