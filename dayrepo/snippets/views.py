@@ -1,9 +1,11 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import View
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from .models import Account, Car, Snippet, DutiesTrouble, Checklist, Process
 from .forms import SnippetForm, DutiesTroubleForm, ProcessForm, ChecklistForm
+import openpyxl
+
 
 
 # Create your views here.
@@ -197,27 +199,26 @@ class ChecklistView(View):
     
 checklist_post = ChecklistView.as_view()
 
-import openpyxl
-
-    
-def excelfile_download(request):
-    """
-    Excel output from template
-    """
+# listページからExcelファイルを出力    
+def excelfile_download(request,snippet_pk):
+    pk=snippet_pk
+    print("ぴーけー",pk)
+    # 引数で受け取った値を変数に代入
+    snippet_date = get_object_or_404(Snippet, pk=snippet_pk)
     # Excelのテンプレートファイルの読み込み
-    wb = openpyxl.load_workbook('../docs/otamesi.xlsx')
-
-    sheet = wb['Sheet1']
-    sheet['D2'] = '入力'
-    sheet['E2'] = 'ここ、E2'
+    wb = openpyxl.load_workbook('./snippets/static/excel/report.xlsx')
+    # 入力対象のシート、セルの位置、入寮内容の指定
+    sheet = wb['report_sheet']
+    sheet['E6'] = snippet_date.start_time
+    if snippet_date.is_today_trouble == True:
+        sheet['AB41'] = "✔"
+    sheet['AO8'] = snippet_date.checklist_id.account_id.last_name + " " + snippet_date.checklist_id.account_id.first_name
+    print("スニペット",snippet_date.start_time)
     # Excelを返すためにcontent_typeに「application/vnd.ms-excel」をセットします。
-
     response = HttpResponse(content_type='application/vnd.ms-excel')
-    response['Content-Disposition'] = 'attachment; filename=%s' % 'otamesi.xlsx'
-
+    response['Content-Disposition'] = 'attachment; filename = report.xlsx'
     # データの書き込みを行なったExcelファイルを保存する
     wb.save(response)
-
     # 生成したHttpResponseをreturnする
     return response
-  
+

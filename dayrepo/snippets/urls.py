@@ -12,5 +12,5 @@ urlpatterns = [
     path("list/", views.snippet_list,name="snippet_list"),
     path("post/", views.snippet_post,name="snippet_post"),
     path("checklist/", views.checklist_post,name="checklist_post"),
-    path("excel_editing/", views.excelfile_download,name="excel_editing"),
+    path("excel/<int:snippet_pk>/", views.excelfile_download,name="excelfile_download"),
 ]
