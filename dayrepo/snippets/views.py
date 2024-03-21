@@ -216,18 +216,26 @@ def excelfile_download(request, snippet_pk):
     sheet = wb["report_sheet"]
     # snippetテーブル
     sheet["E6"] = (
-        str(snippet_date.start_time.hour) + ":" + str(snippet_date.start_time.minute)
+        str(snippet_date.start_time.hour) 
+        + ":" 
+        + str(snippet_date.start_time.minute)
     )
     sheet["E8"] = (
-        str(snippet_date.end_time.hour) + ":" + str(snippet_date.end_time.minute)
+        str(snippet_date.end_time.hour) 
+        + ":" 
+        + str(snippet_date.end_time.minute)
     )
     sheet["I6"] = snippet_date.start_point
     sheet["W6"] = snippet_date.end_point
     sheet["Q6"] = (
-        str(snippet_date.start_time.hour) + ":" + str(snippet_date.start_time.minute)
+        str(snippet_date.start_time.hour) 
+        + ":" 
+        + str(snippet_date.start_time.minute)
     )
     sheet["AE6"] = (
-        str(snippet_date.end_time.hour) + ":" + str(snippet_date.end_time.minute)
+        str(snippet_date.end_time.hour) 
+        + ":" 
+        + str(snippet_date.end_time.minute)
     )
     weekday = snippet_date.checklist_id.working_day.isoweekday()
     if weekday == 1:
@@ -250,12 +258,13 @@ def excelfile_download(request, snippet_pk):
         + str(snippet_date.checklist_id.working_day.month)
         + " 月  "
         + str(snippet_date.checklist_id.working_day.day)
-        + " 日  " + "( "
+        + " 日  " 
+        + "( "
         + weekday
-        + " 曜日)  "
-        + "天候 ("
+        + " 曜日)  "+ "天候 "
+        + "( "
         + snippet_date.weather
-        + ")"
+        + " )"
     )
     sheet["AR3"] = snippet_date.checklist_id.car_id.vehicle_number
     sheet["I9"] = snippet_date.start_mileage
@@ -280,26 +289,35 @@ def excelfile_download(request, snippet_pk):
         + str(snippet_date.non_driving_time.minute)
     )
     sheet["BD20"] = (
-        str(snippet_date.break_time.hour) + ":" + str(snippet_date.break_time.minute)
+        str(snippet_date.break_time.hour) 
+        + ":" 
+        + str(snippet_date.break_time.minute)
     )
     work_minute = (
-        snippet_date.driving_time.minute + snippet_date.non_driving_time.minute
+        snippet_date.driving_time.minute 
+        + snippet_date.non_driving_time.minute
     )
 
     work_hour = 0
     if work_minute >= 60:
         work_minute -= 60
         work_hour += 1
-    work_hour += snippet_date.driving_time.hour + snippet_date.non_driving_time.hour
+    work_hour += snippet_date.driving_time.hour 
+    + snippet_date.non_driving_time.hour
 
-    sheet["BG18"] = str(work_hour) + ":" + str(work_minute)
-    breek_in_minute = work_minute + snippet_date.break_time.minute
+    sheet["BG18"] = str(work_hour) 
+    + ":" 
+    + str(work_minute)
+    breek_in_minute = work_minute 
+    + snippet_date.break_time.minute
     breek_in_hour = work_hour
     if breek_in_minute >= 60:
         breek_in_minute -= 60
         breek_in_hour += 1
     breek_in_hour += snippet_date.break_time.hour
-    sheet["BI18"] = str(breek_in_hour) + ":" + str(breek_in_minute)
+    sheet["BI18"] = str(breek_in_hour) 
+    + ":" 
+    + str(breek_in_minute)
     sheet["BF36"] = snippet_date.free_space
     sheet["H21"] = snippet_date.break_spot
     # チェックリストテーブル
