@@ -434,8 +434,8 @@ def excelfile_download(request, snippet_pk):
         + " "
         + snippet_date.checklist_id.account_id.first_name
     )
-    # Excelを返すためにcontent_typeに「application/vnd.ms-excel」をセットします。
-    response = HttpResponse(content_type="application/vnd.ms-excel")
+    # Excelを返すためにcontent_typeに「application/vnd.openxmlformats-officedocument.spreadsheetml.sheet」を        セットします。
+    response = HttpResponse(content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
     response["Content-Disposition"] = "attachment; filename = report.xlsx"
     # データの書き込みを行なったExcelファイルを保存する
     wb.save(response)
