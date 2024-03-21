@@ -237,21 +237,9 @@ def excelfile_download(request, snippet_pk):
         + ":" 
         + str(snippet_date.end_time.minute)
     )
-    weekday = snippet_date.checklist_id.working_day.isoweekday()
-    if weekday == 1:
-        weekday = "月"
-    elif weekday == 2:
-        weekday = "火"
-    elif weekday == 3:
-        weekday = "水"
-    elif weekday == 4:
-        weekday = "木"
-    elif weekday == 5:
-        weekday = "金"
-    elif weekday == 6:
-        weekday = "土"
-    elif weekday == 7:
-        weekday = "日"
+    weekday = snippet_date.checklist_id.working_day.weekday()
+    weeklist = ["月","火","水","木","金","土","日"]
+    week = weeklist[weekday]
     sheet["A3"] = (
         str(snippet_date.checklist_id.working_day.year)
         + " 年  "
@@ -260,7 +248,7 @@ def excelfile_download(request, snippet_pk):
         + str(snippet_date.checklist_id.working_day.day)
         + " 日  " 
         + "( "
-        + weekday
+        + week
         + " 曜日)  "+ "天候 "
         + "( "
         + snippet_date.weather
@@ -305,9 +293,7 @@ def excelfile_download(request, snippet_pk):
     work_hour += snippet_date.driving_time.hour 
     + snippet_date.non_driving_time.hour
 
-    sheet["BG18"] = str(work_hour) 
-    + ":" 
-    + str(work_minute)
+    sheet["BG18"] = str(work_hour) + ":" + str(work_minute)
     breek_in_minute = work_minute 
     + snippet_date.break_time.minute
     breek_in_hour = work_hour
@@ -315,9 +301,7 @@ def excelfile_download(request, snippet_pk):
         breek_in_minute -= 60
         breek_in_hour += 1
     breek_in_hour += snippet_date.break_time.hour
-    sheet["BI18"] = str(breek_in_hour) 
-    + ":" 
-    + str(breek_in_minute)
+    sheet["BI18"] = str(breek_in_hour) + ":" + str(breek_in_minute)
     sheet["BF36"] = snippet_date.free_space
     sheet["H21"] = snippet_date.break_spot
     # チェックリストテーブル
