@@ -285,6 +285,7 @@ def excelfile_download(request, snippet_pk):
     work_minute = (
         snippet_date.driving_time.minute + snippet_date.non_driving_time.minute
     )
+
     work_hour = 0
     if work_minute >= 60:
         work_minute -= 60
