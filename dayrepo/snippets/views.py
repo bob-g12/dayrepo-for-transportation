@@ -260,6 +260,7 @@ def excelfile_download(request, snippet_pk):
     sheet["AR3"] = snippet_date.checklist_id.car_id.vehicle_number
     sheet["I9"] = snippet_date.start_mileage
     sheet["S9"] = snippet_date.end_mileage
+
     today_mileage = snippet_date.end_mileage - snippet_date.start_mileage
     if today_mileage >= 0:
         sheet["AB9"] = today_mileage
