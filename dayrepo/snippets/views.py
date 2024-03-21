@@ -351,86 +351,16 @@ def excelfile_download(request, snippet_pk):
         sheet["AU36"] = trouble_data.trouble_support
 
     # 工程テーブル
-    for i in range(process_count):
-        if i == 0:
-            sheet["C23"] = process_list[i].start_point
-            sheet["G23"] = process_list[i].via_point
-            sheet["O23"] = process_list[i].end_point
-            sheet["X23"] = process_list[i].client
-            sheet["AJ23"] = process_list[i].goods
-            sheet["AS23"] = process_list[i].load_situation
-            if process_list[i].is_load_situation != False:
-                sheet["BD23"] = "良"
-            if process_list[i].load_mileage != False:
-                sheet["BG23"] = process_list[i].load_mileage
-            if process_list[i].hollow_mileage != False:
-                sheet["BI23"] = process_list[i].hollow_mileage
-        if i == 1:
-            sheet["C25"] = process_list[i].start_point
-            sheet["G25"] = process_list[i].via_point
-            sheet["O25"] = process_list[i].end_point
-            sheet["X25"] = process_list[i].client
-            sheet["AJ25"] = process_list[i].goods
-            sheet["AS25"] = process_list[i].load_situation
-            if process_list[i].is_load_situation != False:
-                sheet["BD25"] = "良"
-            if process_list[i].load_mileage != False:
-                sheet["BG25"] = process_list[i].load_mileage
-            if process_list[i].hollow_mileage != False:
-                sheet["BI25"] = process_list[i].hollow_mileage
-        if i == 2:
-            sheet["C27"] = process_list[i].start_point
-            sheet["G27"] = process_list[i].via_point
-            sheet["O27"] = process_list[i].end_point
-            sheet["X27"] = process_list[i].client
-            sheet["AJ27"] = process_list[i].goods
-            sheet["AS27"] = process_list[i].load_situation
-            if process_list[i].is_load_situation != False:
-                sheet["BD27"] = "良"
-            if process_list[i].load_mileage != False:
-                sheet["BG27"] = process_list[i].load_mileage
-            if process_list[i].hollow_mileage != False:
-                sheet["BI27"] = process_list[i].hollow_mileage
-        if i == 3:
-            sheet["C29"] = process_list[i].start_point
-            sheet["G29"] = process_list[i].via_point
-            sheet["O29"] = process_list[i].end_point
-            sheet["X29"] = process_list[i].client
-            sheet["AJ29"] = process_list[i].goods
-            sheet["AS29"] = process_list[i].load_situation
-            if process_list[i].is_load_situation != False:
-                sheet["BD29"] = "良"
-            if process_list[i].load_mileage != False:
-                sheet["BG29"] = process_list[i].load_mileage
-            if process_list[i].hollow_mileage != False:
-                sheet["BI29"] = process_list[i].hollow_mileage
-        if i == 4:
-            sheet["C31"] = process_list[i].start_point
-            sheet["G31"] = process_list[i].via_point
-            sheet["O31"] = process_list[i].end_point
-            sheet["X31"] = process_list[i].client
-            sheet["AJ31"] = process_list[i].goods
-            sheet["AS31"] = process_list[i].load_situation
-            if process_list[i].is_load_situation != False:
-                sheet["BD31"] = "良"
-            if process_list[i].load_mileage != False:
-                sheet["BG31"] = process_list[i].load_mileage
-            if process_list[i].hollow_mileage != False:
-                sheet["BI31"] = process_list[i].hollow_mileage
-        if i == 5:
-            sheet["C33"] = process_list[i].start_point
-            sheet["G33"] = process_list[i].via_point
-            sheet["O33"] = process_list[i].end_point
-            sheet["X33"] = process_list[i].client
-            sheet["AJ33"] = process_list[i].goods
-            sheet["AS33"] = process_list[i].load_situation
-            if process_list[i].is_load_situation != False:
-                sheet["BD33"] = "良"
-            if process_list[i].load_mileage != False:
-                sheet["BG33"] = process_list[i].load_mileage
-            if process_list[i].hollow_mileage != False:
-                sheet["BI33"] = process_list[i].hollow_mileage
+    process_sell_1 = ["C23","G23","O23","X23","AJ23","AS23","BD23","BG23","BI23"]
+    process_sell_2 = ["C25","G25","O25","X25","AJ25","AS25","BD25","BG25","BI25"]
+    process_sell_3 = []
+    process_sell_4 = []
+    process_sell_5 = []
+    process_sell_6 = []
 
+    cell_list = [process_sell_1,process_sell_2,process_sell_3,process_sell_4,process_sell_5,process_sell_6]
+    for i in range(process_count):
+        process_insert(sheet,process_list[i],cell_list[i])
     sheet["AO8"] = (
         snippet_data.checklist_id.account_id.last_name
         + " "
@@ -443,3 +373,20 @@ def excelfile_download(request, snippet_pk):
     wb.save(response)
     # 生成したHttpResponseをreturnする
     return response
+
+def process_insert(sheet, process, cell_list):
+
+
+
+    sheet[cell_list[0]] = process.start_point
+    sheet[cell_list[1]] = process.via_point
+    sheet[cell_list[2]] = process.end_point
+    sheet[cell_list[3]] = process.client
+    sheet[cell_list[4]] = process.goods
+    sheet[cell_list[5]] = process.load_situation
+    if process.is_load_situation != False:
+        sheet[cell_list[6]] = "良"
+    if process.load_mileage != False:
+        sheet[cell_list[7]] = process.load_mileage
+    if process.hollow_mileage != False:
+       sheet[cell_list[8]] = process.hollow_mileage
