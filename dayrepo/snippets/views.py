@@ -268,6 +268,7 @@ def excelfile_download(request, snippet_pk):
         sheet["E36"] = snippet_date.gasoline_amount
     if snippet_date.oil != False:
         sheet["I36"] = snippet_date.oil
+
     sheet["BD18"] = (
         str(snippet_date.driving_time.hour)
         + ":"
