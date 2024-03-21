@@ -291,6 +291,7 @@ def excelfile_download(request, snippet_pk):
         work_minute -= 60
         work_hour += 1
     work_hour += snippet_date.driving_time.hour + snippet_date.non_driving_time.hour
+
     sheet["BG18"] = str(work_hour) + ":" + str(work_minute)
     breek_in_minute = work_minute + snippet_date.break_time.minute
     breek_in_hour = work_hour
