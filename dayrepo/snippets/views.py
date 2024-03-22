@@ -374,6 +374,7 @@ def excelfile_download(request, snippet_pk):
     wb.save(response)
     # 生成したHttpResponseをreturnする
     return response
+
 # excelfile_download内で工程を入力する関数
 def process_insert(sheet, process, cell_list):
 
