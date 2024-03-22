@@ -250,6 +250,11 @@ def excelfile_download(request, snippet_pk):
         + " )"
     )
     sheet["AR3"] = snippet_data.checklist_id.car_id.vehicle_number
+    sheet["AO8"] = (
+        snippet_data.checklist_id.account_id.last_name
+        + " "
+        + snippet_data.checklist_id.account_id.first_name
+    )
     sheet["I9"] = snippet_data.start_mileage
     sheet["S9"] = snippet_data.end_mileage
 
@@ -361,11 +366,6 @@ def excelfile_download(request, snippet_pk):
     for i in range(process_count):
         process_insert(sheet,process_list[i],cell_list[i])
 
-    sheet["AO8"] = (
-        snippet_data.checklist_id.account_id.last_name
-        + " "
-        + snippet_data.checklist_id.account_id.first_name
-    )
     # content_typeに、Excelファイル(xlsxファイル)を返すことを表記しています。
     response = HttpResponse(content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
     response["Content-Disposition"] = "attachment; filename = report.xlsx"
