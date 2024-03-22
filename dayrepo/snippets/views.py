@@ -351,16 +351,17 @@ def excelfile_download(request, snippet_pk):
         sheet["AU36"] = trouble_data.trouble_support
 
     # 工程テーブル
-    process_sell_1 = ["C23","G23","O23","X23","AJ23","AS23","BD23","BG23","BI23"]
-    process_sell_2 = ["C25","G25","O25","X25","AJ25","AS25","BD25","BG25","BI25"]
-    process_sell_3 = []
-    process_sell_4 = []
-    process_sell_5 = []
-    process_sell_6 = []
+    process_cell_1 = ["C23","G23","O23","X23","AJ23","AS23","BD23","BG23","BI23"]
+    process_cell_2 = ["C25","G25","O25","X25","AJ25","AS25","BD25","BG25","BI25"]
+    process_cell_3 = ["C27","G27","O27","X27","AJ27","AS27","BD27","BG27","BI27"]
+    process_cell_4 = ["C29","G29","O29","X29","AJ29","AS29","BD29","BG29","BI29"]
+    process_cell_5 = ["C31","G31","O31","X31","AJ31","AS31","BD31","BG31","BI31"]
+    process_cell_6 = ["C33","G33","O33","X33","AJ33","AS33","BD33","BG33","BI33"]
 
-    cell_list = [process_sell_1,process_sell_2,process_sell_3,process_sell_4,process_sell_5,process_sell_6]
+    cell_list = [process_cell_1,process_cell_2,process_cell_3,process_cell_4,process_cell_5,process_cell_6]
     for i in range(process_count):
         process_insert(sheet,process_list[i],cell_list[i])
+
     sheet["AO8"] = (
         snippet_data.checklist_id.account_id.last_name
         + " "
@@ -373,10 +374,8 @@ def excelfile_download(request, snippet_pk):
     wb.save(response)
     # 生成したHttpResponseをreturnする
     return response
-
+# excelfile_download内で工程を入力する関数
 def process_insert(sheet, process, cell_list):
-
-
 
     sheet[cell_list[0]] = process.start_point
     sheet[cell_list[1]] = process.via_point
