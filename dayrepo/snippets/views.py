@@ -375,7 +375,7 @@ def excelfile_download(request, snippet_pk):
     return response
 
 # excelfile_download内で工程を入力する関数
-def process_insert(sheet: openpyxl, process: Process, cell_list: list) -> openpyxl:
+def process_insert(sheet: openpyxl, process: Process, cell_list: list):
     sheet[cell_list[0]] = process.start_point
     sheet[cell_list[1]] = process.via_point
     sheet[cell_list[2]] = process.end_point
