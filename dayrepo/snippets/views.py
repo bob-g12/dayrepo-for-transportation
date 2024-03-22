@@ -199,22 +199,17 @@ class ChecklistView(View):
 
         return redirect(to="snippet_post")
 
-
 checklist_post = ChecklistView.as_view()
 
 
 # listページからExcelファイルを出力
 def excelfile_download(request, snippet_pk):
-    # 引数で受け取った値を変数に代入
-    snippet_data = get_object_or_404(Snippet, pk=snippet_pk)
-    trouble_data = get_object_or_404(DutiesTrouble, snippet_id=snippet_pk)
-    process_list = get_list_or_404(Process, snippet_id=snippet_pk)
-    process_count = len(process_list)
     # Excelのテンプレートファイルの読み込み
     wb = openpyxl.load_workbook("./snippets/static/excel/report.xlsx")
-    # 入力対象のシート、セルの位置、入寮内容の指定
+    # 入力対象のシート指定
     sheet = wb["report_sheet"]
     # snippetテーブル
+    snippet_data = get_object_or_404(Snippet, pk=snippet_pk)
     sheet["E6"] = (
         str(snippet_data.start_time.hour) 
         + ":" 
@@ -343,6 +338,7 @@ def excelfile_download(request, snippet_pk):
         sheet["BJ46"] = "✔"
 
     # トラブルテーブル
+    trouble_data = get_object_or_404(DutiesTrouble, snippet_id=snippet_pk)
     if trouble_data.trouble_situation != False:
         sheet["AC36"] = trouble_data.trouble_situation
     if trouble_data.trouble_cause != False:
@@ -351,6 +347,9 @@ def excelfile_download(request, snippet_pk):
         sheet["AU36"] = trouble_data.trouble_support
 
     # 工程テーブル
+    process_list = get_list_or_404(Process, snippet_id=snippet_pk)
+    process_count = len(process_list)
+
     process_cell_1 = ["C23","G23","O23","X23","AJ23","AS23","BD23","BG23","BI23"]
     process_cell_2 = ["C25","G25","O25","X25","AJ25","AS25","BD25","BG25","BI25"]
     process_cell_3 = ["C27","G27","O27","X27","AJ27","AS27","BD27","BG27","BI27"]
@@ -375,8 +374,7 @@ def excelfile_download(request, snippet_pk):
     # 生成したHttpResponseをreturnする
     return response
 # excelfile_download内で工程を入力する関数
-def process_insert(sheet, process, cell_list):
-
+def process_insert(sheet: openpyxl, process: Process, cell_list: list) -> openpyxl:
     sheet[cell_list[0]] = process.start_point
     sheet[cell_list[1]] = process.via_point
     sheet[cell_list[2]] = process.end_point
