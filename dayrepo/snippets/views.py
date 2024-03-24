@@ -388,3 +388,4 @@ def process_insert(sheet: openpyxl, process: Process, cell_list: list):
         sheet[cell_list[7]] = process.load_mileage
     if process.hollow_mileage != False:
        sheet[cell_list[8]] = process.hollow_mileage
+ 
