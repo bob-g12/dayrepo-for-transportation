@@ -61,7 +61,6 @@ class SnippetListView(View):
             {"posts": snippets, "not_posts": not_submitted_checklist},
         )
 
-
 snippet_list = SnippetListView.as_view()
 
 
@@ -165,7 +164,6 @@ class SnippetView(View):
         # トップ画面へ
         return redirect(to="snippet_list")
 
-
 snippet_post = SnippetView.as_view()
 
 
@@ -197,11 +195,121 @@ class ChecklistView(View):
         if checklist.is_valid():
             checklist.save()
 
-        return redirect(to="snippet_post")
+        return redirect(to="snippet_list")
 
 checklist_post = ChecklistView.as_view()
 
+class EditingView(View):
+    def get(self, request, post_id, table):
+        if table == "Checklist":
+            post = get_object_or_404(Checklist, pk=post_id)
+            edit_form = ChecklistForm(instance=post)
+            return_html = render(request, "checklist_edit.html", {'form': edit_form,'post':post})
+        elif table == "Snippet":
+            post_snippet = get_object_or_404(Snippet, pk=post_id)
+            post_trouble =get_object_or_404(DutiesTrouble, snippet_id=post_id)
+            post_process =get_list_or_404(Process, snippet_id=post_id)
+            process_len = len(post_process)
+            edit_SnippetForm = SnippetForm(instance=post_snippet)
+            edit_TroubleForm = DutiesTroubleForm(instance=post_trouble)
+            edit_ProcessForm = []
+            for i in range(process_len):
+                edit_ProcessForm.append(ProcessForm(instance=post_process[i]))
+            return_html = render(request, "snippet_edit.html", {'form': edit_SnippetForm,'form_trouble': edit_TroubleForm,'form_process': edit_ProcessForm,'puls_process': ProcessForm})
+        elif table == "Snippet.checklist":
+            post = get_object_or_404(Checklist, checklist_id=post_id)
+            return_html = render(request, "checklist_edit.html", {'form': edit_form,'post':post})
+        elif table == "Checklist.snippet":
+            post = get_object_or_404(Snippet, checklist_id=post_id)
+            edit_form = SnippetForm(instance=post)
+            return_html = render(request, "snippet_edit.html", {'form': edit_form,'post':post})
+        return return_html
+    
+    def post(self, request):
+        req = request.POST
 
+        # スニペットフォーム保存
+        # checklists_id挿入のための
+        # モデルデータ作成
+        checklist = Checklist(
+            id=req.get("checklist_id"),
+        )
+        gasoline = req.get("gasoline_amount")
+        if gasoline == "":
+            gasoline = 0.0
+        oil = req.get("oil")
+        if oil == "":
+            oil = 0.0
+
+        snippet = Snippet(
+            checklist_id=checklist,
+            # 末尾の [0] について
+            # 入力項目のうち同一名のデータは、
+            # request.POST に配列で記録され、
+            # snippet においては index[0] を使用する
+            start_time=req.getlist("start_time")[0],
+            end_time=req.getlist("end_time")[0],
+            start_point=req.getlist("start_point")[0],
+            end_point=req.getlist("end_point")[0],
+            start_mileage=req.get("start_mileage"),
+            end_mileage=req.get("end_mileage"),
+            break_spot=req.get("break_spot"),
+            weather=req.get("weather"),
+            gasoline_amount=gasoline,
+            oil=oil,
+            driving_time=req.get("driving_time"),
+            non_driving_time=req.get("non_driving_time"),
+            break_time=req.get("break_time"),
+            is_today_trouble=req.get("is_today_trouble"),
+            free_space=req.get("free_space"),
+        )
+        if snippet.is_today_trouble == "on":
+            snippet.is_today_trouble = True
+        else:
+            snippet.is_today_trouble = False
+        snippet.save()
+
+        # チェックリストフォーム保存
+        checklist = Checklist.objects.get(pk=checklist.id)
+        checklist.is_snippet_make = True  # 提出済みへ変更
+        checklist.save()
+
+        # 業務トラブルフォーム保存
+        duties_trouble = DutiesTrouble(
+            snippet_id=snippet,
+            trouble_situation=req.get("trouble_situation"),
+            trouble_cause=req.get("trouble_cause"),
+            trouble_support=req.get("trouble_support"),
+        )
+        duties_trouble.save()
+
+        # 工程テーブルフォーム保存
+        form_process_count = len(req.getlist("via_point"))
+        for i in range(form_process_count):
+            process = Process(
+                snippet_id=snippet,
+                start_time=req.getlist("start_time")[i + 1],
+                end_time=req.getlist("end_time")[i + 1],
+                start_point=req.getlist("start_point")[i + 1],
+                end_point=req.getlist("end_point")[i + 1],
+                via_point=req.getlist("via_point")[i],
+                client=req.getlist("client")[i],
+                goods=req.getlist("goods")[i],
+                load_situation=req.getlist("load_situation")[i],
+                load_mileage=req.getlist("load_mileage")[i],
+                hollow_mileage=req.getlist("hollow_mileage")[i],
+                is_load_situation=req.getlist("is_load_situation")[i],
+            )
+            if process.is_load_situation == "on":
+                process.is_load_situation = True
+            else:
+                process.is_load_situation = False
+
+            process.save()
+        # トップ画面へ
+        return redirect(to="snippet_list")
+        
+editing = EditingView.as_view()
 # listページからExcelファイルを出力
 def excelfile_download(request, snippet_pk):
     # Excelのテンプレートファイルの読み込み
@@ -388,4 +496,3 @@ def process_insert(sheet: openpyxl, process: Process, cell_list: list):
         sheet[cell_list[7]] = process.load_mileage
     if process.hollow_mileage != False:
        sheet[cell_list[8]] = process.hollow_mileage
- 
