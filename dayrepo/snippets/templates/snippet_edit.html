@@ -1,0 +1,28 @@
+{% block page_title %}編集{% endblock %}
+{% block title %}編集{% endblock %}
+{% load static %}
+{% block content %}
+    <form method="post">
+        <h2>日報基本情報入力</h2>
+        {{ form.as_p }}
+        <h2>異常報告入力</h2>
+        {{ form_trouble.as_p }}
+        <h2>工程入力</h2>
+            
+        {% for post in form_process %}
+          <div id="form_area">
+            {{ post.as_p }}
+            <hr>  
+          </div>
+        {% endfor %}
+        <div id= "add_space">
+        </div>
+        <input type="button" value="フォーム追加" onclick="addForm()">
+        
+        {% csrf_token %}
+        <button name="btn_post" type="submit" class="snippet_button">
+            投稿
+        </button>
+    </form>
+    <script src="{% static 'js/process_add.js' %}"></script>
+{% endblock %}
