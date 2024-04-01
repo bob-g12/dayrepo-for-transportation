@@ -4,12 +4,15 @@
     <h2>未提出日報一覧</h2>
     {% for not_post in not_posts %}
     <p class="checklist">{{ not_post }}</p>
+    <button onclick="location.href='{% url 'editing' not_post.id 'Checklist' %}'">点検編集</button>
     <hr>
     {% endfor %}
     <h2>提出済み日報一覧</h2>
     {% for post in posts %}      
     <p class="snippet_list">{{ post }}</p>
     <button onclick="location.href='{% url 'excelfile_download' post.id %}'">出力</button>
+    <button onclick="location.href='{% url 'editing' post.checklist_id.id 'Checklist' %}'">点検編集</button>
+    <button onclick="location.href='{% url 'editing' post.id 'Snippet' %}'">日報編集</button>
     <hr>
     {% endfor %}
 {% endblock %}
