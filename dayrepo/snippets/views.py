@@ -76,6 +76,7 @@ class SnippetView(View):
                 "form": SnippetForm,
                 "form_trouble": DutiesTroubleForm,
                 "form_process": ProcessForm,
+                "process_count": 1,
             },
         )
 
@@ -215,7 +216,7 @@ class EditingView(View):
             edit_ProcessForm = []
             for i in range(process_len):
                 edit_ProcessForm.append(ProcessForm(instance=post_process[i]))
-            return_html = render(request, "snippet_edit.html", {'form': edit_SnippetForm,'form_trouble': edit_TroubleForm,'form_process': edit_ProcessForm,'puls_process': ProcessForm})
+            return_html = render(request, "snippet_edit.html", {'form': edit_SnippetForm,'form_trouble': edit_TroubleForm,'form_process': edit_ProcessForm,'process_count': process_len})
         elif table == "Snippet.checklist":
             post = get_object_or_404(Checklist, checklist_id=post_id)
             return_html = render(request, "checklist_edit.html", {'form': edit_form,'post':post})
