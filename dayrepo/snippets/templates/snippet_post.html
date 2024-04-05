@@ -8,12 +8,13 @@
         <h2>異常報告入力</h2>
         {{ form_trouble.as_p }}
         <h2>工程入力</h2>
-            
-        <div id="form_area">
-          {{ form_process.as_p }}
-          <hr>
-        </div>
-            
+          <div id="form_area">
+              {{ form_process.as_p }}
+              <hr>
+          </div>
+        
+        <div id= "add_space">
+        </div>   
         <input type="button" value="フォーム追加" onclick="addForm()">
         
         {% csrf_token %}
