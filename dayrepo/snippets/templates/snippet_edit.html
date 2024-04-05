@@ -7,7 +7,9 @@
         {{ form.as_p }}
         <h2>異常報告入力</h2>
         {{ form_trouble.as_p }}
-        <h2>工程入力</h2>
+        <h2>工程入力 現在 
+        <strong id="count">{{ process_count }}</strong>件（上限は６）
+        </h2>
             
         {% for post in form_process %}
           <div id="form_area">
