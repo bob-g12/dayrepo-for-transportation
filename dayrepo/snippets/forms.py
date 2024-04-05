@@ -15,7 +15,7 @@ class CustomSnippetChecklistsModelChoiceField(forms.ModelChoiceField):
         # checklistテーブルから稼働日と、FK先から苗字、名前、車両番号を取得して選択肢に表示
             # 参照テーブルのFK先から同じデータ帯のカラム情報を取得する方法
             # 直下の参照元テーブル(obj).外部キーカラム(account_id).欲しいカラム(first_name)
-        return str(obj.working_day) + " " + obj.account_id.first_name + " " + obj.account_id.last_name + " " + obj.car_id.vehicle_number
+        return str(obj.id) + " " + str(obj.working_day) + " " + obj.account_id.first_name + " " + obj.account_id.last_name + " " + obj.car_id.vehicle_number
     
 class SnippetForm(forms.ModelForm):
     checklist_id = CustomSnippetChecklistsModelChoiceField(
