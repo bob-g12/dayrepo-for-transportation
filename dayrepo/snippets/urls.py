@@ -11,8 +11,9 @@ urlpatterns = [
     path("employee/", views.get_employee,name="get_employee"),
     path("list/", views.snippet_list,name="snippet_list"),
     path("post/", views.snippet_post,name="snippet_post"),
-    path("edit/", views.editing,name="snippet_post"),
     path("checklist/", views.checklist_post,name="checklist_post"),
     path("excel/<int:snippet_pk>/", views.excelfile_download,name="excelfile_download"),
-    path("edit/<int:post_id>/<str:table>/", views.editing,name="editing"),
+    path("checklist-edit/<int:post_id>/", views.checklist_edit,name="checklist_edit"),
+    path("edit/<int:post_id>/", views.snippet_edit,name="snippet_edit"),
+    path("snippet-display/<int:checklist_id>/", views.snippet_post,name="snippet_display"),
 ]
