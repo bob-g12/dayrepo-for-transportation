@@ -242,6 +242,7 @@ class SnippetEditView(View):
                 oil = 0.0
 
             snippet = Snippet(
+                id = post_snippet.pk,
                 checklist_id=checklist_id,
                 # 末尾の [0] について
                 # 入力項目のうち同一名のデータは、
@@ -262,6 +263,7 @@ class SnippetEditView(View):
                 break_time=req.get("break_time"),
                 is_today_trouble=req.get("is_today_trouble"),
                 free_space=req.get("free_space"),
+                create_at=post_snippet.create_at
             )
             if snippet.is_today_trouble == "on":
                 snippet.is_today_trouble = True
@@ -277,19 +279,22 @@ class SnippetEditView(View):
 
             # 業務トラブルフォーム保存
             duties_trouble = DutiesTrouble(
-                snippet_id=snippet,
+                id=post_trouble.id,
+                snippet_id=post_trouble.snippet_id,
                 trouble_situation=req.get("trouble_situation"),
                 trouble_cause=req.get("trouble_cause"),
                 trouble_support=req.get("trouble_support"),
             )
             post_trouble.delete()
             duties_trouble.save()
-
+            
+            
             # 工程テーブルフォーム保存
             form_process_count = len(req.getlist("via_point"))
             for i in range(form_process_count):
                 process = Process(
-                    snippet_id=snippet,
+                    id=post_process[i].id,
+                    snippet_id=post_process[i].snippet_id,
                     start_time=req.getlist("start_time")[i + 1],
                     end_time=req.getlist("end_time")[i + 1],
                     start_point=req.getlist("start_point")[i + 1],
@@ -306,9 +311,9 @@ class SnippetEditView(View):
                     process.is_load_situation = True
                 else:
                     process.is_load_situation = False
-                process.save()
                 post_process[i].delete()
-            post_snippet.delete()
+                process.save()
+            post_snippet=snippet
             # トップ画面へ
             return redirect(to="snippet_list")
 snippet_edit = SnippetEditView.as_view()
