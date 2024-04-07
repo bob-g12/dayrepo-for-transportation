@@ -10,9 +10,9 @@ urlpatterns = [
     path("car/new/", views.car_registration,name="car_registration"),
     path("employee/", views.get_employee,name="get_employee"),
     path("list/", views.snippet_list,name="snippet_list"),
-    path("checklist/", views.checklist_post,name="checklist_post"),
-    path("excel/<int:snippet_pk>/", views.excelfile_download,name="excelfile_download"),
-    path("edit/checklist/<int:post_id>/", views.checklist_edit,name="checklist_edit"),
-    path("edit/<int:post_id>/", views.snippet_edit,name="snippet_edit"),
     path("post/snippet/<int:checklist_id>/", views.snippet_post,name="snippet_post"),
+    path("checklist/", views.checklist_post,name="checklist_post"),
+    path("edit/<int:post_id>/", views.snippet_edit,name="snippet_edit"),
+    path("edit/checklist/<int:post_id>/", views.checklist_edit,name="checklist_edit"),
+    path("excel/<int:snippet_pk>/", views.excelfile_download,name="excelfile_download"),
 ]
