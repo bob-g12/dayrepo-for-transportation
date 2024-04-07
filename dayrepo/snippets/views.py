@@ -65,7 +65,7 @@ snippet_list = SnippetListView.as_view()
 # snippet画面の表示/POST後処理
 class SnippetView(View):
     # 新規入力画面へ
-    def get(self, request):
+    def get(self, request,checklist_id):
         # 投稿ボタンで投稿ページへ
         return render(
             request,
@@ -75,19 +75,16 @@ class SnippetView(View):
                 "form_trouble": DutiesTroubleForm,
                 "form_process": ProcessForm,
                 "process_count": 1,
+                "checklist_id":checklist_id
             },
         )
 
     # 投稿機能
     def post(self, request,checklist_id ):
         req = request.POST
-
         # スニペットフォーム保存
         # checklists_id挿入のための
         # モデルデータ作成
-        checklist = Checklist(
-            id=req.get("checklist_id"),
-        )
         gasoline = req.get("gasoline_amount")
         if gasoline == "":
             gasoline = 0.0
@@ -95,12 +92,12 @@ class SnippetView(View):
         if oil == "":
             oil = 0.0
 
-        snippet = Snippet(
-            checklist_id=checklist_id,
+        snippet = Snippet( 
             # 末尾の [0] について
             # 入力項目のうち同一名のデータは、
             # request.POST に配列で記録され、
             # snippet においては index[0] を使用する
+            checklist_id=Checklist.objects.get(pk=checklist_id),
             start_time=req.getlist("start_time")[0],
             end_time=req.getlist("end_time")[0],
             start_point=req.getlist("start_point")[0],
@@ -124,7 +121,7 @@ class SnippetView(View):
         snippet.save()
 
         # チェックリストフォーム保存
-        checklist = Checklist.objects.get(pk=checklist.id)
+        checklist = Checklist.objects.get(pk=checklist_id)
         checklist.is_snippet_make = True  # 提出済みへ変更
         checklist.save()
 
@@ -217,18 +214,19 @@ class SnippetEditView(View):
         edit_SnippetForm = SnippetForm(instance=post_snippet)
         edit_TroubleForm = DutiesTroubleForm(instance=post_trouble)
         edit_ProcessForm = []
+        checklist_id = post_snippet.checklist_id
         for i in range(process_len):
             edit_ProcessForm.append(ProcessForm(instance=post_process[i]))
-        return render(request, "snippet_edit.html", {'form': edit_SnippetForm,'form_trouble': edit_TroubleForm,'form_process': edit_ProcessForm,'process_count': process_len})
-    def edit(self, request, post_id):
+        return render(request, "snippet_edit.html", {'form': edit_SnippetForm,'form_trouble': edit_TroubleForm,'form_process': edit_ProcessForm,'process_count': process_len,'checklist_id':checklist_id})
+    def post(self, request,post_id):
             req = request.POST
-
+            post_snippet = get_object_or_404(Snippet, pk=post_id)
+            post_trouble = get_object_or_404(DutiesTrouble, snippet_id=post_id)
+            post_process = get_list_or_404(Process, snippet_id=post_id)
+            checklist_id = post_snippet.checklist_id
             # スニペットフォーム保存
             # checklists_id挿入のための
             # モデルデータ作成
-            checklist = Checklist(
-                id=req.get("checklist_id"),
-            )
             gasoline = req.get("gasoline_amount")
             if gasoline == "":
                 gasoline = 0.0
@@ -237,7 +235,7 @@ class SnippetEditView(View):
                 oil = 0.0
 
             snippet = Snippet(
-                checklist_id=checklist,
+                checklist_id=checklist_id,
                 # 末尾の [0] について
                 # 入力項目のうち同一名のデータは、
                 # request.POST に配列で記録され、
@@ -262,14 +260,13 @@ class SnippetEditView(View):
                 snippet.is_today_trouble = True
             else:
                 snippet.is_today_trouble = False
-            origin_snippet = get_object_or_404(Snippet,pk=post_id)
-
             snippet.save()
 
             # チェックリストフォーム保存
-            checklist = Checklist.objects.get(pk=checklist.id)
-            checklist.is_snippet_make = True  # 提出済みへ変更
-            checklist.save()
+            # snippet入力時、checklistの選択肢を日付、氏名、車両に表示して選択できる(4/4)
+            # checklist = Checklist.objects.get(pk=checklist_id)
+            # checklist.is_snippet_make = True  # 提出済みへ変更
+            # checklist.save()
 
             # 業務トラブルフォーム保存
             duties_trouble = DutiesTrouble(
@@ -278,6 +275,7 @@ class SnippetEditView(View):
                 trouble_cause=req.get("trouble_cause"),
                 trouble_support=req.get("trouble_support"),
             )
+            post_trouble.delete()
             duties_trouble.save()
 
             # 工程テーブルフォーム保存
@@ -301,8 +299,9 @@ class SnippetEditView(View):
                     process.is_load_situation = True
                 else:
                     process.is_load_situation = False
-
                 process.save()
+                post_process[i].delete()
+            post_snippet.delete()
             # トップ画面へ
             return redirect(to="snippet_list")
 snippet_edit = SnippetEditView.as_view()
