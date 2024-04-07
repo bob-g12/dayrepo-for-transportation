@@ -3,6 +3,7 @@
 {% load static %}
 {% block content %}
     <form method="post">
+        <p><strong id=checklist_id>{{checklist_id}}</strong></p>
         <h2>日報基本情報入力</h2>
         {{ form.as_p }}
         <h2>異常報告入力</h2>

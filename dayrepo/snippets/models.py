@@ -217,7 +217,7 @@ class Snippet(models.Model):
 
     def __str__(self):
 
-        return f'{self.id}, {self.checklist_id.account_id.last_name},{self.checklist_id.account_id.first_name},{self.checklist_id.car_id.vehicle_number}'
+        return f'{self.checklist_id}, {self.checklist_id.account_id.last_name},{self.checklist_id.account_id.first_name},{self.checklist_id.car_id.vehicle_number}'
 
 class DutiesTrouble(models.Model):
 
