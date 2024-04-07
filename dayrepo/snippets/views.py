@@ -197,11 +197,18 @@ checklist_post = ChecklistView.as_view()
 
 class ChecklistEditView(View):
     def get(self, request, post_id):
-        
-            post = get_object_or_404(Checklist, pk=post_id)
-            edit_form = ChecklistForm(instance=post)
-            return render(request, "checklist_edit.html", {'form': edit_form,'post':post})
-    # def edit():
+        post = get_object_or_404(Checklist, pk=post_id)
+        edit_form = ChecklistForm(instance=post)
+        return render(request, "checklist_edit.html", {'form': edit_form,'post':post})
+    def post(self, request, post_id):
+        checklist = Checklist(
+            request.POST,
+        )
+        checklist.pk = post_id
+        post = get_object_or_404(Checklist, pk=post_id)
+        form = ChecklistForm(request.POST, instance=post)
+        form.save()
+        return redirect(to="snippet_list")
 
 checklist_edit = ChecklistEditView.as_view()
 
