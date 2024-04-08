@@ -65,7 +65,7 @@ snippet_list = SnippetListView.as_view()
 # snippet画面の表示/POST後処理
 class SnippetView(View):
     # 新規入力画面へ
-    def get(self, request,checklist_id):
+    def get(self, request, checklist_id):
         # 投稿ボタンで投稿ページへ
         return render(
             request,
