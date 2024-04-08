@@ -11,12 +11,6 @@ class CustomChecklistAccountsModelChoiceField(forms.ModelChoiceField):
         return obj.last_name + " " + obj.first_name
     
 class SnippetForm(forms.ModelForm):
-    # snippet入力時、checklistの選択肢を日付、氏名、車両に表示して選択できる(2/3)
-    # checklist_id = CustomSnippetChecklistsModelChoiceField(
-    #     queryset= Checklist.objects.all().filter(is_snippet_make=0),
-    #     empty_label="今回使用する点検データを選択してください",
-    #     label="点検データ",
-    # )
     class Meta:
         # モデルを指定
         model = Snippet
