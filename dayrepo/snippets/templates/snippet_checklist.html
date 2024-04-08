@@ -2,8 +2,8 @@
 {% block title %}投稿{% endblock %}
 {% load static %}
 {% block content %}
+    <h2>点検項目項目</h2>
     <form method="post">
-        <h2>点検項目項目</h2>
         {{ form.as_p }}
         {% csrf_token %}
         <button name="btn_post" type="submit" class="snippet_button">
