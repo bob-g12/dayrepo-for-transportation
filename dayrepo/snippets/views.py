@@ -197,20 +197,20 @@ class ChecklistView(View):
 checklist_post = ChecklistView.as_view()
 
 class ChecklistEditView(View):
-    def get(self, request, post_id):
-        post = get_object_or_404(Checklist, pk=post_id)
+    def get(self, request, checklist_id):
+        post = get_object_or_404(Checklist, pk=checklist_id)
         edit_form = ChecklistForm(instance=post)
         return render(
             request, 
             "checklist_edit.html",
               {'form': edit_form,'post':post}
         )
-    def post(self, request, post_id):
+    def post(self, request, checklist_id):
         checklist = Checklist(
             request.POST,
         )
-        checklist.pk = post_id
-        post = get_object_or_404(Checklist, pk=post_id)
+        checklist.pk = checklist_id
+        post = get_object_or_404(Checklist, pk=checklist_id)
         form = ChecklistForm(request.POST, instance=post)
         form.save()
         return redirect(to="snippet_list")
@@ -218,10 +218,10 @@ class ChecklistEditView(View):
 checklist_edit = ChecklistEditView.as_view()
 
 class SnippetEditView(View):
-    def get(self, request, post_id):
-        post_snippet = get_object_or_404(Snippet, pk=post_id)
-        post_trouble = get_object_or_404(DutiesTrouble, snippet_id=post_id)
-        post_process = get_list_or_404(Process, snippet_id=post_id)
+    def get(self, request, snippet_id):
+        post_snippet = get_object_or_404(Snippet, pk=snippet_id)
+        post_trouble = get_object_or_404(DutiesTrouble, snippet_id=snippet_id)
+        post_process = get_list_or_404(Process, snippet_id=snippet_id)
         process_len = len(post_process)
         edit_SnippetForm = SnippetForm(instance=post_snippet)
         edit_TroubleForm = DutiesTroubleForm(instance=post_trouble)
@@ -230,19 +230,19 @@ class SnippetEditView(View):
         for i in range(process_len):
             edit_ProcessForm.append(ProcessForm(instance=post_process[i]))
         return render(request, "snippet_edit.html", {'form': edit_SnippetForm,'form_trouble': edit_TroubleForm,'form_process': edit_ProcessForm,'process_count': process_len,'checklist_id':checklist_id})
-    def post(self, request,post_id):
+    def post(self, request,snippet_id):
             req = request.POST
             post_snippet = get_object_or_404(
                 Snippet,
-                pk=post_id
+                pk=snippet_id
             )
             post_trouble = get_object_or_404(
                 DutiesTrouble, 
-                snippet_id=post_id
+                snippet_id=snippet_id
             )
             post_process = get_list_or_404(
                 Process,
-                snippet_id=post_id
+                snippet_id=snippet_id
             )
             checklist_id = post_snippet.checklist_id
             # スニペットフォーム保存
