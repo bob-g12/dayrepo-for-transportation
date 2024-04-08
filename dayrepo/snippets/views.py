@@ -80,7 +80,7 @@ class SnippetView(View):
         )
 
     # 投稿機能
-    def post(self, request,checklist_id ):
+    def post(self, request, checklist_id):
         req = request.POST
         # スニペットフォーム保存
         # checklists_id挿入のための
