@@ -4,7 +4,7 @@ const addForm = () => {
   let now_count = count + i;
   if (now_count <= 6){
     alert("工程を追加しますか？");
-    let content_area = document.getElementById("form_area");
+    const content_area = document.getElementById("form_area");
     let clone_element = content_area.cloneNode(true);
     let content_clone = document.getElementById("add_space");
     let content_count = content_area.childElementCount;
