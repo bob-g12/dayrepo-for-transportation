@@ -200,7 +200,11 @@ class ChecklistEditView(View):
     def get(self, request, post_id):
         post = get_object_or_404(Checklist, pk=post_id)
         edit_form = ChecklistForm(instance=post)
-        return render(request, "checklist_edit.html", {'form': edit_form,'post':post})
+        return render(
+            request, 
+            "checklist_edit.html",
+              {'form': edit_form,'post':post}
+        )
     def post(self, request, post_id):
         checklist = Checklist(
             request.POST,
@@ -228,9 +232,18 @@ class SnippetEditView(View):
         return render(request, "snippet_edit.html", {'form': edit_SnippetForm,'form_trouble': edit_TroubleForm,'form_process': edit_ProcessForm,'process_count': process_len,'checklist_id':checklist_id})
     def post(self, request,post_id):
             req = request.POST
-            post_snippet = get_object_or_404(Snippet, pk=post_id)
-            post_trouble = get_object_or_404(DutiesTrouble, snippet_id=post_id)
-            post_process = get_list_or_404(Process, snippet_id=post_id)
+            post_snippet = get_object_or_404(
+                Snippet,
+                pk=post_id
+            )
+            post_trouble = get_object_or_404(
+                DutiesTrouble, 
+                snippet_id=post_id
+            )
+            post_process = get_list_or_404(
+                Process,
+                snippet_id=post_id
+            )
             checklist_id = post_snippet.checklist_id
             # スニペットフォーム保存
             # checklists_id挿入のための
@@ -315,7 +328,9 @@ snippet_edit = SnippetEditView.as_view()
 
 def excelfile_download(request, snippet_pk):
     # Excelのテンプレートファイルの読み込み
-    wb = openpyxl.load_workbook("./snippets/static/excel/report.xlsx")
+    wb = openpyxl.load_workbook(
+        "./snippets/static/excel/report.xlsx"
+    )
     # 入力対象のシート指定
     sheet = wb["report_sheet"]
     # snippetテーブル
@@ -477,7 +492,9 @@ def excelfile_download(request, snippet_pk):
         process_insert(sheet,process_list[i],cell_list[i])
 
     # content_typeに、Excelファイル(xlsxファイル)を返すことを表記しています。
-    response = HttpResponse(content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+    response = HttpResponse(
+        content_type="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    )
     response["Content-Disposition"] = "attachment; filename = report.xlsx"
     # データの書き込みを行なったExcelファイルを保存する
     wb.save(response)
