@@ -22,6 +22,6 @@ const addForm = () => {
     i++ ;
   }
   else {
-    alert("これ以上増やせません",);
+    alert("これ以上増やせません");
   }
 }
