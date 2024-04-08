@@ -82,6 +82,8 @@ class SnippetView(View):
     # 投稿機能
     def post(self, request, checklist_id):
         req = request.POST
+        # 取得したchecklist_idを該当のChecklistへ変換
+        checklist = Checklist.objects.get(pk=checklist_id)
         # スニペットフォーム保存
         # checklists_id挿入のための
         # モデルデータ作成
@@ -97,7 +99,7 @@ class SnippetView(View):
             # 入力項目のうち同一名のデータは、
             # request.POST に配列で記録され、
             # snippet においては index[0] を使用する
-            checklist_id=Checklist.objects.get(pk=checklist_id),
+            checklist_id=checklist,
             start_time=req.getlist("start_time")[0],
             end_time=req.getlist("end_time")[0],
             start_point=req.getlist("start_point")[0],
@@ -121,7 +123,6 @@ class SnippetView(View):
         snippet.save()
 
         # チェックリストフォーム保存
-        checklist = Checklist.objects.get(pk=checklist_id)
         checklist.is_snippet_make = True  # 提出済みへ変更
         checklist.save()
 
