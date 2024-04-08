@@ -9,13 +9,6 @@ class CustomChecklistCarsModelChoiceField(forms.ModelChoiceField):
 class CustomChecklistAccountsModelChoiceField(forms.ModelChoiceField):
     def label_from_instance(self, obj):
         return obj.last_name + " " + obj.first_name
-# snippet入力時、checklistの選択肢を日付、氏名、車両に表示して選択できる(1/3)
-# class CustomSnippetChecklistsModelChoiceField(forms.ModelChoiceField):
-#     def label_from_instance(self, obj):
-#         # checklistテーブルから稼働日と、FK先から苗字、名前、車両番号を取得して選択肢に表示
-#             # 参照テーブルのFK先から同じデータ帯のカラム情報を取得する方法
-#             # 直下の参照元テーブル(obj).外部キーカラム(account_id).欲しいカラム(first_name)
-#         return str(obj.id) + " " + str(obj.working_day) + " " + obj.account_id.first_name + " " + obj.account_id.last_name + " " + obj.car_id.vehicle_number
     
 class SnippetForm(forms.ModelForm):
     # snippet入力時、checklistの選択肢を日付、氏名、車両に表示して選択できる(2/3)
