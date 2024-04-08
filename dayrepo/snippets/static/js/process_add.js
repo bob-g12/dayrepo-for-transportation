@@ -1,8 +1,6 @@
-const limit = 6;
-const bool_select = 8;
-const not_select = 10;
 const addForm = () => {
   let count = Number(document.getElementById("count").innerHTML);
+  const limit = 6;
   if (count == limit){
     alert("これ以上増やせません")
     return
@@ -13,6 +11,8 @@ const addForm = () => {
   let clone_element = content_area.cloneNode(true);
   let content_clone = document.getElementById("add_space");
   const content_count = content_area.childElementCount;
+  const bool_select = 8;
+  const not_select = 10;
   for (let i=0; i<content_count; i++){
     if (i != bool_select && i <= not_select){
       clone_element.children[i].children[1].value="";
