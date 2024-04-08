@@ -1,6 +1,6 @@
 let i = 1 ;
 const addForm = () => {
-  let count = Number(document.getElementById("count").innerHTML);
+  const count = Number(document.getElementById("count").innerHTML);
   let now_count = count + i;
   if (now_count <= 6){
     alert("工程を追加しますか？",);
