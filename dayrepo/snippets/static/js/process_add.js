@@ -1,5 +1,5 @@
 const limit = 6;
-let bool_select = 8;
+const bool_select = 8;
 let not_select = 10;
 const addForm = () => {
   const count = Number(document.getElementById("count").innerHTML);
