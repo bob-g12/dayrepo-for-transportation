@@ -7,7 +7,7 @@ const addForm = () => {
     const content_area = document.getElementById("form_area");
     let clone_element = content_area.cloneNode(true);
     let content_clone = document.getElementById("add_space");
-    let content_count = content_area.childElementCount;
+    const content_count = content_area.childElementCount;
     for (let i=0; i<content_count; i++){
       if (i != 8 && i <= 10){
         clone_element.children[i].children[1].value="";
