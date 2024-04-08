@@ -2,14 +2,13 @@ const limit = 6;
 const bool_select = 8;
 const not_select = 10;
 const addForm = () => {
-  const count = Number(document.getElementById("count").innerHTML);
-  let now_count = count;
-  if (now_count == limit){
+  let count = Number(document.getElementById("count").innerHTML);
+  if (count == limit){
     alert("これ以上増やせません")
     return
   }
   alert("工程を追加します");
-  now_count += 1;
+  count += 1;
   const content_area = document.getElementById("form_area");
   let clone_element = content_area.cloneNode(true);
   let content_clone = document.getElementById("add_space");
@@ -23,6 +22,6 @@ const addForm = () => {
     }
   }
   content_clone.before(clone_element)
-  document.getElementById("count").innerHTML = now_count;
+  document.getElementById("count").innerHTML = count;
   clone_element.id = now_count;
 }
