@@ -17,8 +17,6 @@ class SnippetForm(forms.ModelForm):
 
         # フォームとして表示したいカラムを指定
         fields = (
-            # snippet入力時、checklistの選択肢を日付、氏名、車両に表示して選択できる(3/3)
-            # "checklist_id",
             "start_mileage",
             "end_mileage",
             "start_time",
