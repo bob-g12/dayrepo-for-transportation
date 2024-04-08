@@ -229,7 +229,17 @@ class SnippetEditView(View):
         checklist_id = post_snippet.checklist_id
         for i in range(process_len):
             edit_ProcessForm.append(ProcessForm(instance=post_process[i]))
-        return render(request, "snippet_edit.html", {'form': edit_SnippetForm,'form_trouble': edit_TroubleForm,'form_process': edit_ProcessForm,'process_count': process_len,'checklist_id':checklist_id})
+        return render(
+            request, 
+            "snippet_edit.html", 
+            {
+                'form': edit_SnippetForm,
+                'form_trouble': edit_TroubleForm,
+                'form_process': edit_ProcessForm,
+                'process_count': process_len,
+                'checklist_id':checklist_id
+            }
+        )
     def post(self, request,snippet_id):
             req = request.POST
             post_snippet = get_object_or_404(
