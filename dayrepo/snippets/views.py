@@ -271,12 +271,6 @@ class SnippetEditView(View):
                 snippet.is_today_trouble = False
             snippet.save()
 
-            # チェックリストフォーム保存
-            # snippet入力時、checklistの選択肢を日付、氏名、車両に表示して選択できる(4/4)
-            # checklist = Checklist.objects.get(pk=checklist_id)
-            # checklist.is_snippet_make = True  # 提出済みへ変更
-            # checklist.save()
-
             # 業務トラブルフォーム保存
             duties_trouble = DutiesTrouble(
                 id=post_trouble.id,
