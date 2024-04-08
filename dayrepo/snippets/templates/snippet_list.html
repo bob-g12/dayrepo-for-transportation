@@ -3,7 +3,7 @@
 {% block content %}
     <h2>未提出日報一覧</h2>
     {% for checklist in checklists %}
-    <p class="checklist">{{ checklist }}</p>
+    <p id="checklist">{{ checklist }}</p>
     <button onclick="location.href='{% url 'checklist_edit' checklist.id %}'">点検編集</button>
     <button onclick="location.href='{% url 'snippet_post' checklist.id %}'">snippet作成</button>
     <hr>
