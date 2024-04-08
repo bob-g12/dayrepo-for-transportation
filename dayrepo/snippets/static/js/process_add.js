@@ -3,7 +3,7 @@ const bool_select = 8;
 const not_select = 10;
 const addForm = () => {
   const count = Number(document.getElementById("count").innerHTML);
-  let now_count = count + 1;
+  const now_count = count + 1;
   if (now_count <= limit){
     alert("工程を追加します");
     const content_area = document.getElementById("form_area");
