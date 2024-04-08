@@ -75,7 +75,7 @@ class SnippetView(View):
                 "form_trouble": DutiesTroubleForm,
                 "form_process": ProcessForm,
                 "process_count": 1,
-                "checklist_id":checklist_id
+                "checklist_id": checklist_id
             },
         )
 
