@@ -1,5 +1,5 @@
-{% block page_title %}投稿{% endblock %}
-{% block title %}投稿{% endblock %}
+{% block page_title %}編集{% endblock %}
+{% block title %}編集{% endblock %}
 {% load static %}
 {% block content %}
     <form method="post">
@@ -10,17 +10,20 @@
         <h2>工程入力 現在 
         <strong id="count">{{ process_count }}</strong>件（上限は６）
         </h2>
+            
+        {% for post in form_process %}
           <div id="form_area">
-              {{ form_process.as_p }}
-              <hr>
+            {{ post.as_p }}
+            <hr>  
           </div>
-        <div id="add_space">
-        </div>   
+        {% endfor %}
+        <div id= "add_space">
+        </div>
         <input type="button" value="フォーム追加" onclick="addForm()">
         
         {% csrf_token %}
-        <button name="btn_post" type="submit" class="snippet_button">
-            投稿
+        <button  name="btn_post" type="submit" class="snippet_button">
+            再投稿
         </button>
     </form>
     <script src="{% static 'js/process_add.js' %}"></script>

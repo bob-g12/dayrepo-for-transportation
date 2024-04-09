@@ -1,5 +1,5 @@
-{% block page_title %}投稿{% endblock %}
-{% block title %}投稿{% endblock %}
+{% block page_title %}編集{% endblock %}
+{% block title %}編集{% endblock %}
 {% load static %}
 {% block content %}
     <h2>点検項目項目</h2>
@@ -7,7 +7,7 @@
         {{ form.as_p }}
         {% csrf_token %}
         <button name="btn_post" type="submit" class="snippet_button">
-            投稿
+            再投稿
         </button>
     </form>
 {% endblock %}
