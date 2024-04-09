@@ -3,7 +3,7 @@ const addForm = () => {
     alert("カウント値が異常です")
     return ;
   }
-  let count = Number(
+  const count = Number(
     document.getElementById("count").innerHTML
   );
 
