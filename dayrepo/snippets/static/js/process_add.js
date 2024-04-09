@@ -23,5 +23,5 @@ const addForm = () => {
   }
   content_clone.before(clone_element)
   document.getElementById("count").innerHTML = count;
-  clone_element.id = now_count;
+  clone_element.id = count;
 }
