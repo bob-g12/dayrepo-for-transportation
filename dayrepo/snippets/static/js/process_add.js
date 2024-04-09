@@ -7,6 +7,10 @@ const addForm = () => {
     alert("これ以上増やせません")
     return
   }
+  else if (isNaN(count)){
+    alert("カウント値が異常です、値が"+count+"になっています")
+    return
+  }
   alert("工程を追加します");
   count += 1;
   const content_area = document.getElementById("form_area");
