@@ -11,12 +11,12 @@ const addForm = () => {
   let clone_element = content_area.cloneNode(true);
   const content_count = content_area.childElementCount;
   const bool_select = 8;
-  const not_select = 10;
+  const last_select = 10;
   for (let i=0; i<content_count; i++){
     if (i == bool_select){
       clone_element.children[i].children[1].checked="";
     }
-    else if (i <= not_select){
+    else if (i <= last_select){
       clone_element.children[i].children[1].value="";
     }
   }
