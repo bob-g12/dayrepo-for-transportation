@@ -1,7 +1,7 @@
 const addForm = () => {
   if (isNaN(document.getElementById("count").innerHTML)){ 
     alert("カウント値が異常です")
-    return
+    return ;
   }
   let count = Number(
     document.getElementById("count").innerHTML
