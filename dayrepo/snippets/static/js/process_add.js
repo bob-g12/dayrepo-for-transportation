@@ -9,7 +9,6 @@ const addForm = () => {
   count += 1;
   const content_area = document.getElementById("form_area");
   let clone_element = content_area.cloneNode(true);
-  let content_clone = document.getElementById("add_space");
   const content_count = content_area.childElementCount;
   const bool_select = 8;
   const not_select = 10;
@@ -21,6 +20,7 @@ const addForm = () => {
       clone_element.children[i].children[1].checked="";
     }
   }
+  let content_clone = document.getElementById("add_space");
   content_clone.before(clone_element)
   document.getElementById("count").innerHTML = count;
   clone_element.id = count;
