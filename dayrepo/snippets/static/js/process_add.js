@@ -1,5 +1,7 @@
 const addForm = () => {
-  let count = Number(document.getElementById("count").innerHTML);
+  let count = Number(
+    document.getElementById("count").innerHTML
+  );
   const limit = 6;
   if (count >= limit){
     alert("これ以上増やせません")
