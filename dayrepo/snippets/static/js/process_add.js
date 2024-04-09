@@ -14,7 +14,6 @@ const addForm = () => {
   }
 
   alert("工程を追加します");
-  count += 1;
   const content_area = document.getElementById("form_area");
   const content_count = content_area.childElementCount;
   const bool_select = 8;
@@ -31,6 +30,6 @@ const addForm = () => {
 
   let content_clone = document.getElementById("add_space");
   content_clone.before(clone_element)
-  document.getElementById("count").innerHTML = count;
-  clone_element.id = count;
+  document.getElementById("count").innerHTML = count+1;
+  clone_element.id = count+1;
 }
