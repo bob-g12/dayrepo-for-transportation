@@ -82,7 +82,6 @@ class SnippetView(View):
     # 投稿機能
     def post(self, request, checklist_id):
         req = request.POST
-        # 取得したchecklist_idから該当のChecklistを取得
         checklist = Checklist.objects.get(pk=checklist_id)
         # スニペットフォーム保存
         # checklists_id挿入のための
