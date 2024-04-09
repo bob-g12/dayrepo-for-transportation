@@ -1,14 +1,14 @@
 const addForm = () => {
+  if (isNaN(document.getElementById("count").innerHTML)){ 
+    alert("カウント値が異常です")
+    return
+  }
   let count = Number(
     document.getElementById("count").innerHTML
   );
   const limit = 6;
   if (count >= limit){
     alert("これ以上増やせません")
-    return
-  }
-  else if (isNaN(count)){
-    alert("カウント値が異常です、値が"+count+"になっています")
     return
   }
   alert("工程を追加します");
