@@ -205,10 +205,6 @@ class ChecklistEditView(View):
               {'form': edit_form}
         )
     def post(self, request, checklist_id):
-        checklist = Checklist(
-            request.POST,
-        )
-        checklist.pk = checklist_id
         post = get_object_or_404(Checklist, pk=checklist_id)
         form = ChecklistForm(request.POST, instance=post)
         form.save()
