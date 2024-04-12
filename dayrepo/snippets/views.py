@@ -162,7 +162,6 @@ class SnippetView(View):
 
 snippet_post = SnippetView.as_view()
 
-
 # checklist入力画面表示/POST処理
 class ChecklistView(View):
     # 新規入力画面
@@ -329,7 +328,39 @@ class SnippetEditView(View):
             post_snippet=snippet
             # トップ画面へ
             return redirect(to="snippet_list")
+
 snippet_edit = SnippetEditView.as_view()
+
+class PostDelete(View):
+    def get(self,request,post_id,post_type):
+        if post_type == "snippet":
+            snippet = Snippet.objects.get(pk=post_id)
+            checklist = Checklist.objects.get(pk=snippet.checklist_id.id)
+            checklist.is_snippet_make = False
+            checklist.save()
+            dutiestrouble = DutiesTrouble.objects.get(snippet_id=post_id)
+            dutiestrouble.delete()
+            process = get_list_or_404(Process,snippet_id=post_id)
+            for i in range(len(process)):
+                process[i].delete()
+            snippet.delete()
+            return redirect(to="snippet_list")
+        elif post_type == "checklist":
+            checklist = Checklist.objects.get(pk=post_id)
+            checklist.delete()
+            return redirect(to="snippet_list")
+        elif post_type == "oll":
+            snippet = Snippet.objects.get(pk=post_id)
+            checklist = Checklist.objects.get(pk=snippet.checklist_id.pk)
+            dutiestrouble = DutiesTrouble.objects.get(snippet_id=post_id)
+            dutiestrouble.delete()
+            process = get_list_or_404(Process,snippet_id=post_id)
+            for i in range(len(process)):
+                process[i].delete()
+            snippet.delete()
+            checklist.delete()
+            return redirect(to="snippet_list")
+post_delete = PostDelete.as_view()
 
 def excelfile_download(request, snippet_pk):
     # Excelのテンプレートファイルの読み込み

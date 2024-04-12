@@ -14,5 +14,6 @@ urlpatterns = [
     path("checklist/", views.checklist_post,name="checklist_post"),
     path("edit/<int:snippet_id>/", views.snippet_edit,name="snippet_edit"),
     path("edit/checklist/<int:checklist_id>/", views.checklist_edit,name="checklist_edit"),
+    path("delete/<int:post_id>/<str:post_type>/", views.post_delete,name="post_delete"),
     path("excel/<int:snippet_pk>/", views.excelfile_download,name="excelfile_download"),
 ]
