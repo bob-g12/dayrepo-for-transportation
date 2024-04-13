@@ -349,7 +349,7 @@ class PostDelete(View):
             checklist = Checklist.objects.get(pk=post_id)
             checklist.delete()
             return redirect(to="snippet_list")
-        elif post_type == "oll":
+        elif post_type == "all":
             snippet = Snippet.objects.get(pk=post_id)
             checklist = Checklist.objects.get(pk=snippet.checklist_id.pk)
             dutiestrouble = DutiesTrouble.objects.get(snippet_id=post_id)
