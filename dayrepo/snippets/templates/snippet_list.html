@@ -16,7 +16,7 @@
     <button onclick="location.href='{% url 'checklist_edit' post.checklist_id.id %}'">点検編集</button>
     <button onclick="location.href='{% url 'snippet_edit' post.id %}'">日報編集</button>
     <button onclick="location.href='{% url 'post_delete' post.id 'snippet' %}'">日報削除</button>
-    <button onclick="location.href='{% url 'post_delete' post.id 'all' %}'">オール削除</button>
+    <button onclick="location.href='{% url 'post_delete' post.id 'all' %}'">一括削除</button>
     <hr>
     {% endfor %}
 {% endblock %}
