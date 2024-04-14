@@ -332,29 +332,29 @@ class SnippetEditView(View):
 snippet_edit = SnippetEditView.as_view()
 
 class PostDelete(View):
-    def get(self,request,post_id,post_type):
-        if post_type == "snippet":
-            snippet = Snippet.objects.get(pk=post_id)
+    def get(self,request,target_id,delete_type):
+        if delete_type == "snippet":
+            snippet = Snippet.objects.get(pk=target_id)
             checklist = Checklist.objects.get(pk=snippet.checklist_id.id)
             checklist.is_snippet_make = False
             checklist.save()
-            dutiestrouble = DutiesTrouble.objects.get(snippet_id=post_id)
+            dutiestrouble = DutiesTrouble.objects.get(snippet_id=target_id)
             dutiestrouble.delete()
-            process = get_list_or_404(Process,snippet_id=post_id)
+            process = get_list_or_404(Process,snippet_id=target_id)
             for process_object in process:
                 process_object.delete()
             snippet.delete()
             return redirect(to="snippet_list")
-        elif post_type == "checklist":
-            checklist = Checklist.objects.get(pk=post_id)
+        elif delete_type == "checklist":
+            checklist = Checklist.objects.get(pk=target_id)
             checklist.delete()
             return redirect(to="snippet_list")
-        elif post_type == "all":
-            snippet = Snippet.objects.get(pk=post_id)
+        elif delete_type == "all":
+            snippet = Snippet.objects.get(pk=target_id)
             checklist = Checklist.objects.get(pk=snippet.checklist_id.pk)
-            dutiestrouble = DutiesTrouble.objects.get(snippet_id=post_id)
+            dutiestrouble = DutiesTrouble.objects.get(snippet_id=target_id)
             dutiestrouble.delete()
-            process = get_list_or_404(Process,snippet_id=post_id)
+            process = get_list_or_404(Process,snippet_id=target_id)
             for process_object in process:
                 process_object.delete()
             snippet.delete()
