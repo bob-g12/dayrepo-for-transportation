@@ -341,8 +341,8 @@ class PostDelete(View):
             dutiestrouble = DutiesTrouble.objects.get(snippet_id=post_id)
             dutiestrouble.delete()
             process = get_list_or_404(Process,snippet_id=post_id)
-            for i in range(len(process)):
-                process[i].delete()
+            for process_object in process:
+                process_object.delete()
             snippet.delete()
             return redirect(to="snippet_list")
         elif post_type == "checklist":
@@ -355,8 +355,8 @@ class PostDelete(View):
             dutiestrouble = DutiesTrouble.objects.get(snippet_id=post_id)
             dutiestrouble.delete()
             process = get_list_or_404(Process,snippet_id=post_id)
-            for i in range(len(process)):
-                process[i].delete()
+            for process_object in process:
+                process_object.delete()
             snippet.delete()
             checklist.delete()
             return redirect(to="snippet_list")
