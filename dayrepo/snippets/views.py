@@ -325,7 +325,7 @@ class SnippetEditView(View):
 snippet_edit = SnippetEditView.as_view()
 
 
-class post_del_pattern():
+class PostDataDelPattern():
     def snippet_del(request,target_id):
         snippet = Snippet.objects.get(
             pk=target_id
@@ -372,8 +372,8 @@ class post_del_pattern():
         snippet.delete()
         checklist.delete()
 
-def post_delete(request, target_id, delete_type):
-    del_class = post_del_pattern()
+def postdata_delete(request, target_id, delete_type):
+    del_class = PostDataDelPattern()
     if delete_type == "snippet":
         del_class.snippet_del(target_id)
         return redirect(to="snippet_list")
