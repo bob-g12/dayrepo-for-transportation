@@ -371,6 +371,7 @@ class post_del_pattern():
             process_object.delete()
         snippet.delete()
         checklist.delete()
+
 def post_delete(request, target_id, delete_type):
     del_class = post_del_pattern()
     if delete_type == "snippet":
