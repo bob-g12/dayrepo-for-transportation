@@ -329,7 +329,7 @@ class DeletePattern():
     # 対象のsnippetと、
     # snippet_idを取得したdutiestroubleとprocessの削除
     # 更にchecklistのsnippet判定カラムの値をFalseへ
-    def snippet_del(request:any,target_id:int):
+    def snippet_del(self:any,target_id:int):
         snippet = Snippet.objects.get(
             pk=target_id
         )
@@ -350,14 +350,14 @@ class DeletePattern():
         snippet.delete()
 
     # 未提出postdataのchecklistを削除する
-    def checklist_del(request:any,target_id:int):
+    def checklist_del(self:any,target_id:int):
         checklist = Checklist.objects.get(
         pk=target_id
         )
         checklist.delete()
 
     # 提出済みpostdataをすべて削除する
-    def all_del(request:any,target_id:int):
+    def all_del(self:any,target_id:int):
         snippet = Snippet.objects.get(
             pk=target_id
         )
@@ -380,7 +380,6 @@ class DeletePattern():
 def delete(request:any, target_id:int, delete_type:str):
     # 受け取ったdelete_typeから
     # 削除対象を判別し、実行クラスの処理を選択
-    print(request)
     del_class = DeletePattern()
     if delete_type == "snippet":
         del_class.snippet_del(target_id)
