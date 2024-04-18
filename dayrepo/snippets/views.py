@@ -326,7 +326,7 @@ snippet_edit = SnippetEditView.as_view()
 
 
 class DbDeletePattern():
-    def snippet_del(self:any,target_id:int):
+    def snippet_del(self,target_id:int):
         # snippetと紐づいたdutiestroubleの削除
         dutiestrouble = DutiesTrouble.objects.get(
             snippet_id=target_id
@@ -355,14 +355,14 @@ class DbDeletePattern():
         checklist.save()
 
     # 未提出postdataのchecklistを削除する
-    def checklist_del(self:any,target_id:int):
+    def checklist_del(self,target_id:int):
         checklist = Checklist.objects.get(
         pk=target_id
         )
         checklist.delete()
 
     # 提出済みpostdataをすべて削除する
-    def all_del(self:any,target_id:int):
+    def all_del(self,target_id:int):
         snippet = Snippet.objects.get(
             pk=target_id
         )
@@ -382,7 +382,7 @@ class DbDeletePattern():
         snippet.delete()
         checklist.delete()
 
-def db_delete(request:any, target_id:int, delete_type:str):
+def db_delete(request:tuple, target_id:int, delete_type:str):
     # 受け取ったdelete_typeから
     # 削除対象を判別し、実行クラスの処理を選択
     del_class = DbDeletePattern()
