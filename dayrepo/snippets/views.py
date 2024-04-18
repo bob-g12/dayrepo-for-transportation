@@ -326,14 +326,13 @@ snippet_edit = SnippetEditView.as_view()
 
 
 class DbDeletePattern():
-    # 対象のsnippetと、
-    # snippet_idを取得したdutiestroubleとprocessの削除
     def snippet_del(self:any,target_id:int):
+        # snippetと紐づいたdutiestroubleの削除
         dutiestrouble = DutiesTrouble.objects.get(
             snippet_id=target_id
         )
         dutiestrouble.delete()
-
+        # snippetと紐づいたprocessの削除
         process = get_list_or_404(
             Process, snippet_id=target_id
         )
@@ -351,7 +350,7 @@ class DbDeletePattern():
         )
 
         # 対象のsnippetが削除されたことを反映し、
-        # checklistのみの投稿として表示、判定されます
+        # checklistのみの投稿として表示、判定させる
         checklist.is_snippet_make = False
         checklist.save()
 
