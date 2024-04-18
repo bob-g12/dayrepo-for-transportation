@@ -383,13 +383,11 @@ def db_delete(request:any, target_id:int, delete_type:str):
     del_class = DbDeletePattern()
     if delete_type == "snippet":
         del_class.snippet_del(target_id)
-        return redirect(to="snippet_list")
     elif delete_type == "checklist":
         del_class.checklist_del(target_id)
-        return redirect(to="snippet_list")
     elif delete_type == "all":
         del_class.all_del(target_id)
-        return redirect(to="snippet_list")
+    return redirect(to="snippet_list")
 
 
 
