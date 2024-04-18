@@ -325,7 +325,7 @@ class SnippetEditView(View):
 snippet_edit = SnippetEditView.as_view()
 
 
-class DeletePattern():
+class DbDeletePattern():
     # 対象のsnippetと、
     # snippet_idを取得したdutiestroubleとprocessの削除
     # 更にchecklistのsnippet判定カラムの値をFalseへ
@@ -377,10 +377,10 @@ class DeletePattern():
         snippet.delete()
         checklist.delete()
 
-def delete(request:any, target_id:int, delete_type:str):
+def db_delete(request:any, target_id:int, delete_type:str):
     # 受け取ったdelete_typeから
     # 削除対象を判別し、実行クラスの処理を選択
-    del_class = DeletePattern()
+    del_class = DbDeletePattern()
     if delete_type == "snippet":
         del_class.snippet_del(target_id)
         return redirect(to="snippet_list")
