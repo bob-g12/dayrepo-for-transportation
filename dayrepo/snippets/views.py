@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpRequest
 from django.views.generic import View
 from django.shortcuts import redirect, get_object_or_404, get_list_or_404
 from .models import Account, Car, Snippet, DutiesTrouble, Checklist, Process
@@ -382,7 +382,7 @@ class DbDeletePattern():
         snippet.delete()
         checklist.delete()
 
-def db_delete(request:tuple, target_id:int, delete_type:str):
+def db_delete(request:HttpRequest, target_id:int, delete_type:str):
     # 受け取ったdelete_typeから
     # 削除対象を判別し、実行クラスの処理を選択
     del_class = DbDeletePattern()
