@@ -383,18 +383,18 @@ class DbDeletePattern():
 def db_delete(request:HttpRequest, target_id:int, delete_type:str):
     # 受け取ったdelete_typeから
     # 削除対象を判別し、実行クラスの処理を選択
-    del_class = DbDeletePattern()
+    del_pattern = DbDeletePattern()
     if request.method != 'POST':
         raise ValueError(
             "本来入るはずのない処理に入りました。お手数ですが、システムにお問合せください。"
         )
     if delete_type == "snippet":
-        del_class.snippet_del(target_id)
+        del_pattern.snippet_del(target_id)
     elif delete_type == "checklist":
-        del_class.checklist_del(target_id)
+        del_pattern.checklist_del(target_id)
     elif delete_type == "all":
 
-        del_class.all_del(target_id)
+        del_pattern.all_del(target_id)
     return redirect(to="snippet_list")
 
 
