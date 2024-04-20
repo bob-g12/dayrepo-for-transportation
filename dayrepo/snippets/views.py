@@ -327,7 +327,6 @@ snippet_edit = SnippetEditView.as_view()
 
 class DbDeletePattern():
     def snippet_del(self,target_id:int):
-        # snippetと紐づいたdutiestroubleの削除
         dutiestrouble = DutiesTrouble.objects.get(
             snippet_id=target_id
         )
