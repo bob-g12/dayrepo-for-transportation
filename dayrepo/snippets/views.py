@@ -331,7 +331,6 @@ class DbDeletePattern():
             snippet_id=target_id
         )
         dutiestrouble.delete()
-        # snippetと紐づいたprocessの削除
         process = get_list_or_404(
             Process, snippet_id=target_id
         )
