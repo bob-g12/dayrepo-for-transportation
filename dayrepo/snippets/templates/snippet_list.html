@@ -6,9 +6,10 @@
     <p id="checklist">{{ checklist }}</p>
     <button onclick="location.href='{% url 'checklist_edit' checklist.id %}'">点検編集</button>
     <button onclick="location.href='{% url 'snippet_post' checklist.id %}'">snippet作成</button>
-    <form method="post" action={% url 'db_delete' checklist.id 'checklist' %}>
+    <form method="post" action="{% url 'db_delete' checklist.id 'checklist' %}">
         {% csrf_token %}
         <button type="submit">点検削除</button>
+    </form>
     <hr>
     {% endfor %}
     <h2>提出済み日報一覧</h2>
