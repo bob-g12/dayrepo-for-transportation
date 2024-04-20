@@ -355,7 +355,7 @@ class DbDeletePattern():
     # 未提出 data の checklist を削除する
     def checklist_del(self,target_id:int):
         checklist = Checklist.objects.get(
-        pk=target_id
+            pk=target_id
         )
         checklist.delete()
 
