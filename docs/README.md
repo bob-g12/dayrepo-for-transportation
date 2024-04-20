@@ -9,6 +9,9 @@
 独自にカスタマイズしたコマンドをまとめたドキュメントです。
 - [add_customcommand.md](./add_customcommand.md)
 
+開発する際におすすめの拡張機能などをまとめたドキュメントです。
+- [my_favorite.md](./my_favorite.md)
+
 # 環境構築
 Python をインストール
 参考記事; [PythonをWindows、macOS、Linuxにインストールする方法](https://kinsta.com/jp/knowledgebase/install-python/)
@@ -39,4 +42,3 @@ python manage.py migrate
 ``` sh
 python manage.py runserver
 ```
-
