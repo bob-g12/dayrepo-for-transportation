@@ -352,7 +352,7 @@ class DbDeletePattern():
         checklist.is_snippet_make = False
         checklist.save()
 
-    # 未提出postdataのchecklistを削除する
+    # 未提出 data の checklist を削除する
     def checklist_del(self,target_id:int):
         checklist = Checklist.objects.get(
         pk=target_id
