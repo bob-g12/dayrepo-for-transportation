@@ -389,6 +389,7 @@ def db_delete(request:HttpRequest, target_id:int, delete_type:str):
     elif delete_type == "checklist":
         del_class.checklist_del(target_id)
     elif delete_type == "all":
+
         del_class.all_del(target_id)
     return redirect(to="snippet_list")
 
