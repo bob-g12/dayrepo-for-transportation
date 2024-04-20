@@ -331,11 +331,11 @@ class DbDeletePattern():
             snippet_id=target_id
         )
         dutiestrouble.delete()
-        process = get_list_or_404(
+        process_list = get_list_or_404(
             Process, snippet_id=target_id
         )
-        for process_object in process:
-            process_object.delete()
+        for process in process_list:
+            process.delete()
 
         snippet = Snippet.objects.get(
             pk=target_id
