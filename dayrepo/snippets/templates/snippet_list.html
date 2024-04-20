@@ -6,7 +6,9 @@
     <p id="checklist">{{ checklist }}</p>
     <button onclick="location.href='{% url 'checklist_edit' checklist.id %}'">点検編集</button>
     <button onclick="location.href='{% url 'snippet_post' checklist.id %}'">snippet作成</button>
-    <button onclick="location.href='{% url 'post_delete' checklist.id 'checklist' %}'">点検削除</button>
+    <form method="post" action={% url 'post_delete' checklist.id 'checklist' %}>
+        {% csrf_token %}
+        <button type="submit">点検削除</button>
     <hr>
     {% endfor %}
     <h2>提出済み日報一覧</h2>
@@ -15,8 +17,12 @@
     <button onclick="location.href='{% url 'excelfile_download' post.id %}'">出力</button>
     <button onclick="location.href='{% url 'checklist_edit' post.checklist_id.id %}'">点検編集</button>
     <button onclick="location.href='{% url 'snippet_edit' post.id %}'">日報編集</button>
-    <button onclick="location.href='{% url 'post_delete' post.id 'snippet' %}'">日報削除</button>
-    <button onclick="location.href='{% url 'post_delete' post.id 'all' %}'">一括削除</button>
+    <form method="post" action={% url 'post_delete' post.id 'snippet' %}>
+        {% csrf_token %}
+        <button type="submit">日報削除</button>
+    <form method="post" action={% url 'post_delete' post.id 'all' %}>
+        {% csrf_token %}
+        <button type="submit">一括削除</button>
     <hr>
     {% endfor %}
 {% endblock %}
