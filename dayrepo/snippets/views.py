@@ -347,7 +347,7 @@ class DbDeletePattern():
             pk=snippet.checklist_id.id
         )
 
-        # 対象のsnippetが削除されたことを反映し、
+        # 対象のsnippetが削除されたとき、
         # 未提出日報として表示、判定させる
         checklist.is_snippet_make = False
         checklist.save()
