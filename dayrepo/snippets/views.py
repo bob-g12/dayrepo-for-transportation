@@ -359,7 +359,7 @@ class DbDeletePattern():
         )
         checklist.delete()
 
-    # 提出済みpostdataをすべて削除する
+    # 提出済み data をすべて削除する
     def all_del(self,target_id:int):
         snippet = Snippet.objects.get(
             pk=target_id
