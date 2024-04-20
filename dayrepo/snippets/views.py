@@ -370,15 +370,16 @@ class DbDeletePattern():
         dutiestrouble = DutiesTrouble.objects.get(
             snippet_id=target_id
         )
-        dutiestrouble.delete()
         process_list = get_list_or_404(
             Process, 
             snippet_id=target_id
         )
-        for process in process_list:
-            process.delete()
+        
         snippet.delete()
         checklist.delete()
+        dutiestrouble.delete()
+        for process in process_list:
+            process.delete()
 
 def db_delete(request:HttpRequest, target_id:int, delete_type:str):
     if request.method != 'POST':
