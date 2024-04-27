@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import View
-from .models import Account, Car, Snippet, DutiesTrouble, Checklist, Process
+from .models import Account, Car
 
 class VehicleListView(View):
     def get(self, request):
