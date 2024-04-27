@@ -3,14 +3,14 @@ from django.views.generic import View
 from django.http import HttpRequest
 from .models import Car
 
-class VehicleListView(View):
+class CarListView(View):
     def get(self, request: HttpRequest):
         cars = Car.objects.all().order_by("-now_mileage")
 
         return render(
             request,
-            "vehicle_list.html",
-            {"vehicles": cars},
+            "car_list.html",
+            {"cars": cars},
         )
 
-vehicle_list = VehicleListView.as_view()
+car_list = CarListView.as_view()

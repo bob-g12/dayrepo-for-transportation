@@ -1,0 +1,11 @@
+{% block page_title %}車両一覧{% endblock %}
+{% block content %}
+    <h2>車両一覧</h2>
+    {% for car in cars %}
+    <div id="car">
+        <p> 車両No. <strong>{{ car.vehicle_number }}</strong> </p>
+        <p> 現在のメーター値 <strong>{{ car.now_mileage }}</strong> km </p>
+    </div>
+    <hr>
+    {% endfor %}
+{% endblock %}
