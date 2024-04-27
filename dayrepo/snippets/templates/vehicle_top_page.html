@@ -5,9 +5,8 @@
     {% for vehicle in vehicles %}
     <div id="vehicle">
         <p> 車両No. <strong>{{ vehicle.vehicle_number }}</strong> </p>
-        <p> 現在のメーター数 <strong>{{ vehicle.now_mileage }}</strong> km </p>
+        <p> 現在のメーター値 <strong>{{ vehicle.now_mileage }}</strong> km </p>
     </div>
-
     <hr>
     {% endfor %}
 {% endblock %}
