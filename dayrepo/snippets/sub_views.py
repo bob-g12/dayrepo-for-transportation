@@ -8,7 +8,7 @@ class VehicleListView(View):
 
         return render(
             request,
-            "vehicle_top_page.html",
+            "vehicle_list.html",
             {"vehicles": cars},
         )
 
