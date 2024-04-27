@@ -5,7 +5,7 @@ from .models import Car
 
 class VehicleListView(View):
     def get(self, request: HttpRequest):
-        cars = Car.objects.all()
+        cars = Car.objects.all().order_by("-now_mileage")
 
         return render(
             request,
