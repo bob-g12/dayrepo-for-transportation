@@ -1,5 +1,5 @@
 from django.urls import path
-from snippets import views
+from snippets import views, sub_views
 
 urlpatterns = [
     path("new/", views.snippet_new,name="snippet_new"),
@@ -16,4 +16,5 @@ urlpatterns = [
     path("edit/checklist/<int:checklist_id>/", views.checklist_edit,name="checklist_edit"),
     path("delete/<int:target_id>/<str:delete_type>/", views.db_delete,name="db_delete"),
     path("excel/<int:snippet_pk>/", views.excelfile_download,name="excelfile_download"),
+    path("top/vehicle/", sub_views.vehicle_list,name="vehicle_list"),
 ]
