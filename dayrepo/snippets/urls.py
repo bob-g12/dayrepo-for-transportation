@@ -16,5 +16,5 @@ urlpatterns = [
     path("edit/checklist/<int:checklist_id>/", views.checklist_edit,name="checklist_edit"),
     path("delete/<int:target_id>/<str:delete_type>/", views.db_delete,name="db_delete"),
     path("excel/<int:snippet_pk>/", views.excelfile_download,name="excelfile_download"),
-    path("list/car/", master_views.car_list,name="car_list"),
+    path("cars/", master_views.car_list,name="car_list"),
 ]
