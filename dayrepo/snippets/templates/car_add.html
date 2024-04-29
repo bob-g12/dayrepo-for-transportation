@@ -1,0 +1,9 @@
+<h2>車両登録</h2>
+<form method="car_post">
+    <h2>車両情報設定</h2>
+    {{ form.as_p }}
+    {% csrf_token %}
+    <button name="btn_car_post" type="submit" class="car_post_button">
+        車両追加
+    </button>
+</form>
