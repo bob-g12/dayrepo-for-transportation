@@ -1,9 +1,5 @@
-input.vehicle_number_place {
-    display: inline-block;
-    width: 50px;
-}
-
-input.vehicle_number_type {
+input.vehicle_number_place,
+input.vehicle_number_type{
     display: inline-block;
     width: 50px;
 }
@@ -13,12 +9,8 @@ input.vehicle_number_use {
     width: 25px;
 }
 
-input.vehicle_number_top {
-    display: inline-block;
-    width: 40px;
-}
-
-input.vehicle_number_end {
+input.vehicle_number_top, 
+input.vehicle_number_end{
     display: inline-block;
     width: 40px;
 }
