@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import View
 from django.http import HttpRequest
+from django.shortcuts import redirect
 from .models import Car
 from .forms import CarForm
 class CarListView(View):
@@ -26,4 +27,9 @@ class CarAddView(View):
             },
         )
     
+    def post(self, request):
+        form = CarForm(request.POST)
+        form.save()
+        return redirect(to='car_list')
+
 car_add = CarAddView.as_view()
