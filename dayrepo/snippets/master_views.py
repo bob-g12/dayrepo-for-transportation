@@ -25,3 +25,5 @@ class CarAddView(View):
                 "form": CarForm,
             },
         )
+    
+car_add = CarAddView.as_view()
