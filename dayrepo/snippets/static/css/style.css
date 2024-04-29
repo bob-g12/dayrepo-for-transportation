@@ -16,6 +16,6 @@ input.vehicle_number_end{
 }
 
 input.now_mileage {
-    display: block;
-    width: 500px;
+    display: inline-block;
+    width: 240px;
 }
