@@ -103,3 +103,13 @@ class ChecklistForm(forms.ModelForm):
             'is_brake_details',
             'is_before_trouble',
         )
+
+class CarForm(forms.ModelForm):
+    class Meta:
+        #モデルを指定
+        model = Car
+
+        fields = (
+            'vehicle_number',
+            'now_mileage',
+        )
