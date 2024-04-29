@@ -1,17 +1,21 @@
+{% load static %}
+<link rel="stylesheet" href='{% static "css/style.css" %}'>
 <h2>車両登録</h2>
 <form method="post">
     <h2>車両情報設定</h2>
     <p>
         <label for="id_vehicle_number">車両番号:</label>
-        <input type="text" name="vehicle_number_place" class="vehicle_number_place" maxlength="10" required="" id="id_vehicle_number">
-        <input type="text" name="vehicle_number_type" class="vehicle_number_type" maxlength="3" required="" id="id_vehicle_number">
-        <input type="text" name="vehicle_number_use" class="vehicle_number_use" maxlength="1" required="" id="id_vehicle_number">
-        <input type="text" name="vehicle_number_top" class="vehicle_number_top" maxlength="2" required="" id="id_vehicle_number">
-        <input type="text" name="vehicle_number_end" class="vehicle_number_end" maxlength="2" required="" id="id_vehicle_number">
+        <input type="text" name="vehicle_number_place" class="vehicle_number_place" maxlength="10" required="" id="id_vehicle_number" placeholder=札幌>
+        <input type="number" name="vehicle_number_type" class="vehicle_number_type" maxlength="3" required="" id="id_vehicle_number" placeholder=100>
+        <input type="text" name="vehicle_number_use" class="vehicle_number_use" maxlength="1" required="" id="id_vehicle_number" placeholder=あ>
+        <input type="number" name="vehicle_number_top" class="vehicle_number_top" maxlength="2" required="" id="id_vehicle_number" placeholder=88>
+        -
+        <input type="number" name="vehicle_number_end" class="vehicle_number_end" maxlength="2" required="" id="id_vehicle_number" placeholder=88>
     </p>
     <p>
         <label for="id_now_mileage">走行距離:</label>
-        <input type="number" name="now_mileage" required="" id="id_now_mileage">    </p>
+        <input type="number" name="now_mileage" required="" id="id_now_mileage" placeholder=車両の初期メーター値km>    
+    </p>
     {% csrf_token %}
     <button name="btn_car_post" type="submit" class="car_post_button">
         車両追加
