@@ -28,8 +28,20 @@ class CarAddView(View):
         )
     
     def post(self, request):
-        form = CarForm(request.POST)
-        form.save()
+        req = request.POST
+        car_trouble = Car(
+            vehicle_number = req.get("vehicle_number_place")
+                + " "
+                + req.get("vehicle_number_type")
+                + " "
+                + req.get("vehicle_number_use")
+                + " "
+                + req.get("vehicle_number_top")
+                + "-"
+                + req.get("vehicle_number_end"),
+            now_mileage = req.get("now_mileage"),
+        )
+        car_trouble.save()
         return redirect(to='car_list')
 
 car_add = CarAddView.as_view()
