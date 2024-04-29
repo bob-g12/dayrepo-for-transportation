@@ -106,7 +106,6 @@ class ChecklistForm(forms.ModelForm):
 
 class CarForm(forms.ModelForm):
     class Meta:
-        #モデルを指定
         model = Car
 
         fields = (
