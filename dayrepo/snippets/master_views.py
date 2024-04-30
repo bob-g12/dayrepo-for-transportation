@@ -17,12 +17,12 @@ class CarListView(View):
 
 car_list = CarListView.as_view()
 
-class CarAddView(View):
+class CarView(View):
     
     def get(self, request):
         return render(
             request,
-            "car_add.html",
+            "car_new.html",
             {
                 "form": CarForm,
             },
@@ -45,4 +45,4 @@ class CarAddView(View):
         car_trouble.save()
         return redirect(to='car_list')
 
-car_add = CarAddView.as_view()
+new_car = CarView.as_view()
