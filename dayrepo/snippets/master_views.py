@@ -4,6 +4,7 @@ from django.http import HttpRequest
 from django.shortcuts import redirect
 from .models import Car
 from .forms import CarForm
+
 class CarListView(View):
     def get(self, request: HttpRequest):
         cars = Car.objects.all().order_by("-now_mileage")
