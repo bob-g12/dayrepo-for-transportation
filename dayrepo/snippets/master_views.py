@@ -22,7 +22,7 @@ class CarView(View):
     def get(self, request):
         return render(
             request,
-            "car_new.html",
+            "car_post.html",
             {
                 "form": CarForm,
             },
