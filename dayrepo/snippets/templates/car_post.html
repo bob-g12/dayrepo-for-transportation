@@ -5,17 +5,17 @@
 <h2>車両情報設定</h2>
 <form method="post">
     <p>
-        <label for="id_vehicle_number">車両番号:</label>
-        <input type="text" name="vehicle_number_place" class="vehicle_number_place" maxlength="10" required="" id="id_vehicle_number" placeholder=札幌>
-        <input type="number" name="vehicle_number_type" class="vehicle_number_type" maxlength="3" required="" id="id_vehicle_number" placeholder=100>
-        <input type="text" name="vehicle_number_use" class="vehicle_number_use" maxlength="1" required="" id="id_vehicle_number" placeholder=あ>
-        <input type="number" name="vehicle_number_top" class="vehicle_number_top" maxlength="2" required="" id="id_vehicle_number" placeholder=88>
+        <label>車両番号:</label>
+        <input type="text"  maxlength="10" required="" id="place_name" name="place_name" placeholder="札幌">
+        <input type="number" maxlength="3" required="" id="class_number" name="class_number" placeholder="100">
+        <input type="text" maxlength="1" required="" id="kana" name="kana" placeholder="あ">
+        <input type="number" maxlength="2" required="" id="serial_number_top" name="serial_number_top" placeholder="88">
         -
-        <input type="number" name="vehicle_number_end" class="vehicle_number_end" maxlength="2" required="" id="id_vehicle_number" placeholder=88>
+        <input type="number" maxlength="2" required="" id="serial_number_end" name="serial_number_end" placeholder="88">
     </p>
     <p>
         <label for="id_now_mileage">走行距離:</label>
-        <input type="number" name="now_mileage" class="now_mileage" required="" id="id_now_mileage" placeholder=車両の初期メーター値km>    
+        <input type="number" required="" id="now_mileage" name="now_mileage" placeholder="車両の初期メーター値km">    
     </p>
     {% csrf_token %}
     <button name="btn_car_post" type="submit" class="car_post_button">

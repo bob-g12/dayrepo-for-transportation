@@ -31,15 +31,11 @@ class CarView(View):
     def post(self, request):
         req = request.POST
         car_trouble = Car(
-            vehicle_number = req.get("vehicle_number_place")
-                + " "
-                + req.get("vehicle_number_type")
-                + " "
-                + req.get("vehicle_number_use")
-                + " "
-                + req.get("vehicle_number_top")
-                + "-"
-                + req.get("vehicle_number_end"),
+            place_name = req.get("place_name"),
+            class_number = req.get("class_number"),
+            kana = req.get("kana"),
+            serial_number = req.get("serial_number_top")
+                + "-" + req.get("serial_number_end"),
             now_mileage = req.get("now_mileage"),
         )
         car_trouble.save()

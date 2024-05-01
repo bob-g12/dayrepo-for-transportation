@@ -1,21 +1,29 @@
-input.vehicle_number_place,
-input.vehicle_number_type{
+#place_name{
     display: inline-block;
     width: 50px;
 }
 
-input.vehicle_number_use {
+#class_number{
+    display: inline-block;
+    width: 50px;
+}
+
+#kana {
     display: inline-block;
     width: 25px;
 }
 
-input.vehicle_number_top, 
-input.vehicle_number_end{
+#serial_number_top{
     display: inline-block;
     width: 40px;
 }
 
-input.now_mileage {
+#serial_number_end{
+    display: inline-block;
+    width: 40px;
+}
+
+#now_mileage {
     display: inline-block;
     width: 240px;
 }
