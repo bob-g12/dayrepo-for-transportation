@@ -1,29 +1,29 @@
 #place_name{
-    display: inline-block;
+    display: inline;
     width: 50px;
 }
 
 #class_number{
-    display: inline-block;
+    display: inline;
     width: 50px;
 }
 
 #kana {
-    display: inline-block;
+    display: inline;
     width: 25px;
 }
 
 #serial_number_top{
-    display: inline-block;
+    display: inline;
     width: 40px;
 }
 
 #serial_number_end{
-    display: inline-block;
+    display: inline;
     width: 40px;
 }
 
 #now_mileage {
-    display: inline-block;
+    display: inline;
     width: 240px;
 }
