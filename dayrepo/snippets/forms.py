@@ -109,6 +109,9 @@ class CarForm(forms.ModelForm):
         model = Car
 
         fields = (
-            'vehicle_number',
+            'place_name',
+            'class_number',
+            'kana',
+            'serial_number',
             'now_mileage',
         )

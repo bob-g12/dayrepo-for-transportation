@@ -74,15 +74,36 @@ class Car(models.Model):
         blank=False, 
         null=False
     )
-    # 車両番号はそのまま保存すると「名古屋　１２３　た　４５６７」のようになってしまうため、空白をハイフン埋めする方針でいく
     # TODO: バリデーションの実装 issue -> https://github.com/bob-g12/dayrepo-for-transportation/issues/15
 
-    vehicle_number = models.CharField(
-        verbose_name="車両番号", 
-        max_length=15, 
+    place_name = models.CharField(
+        verbose_name="車両_地名", 
+        max_length=10, 
         blank=False, 
         null=False
     )
+
+    class_number = models.IntegerField(
+        verbose_name="車両_分類", 
+        max_length=3, 
+        blank=False, 
+        null=False
+    )
+
+    kana = models.CharField(
+        verbose_name="車両_かな", 
+        max_length=1, 
+        blank=False, 
+        null=False
+    )
+
+    serial_number = models.CharField(
+        verbose_name="車両_一連指定番号", 
+        max_length=5, 
+        blank=False, 
+        null=False
+    )
+
     now_mileage = models.IntegerField(
         verbose_name="走行距離", 
         blank=False, 
@@ -91,7 +112,7 @@ class Car(models.Model):
 
     def __str__(self):
 
-        return str(self.id)
+        return f'{self.place_name},{self.class_number},{self.kana},{self.serial_number}'
 
 
 class Snippet(models.Model):
