@@ -28,7 +28,7 @@ class CarView(View):
             },
         )
     
-    def post(self, request):
+    def post(self, request: HttpRequest):
         req = request.POST
         if req.get("serial_number_top") != "":
             number = req.get("serial_number_top")
