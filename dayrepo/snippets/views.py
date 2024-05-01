@@ -448,7 +448,10 @@ def excelfile_download(request, snippet_pk):
         + snippet_data.weather
         + " )"
     )
-    sheet["AR3"] = snippet_data.checklist_id.car_id.vehicle_number
+    sheet["AR3"] = snippet_data.checklist_id.car_id.snippet_id + " "
+    + snippet_data.checklist_id.car_id.trouble_cause + " "
+    + snippet_data.checklist_id.car_id.trouble_situation + " "
+    + snippet_data.checklist_id.car_id.trouble_support
     sheet["AO8"] = (
         snippet_data.checklist_id.account_id.last_name
         + " "

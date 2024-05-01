@@ -238,7 +238,13 @@ class Snippet(models.Model):
 
     def __str__(self):
 
-        return f'{self.id}, {self.checklist_id.account_id.last_name},{self.checklist_id.account_id.first_name},{self.checklist_id.car_id.vehicle_number}'
+        return f'{self.id}, 
+        {self.checklist_id.account_id.last_name},
+        {self.checklist_id.account_id.first_name},
+        {self.checklist_id.car_id.place_name},
+        {self.checklist_id.car_id.class_number},
+        {self.checklist_id.car_id.kana},
+        {self.checklist_id.car_id.serial_number}'
 
 class DutiesTrouble(models.Model):
 
@@ -284,7 +290,10 @@ class DutiesTrouble(models.Model):
 
     def __str__(self):
         
-        return f'{self.snippet_id},{self.trouble_cause},{self.trouble_situation},{self.trouble_support}'
+        return f'{self.snippet_id},
+        {self.trouble_cause},
+        {self.trouble_situation},
+        {self.trouble_support}'
 
 
 class Checklist(models.Model):
@@ -441,7 +450,14 @@ class Checklist(models.Model):
     )
     def __str__(self):
 
-        return f'{self.id},{self.account_id.first_name},{self.account_id.last_name}{self.car_id.vehicle_number},{self.working_day}'
+        return f'{self.id},
+        {self.account_id.first_name},
+        {self.account_id.last_name},
+        {self.car_id.place_name},
+        {self.car_id.class_number},
+        {self.car_id.kana},
+        {self.car_id.serial_number},
+        {self.working_day},'
 
 class Process(models.Model):
 
