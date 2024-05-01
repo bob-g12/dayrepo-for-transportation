@@ -6,19 +6,19 @@
 <form method="post">
     <p>
         <label>車両番号:</label>
-        <input type="text"  maxlength="10" required="" id="place_name" name="place_name" placeholder="札幌">
-        <input type="number" maxlength="3" required="" id="class_number" name="class_number" placeholder="100">
-        <input type="text" maxlength="1" required="" id="kana" name="kana" placeholder="あ">
-        <input type="number" maxlength="2" required="" id="serial_number_top" name="serial_number_top" placeholder="88">
+        <input type="text"  maxlength="10" id="place_name" name="place_name" placeholder="札幌" required>
+        <input type="number" maxlength="3" id="class_number" name="class_number" placeholder="100" required>
+        <input type="text" maxlength="1" id="kana" name="kana" placeholder="あ" required>
+        <input type="number" maxlength="2" id="serial_number_top" name="serial_number_top" placeholder="88" required>
         -
-        <input type="number" maxlength="2" required="" id="serial_number_end" name="serial_number_end" placeholder="88">
+        <input type="number" maxlength="2" id="serial_number_end" name="serial_number_end" placeholder="88" required>
     </p>
     <p>
         <label for="id_now_mileage">走行距離:</label>
-        <input type="number" required="" id="now_mileage" name="now_mileage" placeholder="車両の初期メーター値km">    
+        <input type="number" id="now_mileage" name="now_mileage" placeholder="車両の初期メーター値km" required>    
     </p>
     {% csrf_token %}
-    <button name="btn_car_post" type="submit" class="car_post_button">
+    <button type="submit" id="car_post_button">
         車両追加
     </button>
 </form>
