@@ -96,7 +96,7 @@ class Car(models.Model):
         null=False
     )
 
-    serial_number = models.CharField(
+    serial_number = models.IntegerField(
         verbose_name="車両_一連指定番号", 
         max_length=5, 
         blank=False, 

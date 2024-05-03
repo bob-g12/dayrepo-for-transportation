@@ -31,8 +31,10 @@ class CarView(View):
     def post(self, request: HttpRequest):
         req = request.POST
         if req.get("serial_number_top") != "":
-            number = req.get("serial_number_top")
-            + "-" + req.get("serial_number_end")
+            number = int(
+                str(req.get("serial_number_top"))
+                + str(req.get("serial_number_end"))
+            )
         else:
             number = req.get("serial_number_end")
         car_trouble = Car(
