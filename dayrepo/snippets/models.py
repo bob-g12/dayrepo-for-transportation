@@ -74,7 +74,6 @@ class Car(models.Model):
         blank=False, 
         null=False
     )
-    # TODO: バリデーションの実装 issue -> https://github.com/bob-g12/dayrepo-for-transportation/issues/15
 
     place_name = models.CharField(
         verbose_name="車両_地名", 
