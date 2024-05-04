@@ -73,6 +73,23 @@ class CarEditView(View):
                 "end":serial_number_end,
             }
         )
+    def post(self, request: HttpRequest, car_id: int):
+        post = get_object_or_404(Car, pk=car_id)
+        req = request.POST
+        number = int(
+            str(req.get("serial_number_top"))
+            + str(req.get("serial_number_end"))
+        )
+        car_trouble = Car(
+            id = post.id,
+            place_name = req.get("place_name"),
+            class_number = req.get("class_number"),
+            kana = req.get("kana"),
+            serial_number = number,
+            now_mileage = req.get("now_mileage"),
+        )
+        car_trouble.save()
+        return redirect(to="car_list")
 
 
 car_edit = CarEditView.as_view()

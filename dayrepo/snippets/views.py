@@ -139,6 +139,7 @@ class SnippetView(View):
         form_process_count = len(req.getlist("via_point"))
         for i in range(form_process_count):
             process = Process(
+                id = snippet.id*10 + i,
                 snippet_id=snippet,
                 start_time=req.getlist("start_time")[i + 1],
                 end_time=req.getlist("end_time")[i + 1],
@@ -291,15 +292,14 @@ class SnippetEditView(View):
             trouble_cause=req.get("trouble_cause"),
             trouble_support=req.get("trouble_support"),
         )
-        post_trouble.delete()
         duties_trouble.save()
 
         # 工程テーブルフォーム保存
         form_process_count = len(req.getlist("via_point"))
         for i in range(form_process_count):
             process = Process(
-                id=post_process[i].id,
-                snippet_id=post_process[i].snippet_id,
+                id= snippet.id*10 + i,
+                snippet_id=snippet,
                 start_time=req.getlist("start_time")[i + 1],
                 end_time=req.getlist("end_time")[i + 1],
                 start_point=req.getlist("start_point")[i + 1],
@@ -316,7 +316,6 @@ class SnippetEditView(View):
                 process.is_load_situation = True
             else:
                 process.is_load_situation = False
-            post_process[i].delete()
             process.save()
         post_snippet = snippet
         # トップ画面へ
