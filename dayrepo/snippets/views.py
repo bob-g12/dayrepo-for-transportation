@@ -448,7 +448,7 @@ def excelfile_download(request, snippet_pk):
         + snippet_data.weather
         + " )"
     )
-    sheet["AR3"] = snippet_data.checklist_id.car_id.vehicle_number
+    sheet["AR3"] = snippet_data.checklist_id.car_id.serial_number
     sheet["AO8"] = (
         snippet_data.checklist_id.account_id.last_name
         + " "
@@ -494,9 +494,7 @@ def excelfile_download(request, snippet_pk):
     work_hour += snippet_data.driving_time.hour
     +snippet_data.non_driving_time.hour
 
-    sheet["BG18"] = str(work_hour) 
-    + ":" 
-    + str(work_minute)
+    sheet["BG18"] = str(work_hour) + ":" + str(work_minute)
 
     breek_in_minute = work_minute
     +snippet_data.break_time.minute
@@ -506,10 +504,7 @@ def excelfile_download(request, snippet_pk):
         breek_in_minute -= 60
         breek_in_hour += 1
     breek_in_hour += snippet_data.break_time.hour
-    sheet["BI18"] = str(breek_in_hour) 
-    + ":" 
-    + str(breek_in_minute)
-
+    sheet["BI18"] = str(breek_in_hour) + ":" + str(breek_in_minute)
     sheet["BF36"] = snippet_data.free_space
     sheet["H21"] = snippet_data.break_spot
     # チェックリストテーブル

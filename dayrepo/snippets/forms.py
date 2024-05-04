@@ -5,7 +5,7 @@ from django.core.exceptions import NON_FIELD_ERRORS
 
 class CustomChecklistCarsModelChoiceField(forms.ModelChoiceField):
     def label_from_instance(self, obj):  # label_from_instance 関数をオーバーライド
-        return obj.vehicle_number  # 表示したいカラム名を return
+        return obj.place_name +" "+ str(obj.class_number) +" "+ obj.kana +" "+ str(obj.serial_number) # 表示したいカラム名を return
 class CustomChecklistAccountsModelChoiceField(forms.ModelChoiceField):
     def label_from_instance(self, obj):
         return obj.last_name + " " + obj.first_name
@@ -102,4 +102,16 @@ class ChecklistForm(forms.ModelForm):
             'is_light',
             'is_brake_details',
             'is_before_trouble',
+        )
+
+class CarForm(forms.ModelForm):
+    class Meta:
+        model = Car
+
+        fields = (
+            'place_name',
+            'class_number',
+            'kana',
+            'serial_number',
+            'now_mileage',
         )

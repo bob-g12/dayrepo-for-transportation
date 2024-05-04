@@ -3,7 +3,14 @@
 {% block content %}
     <h2>未提出日報一覧</h2>
     {% for checklist in checklists %}
-    <p id="checklist">{{ checklist }}</p>
+    <p id="checklist">
+    {{ checklist.account_id.last_name }}
+    {{ checklist.account_id.first_name }}
+    {{ checklist.car_id.place_name }}
+    {{ checklist.car_id.class_number }}
+    {{ checklist.car_id.kana }}
+    {{ checklist.car_id.serial_number }}
+    </p>
     <button onclick="location.href='{% url 'checklist_edit' checklist.id %}'">点検編集</button>
     <button onclick="location.href='{% url 'snippet_post' checklist.id %}'">snippet作成</button>
     <form method="post" action="{% url 'db_delete' checklist.id 'checklist' %}">
@@ -14,7 +21,14 @@
     {% endfor %}
     <h2>提出済み日報一覧</h2>
     {% for post in posts %}      
-    <p class="snippet_list">{{ post }}</p>
+    <p class="snippet_list">
+    {{ post.checklist_id.account_id.last_name }}
+    {{ post.checklist_id.account_id.first_name }}
+    {{ post.checklist_id.car_id.place_name }}
+    {{ post.checklist_id.car_id.class_number }}
+    {{ post.checklist_id.car_id.kana }}
+    {{ post.checklist_id.car_id.serial_number }}
+    </p>
     <button onclick="location.href='{% url 'excelfile_download' post.id %}'">出力</button>
     <button onclick="location.href='{% url 'checklist_edit' post.checklist_id.id %}'">点検編集</button>
     <button onclick="location.href='{% url 'snippet_edit' post.id %}'">日報編集</button>
