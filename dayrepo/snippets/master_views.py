@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import View
 from django.http import HttpRequest
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404
 from .models import Car
 from .forms import CarForm
 
@@ -45,3 +45,34 @@ class CarView(View):
         return redirect(to='car_list')
 
 new_car = CarView.as_view()
+
+def serial_number_divide(car: object):
+    if len(str(car.serial_number)) > 2:
+        border = len(str(car.serial_number))-2
+        str_serial_number = str(car.serial_number)
+        serial_number_top = int(str_serial_number[:border])
+        serial_number_end = int(str_serial_number[border:])
+    else:
+        serial_number_top = ""
+        serial_number_end = car.serial_number
+    return_list = [serial_number_top,serial_number_end]
+    return return_list
+
+class CarEditView(View):
+    def get(self, request: HttpRequest, car_id: int):
+        car = get_object_or_404(Car, pk=car_id)
+        serial_number = serial_number_divide(car)
+        serial_number_top = serial_number[0]
+        serial_number_end = serial_number[1]
+        return render(
+            request, 
+            "car_edit.html", 
+            {
+                "car": car, 
+                "top":serial_number_top,
+                "end":serial_number_end,
+            }
+        )
+
+
+car_edit = CarEditView.as_view()
