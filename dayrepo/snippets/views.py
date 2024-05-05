@@ -294,8 +294,8 @@ class SnippetEditView(View):
         duties_trouble.save()
 
         # 工程テーブルフォーム保存
-        def_proc_count = len(post_process)
-        for i in range(def_proc_count):
+        def_count = len(post_process)
+        for i in range(def_count):
             process = Process(
                 id= post_process[i].id,
                 snippet_id=snippet,
@@ -316,23 +316,23 @@ class SnippetEditView(View):
             else:
                 process.is_load_situation = False
             process.save()
-        add_proc_count = len(req.getlist("via_point")) - def_proc_count
-        if add_proc_count == 0:
+        add_count = len(req.getlist("via_point")) - def_count
+        if add_count == 0:
             return redirect(to="snippet_list")
-        for i in range(add_proc_count):
+        for i in range(add_count):
             process = Process(
                 snippet_id=snippet,
-                start_time=req.getlist("start_time")[def_proc_count + i + 1],
-                end_time=req.getlist("end_time")[def_proc_count + i + 1],
-                start_point=req.getlist("start_point")[def_proc_count + i + 1],
-                end_point=req.getlist("end_point")[def_proc_count + i + 1],
-                via_point=req.getlist("via_point")[def_proc_count + i],
-                client=req.getlist("client")[def_proc_count + i],
-                goods=req.getlist("goods")[def_proc_count + i],
-                load_situation=req.getlist("load_situation")[def_proc_count + i],
-                load_mileage=req.getlist("load_mileage")[def_proc_count + i],
-                hollow_mileage=req.getlist("hollow_mileage")[def_proc_count + i],
-                is_load_situation=req.getlist("is_load_situation")[def_proc_count + i],
+                start_time=req.getlist("start_time")[def_count + i + 1],
+                end_time=req.getlist("end_time")[def_count + i + 1],
+                start_point=req.getlist("start_point")[def_count + i + 1],
+                end_point=req.getlist("end_point")[def_count + i + 1],
+                via_point=req.getlist("via_point")[def_count + i],
+                client=req.getlist("client")[def_count + i],
+                goods=req.getlist("goods")[def_count + i],
+                load_situation=req.getlist("load_situation")[def_count + i],
+                load_mileage=req.getlist("load_mileage")[def_count + i],
+                hollow_mileage=req.getlist("hollow_mileage")[def_count + i],
+                is_load_situation=req.getlist("is_load_situation")[def_count + i],
             )
             if process.is_load_situation == "on":
                 process.is_load_situation = True
