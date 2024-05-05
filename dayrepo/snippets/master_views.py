@@ -46,7 +46,7 @@ class CarView(View):
 
 new_car = CarView.as_view()
 
-def serial_number_divide(car: classmethod) -> list:
+def serial_number_divide(car: get_object_or_404) -> list:
     if len(str(car.serial_number)) > 2:
         border = len(str(car.serial_number))-2
         str_serial_number = str(car.serial_number)
