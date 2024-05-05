@@ -294,9 +294,7 @@ class SnippetEditView(View):
         duties_trouble.save()
 
         # 工程テーブルフォーム保存
-        print("あああああああ",len(post_process))
         def_proc_count = len(post_process)
-        add_proc_count = len(req.getlist("via_point")) - def_proc_count
         for i in range(def_proc_count):
             process = Process(
                 id= post_process[i].id,
@@ -318,7 +316,8 @@ class SnippetEditView(View):
             else:
                 process.is_load_situation = False
             process.save()
-        if def_proc_count == 0:
+        add_proc_count = len(req.getlist("via_point")) - def_proc_count
+        if add_proc_count == 0:
             return redirect(to="snippet_list")
         for i in range(add_proc_count):
             process = Process(
