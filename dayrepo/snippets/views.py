@@ -41,7 +41,7 @@ def get_employee(request):
 
 
 class SnippetListView(View):
-    def get(self, request):
+    def get(self, request: HttpRequest):
         # 記録してある投稿の全データを投稿時間を元にソートして表示
         # snippets は存在する時点で提出済みとみなす
         snippets = Snippet.objects.all().order_by("-create_at")
@@ -66,7 +66,7 @@ snippet_list = SnippetListView.as_view()
 # snippet画面の表示/POST後処理
 class SnippetView(View):
     # 新規入力画面へ
-    def get(self, request, checklist_id):
+    def get(self, request: HttpRequest, checklist_id: int):
         # 投稿ボタンで投稿ページへ
         return render(
             request,
@@ -81,7 +81,7 @@ class SnippetView(View):
         )
 
     # 投稿機能
-    def post(self, request, checklist_id):
+    def post(self, request: HttpRequest, checklist_id: int):
         req = request.POST
         checklist = Checklist.objects.get(pk=checklist_id)
         # スニペットフォーム保存
@@ -199,12 +199,12 @@ checklist_post = ChecklistView.as_view()
 
 
 class ChecklistEditView(View):
-    def get(self, request, checklist_id):
+    def get(self, request: HttpRequest, checklist_id: int):
         checklist = get_object_or_404(Checklist, pk=checklist_id)
         edit_form = ChecklistForm(instance=checklist)
         return render(request, "checklist_edit.html", {"form": edit_form})
 
-    def post(self, request, checklist_id):
+    def post(self, request: HttpRequest, checklist_id: int):
         post = get_object_or_404(Checklist, pk=checklist_id)
         form = ChecklistForm(request.POST, instance=post)
         form.save()
@@ -214,7 +214,7 @@ checklist_edit = ChecklistEditView.as_view()
 
 
 class SnippetEditView(View):
-    def get(self, request, snippet_id):
+    def get(self, request: HttpRequest, snippet_id: int):
         post_snippet = get_object_or_404(Snippet, pk=snippet_id)
         post_trouble = get_object_or_404(DutiesTrouble, snippet_id=snippet_id)
         post_process = get_list_or_404(Process, snippet_id=snippet_id)
@@ -237,7 +237,7 @@ class SnippetEditView(View):
             },
         )
 
-    def post(self, request, snippet_id):
+    def post(self, request: HttpRequest, snippet_id: int):
         req = request.POST
         post_snippet = get_object_or_404(Snippet, pk=snippet_id)
         post_trouble = get_object_or_404(DutiesTrouble, snippet_id=snippet_id)
