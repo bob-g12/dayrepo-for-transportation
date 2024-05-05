@@ -68,7 +68,7 @@ class CarEditView(View):
             request, 
             "car_edit.html", 
             {
-                "car": car, 
+                "car":car, 
                 "top":serial_number_top,
                 "end":serial_number_end,
             }
