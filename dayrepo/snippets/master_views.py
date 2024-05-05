@@ -46,7 +46,7 @@ class CarView(View):
 
 new_car = CarView.as_view()
 
-def serial_number_divide(car: object):
+def serial_number_divide(car: classmethod) -> list:
     if len(str(car.serial_number)) > 2:
         border = len(str(car.serial_number))-2
         str_serial_number = str(car.serial_number)
@@ -55,8 +55,7 @@ def serial_number_divide(car: object):
     else:
         serial_number_top = ""
         serial_number_end = car.serial_number
-    return_list = [serial_number_top,serial_number_end]
-    return return_list
+    return [serial_number_top,serial_number_end]
 
 class CarEditView(View):
     def get(self, request: HttpRequest, car_id: int):
