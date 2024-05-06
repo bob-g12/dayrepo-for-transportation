@@ -320,6 +320,7 @@ class SnippetEditView(View):
         add_count = len(req.getlist("via_point")) - def_count
         if add_count == 0:
             return redirect(to="snippet_list")
+            
         for i in range(add_count):
             process = Process(
                 snippet_id=snippet,
