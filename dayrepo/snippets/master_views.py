@@ -59,15 +59,15 @@ def serial_number_divide(car: get_object_or_404) -> list:
 
 class CarEditView(View):
     def get(self, request: HttpRequest, car_id: int):
-        dflt_car = get_object_or_404(Car, pk=car_id)
-        serial_number = serial_number_divide(dflt_car)
-        serial_number_top = serial_number[0]
-        serial_number_end = serial_number[1]
+        car = get_object_or_404(Car, pk=car_id)
+        serial_numbers = serial_number_divide(car)
+        serial_number_top = serial_numbers[0]
+        serial_number_end = serial_numbers[1]
         return render(
             request, 
             "car_edit.html", 
             {
-                "car":dflt_car, 
+                "car":car, 
                 "top":serial_number_top,
                 "end":serial_number_end,
             }
