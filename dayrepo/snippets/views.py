@@ -249,10 +249,9 @@ class SnippetEditView(View):
             oil = 0.0
 
         post_snippet = get_object_or_404(Snippet, pk=snippet_id)
-        checklist_id = post_snippet.checklist_id
         snippet = Snippet(
             id=post_snippet.pk,
-            checklist_id=checklist_id,
+            checklist_id=post_snippet.checklist_id,
             # 末尾の [0] について
             # 入力項目のうち同一名のデータは、
             # request.POST に配列で記録され、
