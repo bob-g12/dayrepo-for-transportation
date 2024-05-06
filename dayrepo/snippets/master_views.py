@@ -47,11 +47,11 @@ class CarView(View):
 new_car = CarView.as_view()
 
 def serial_number_divide(car: get_object_or_404) -> list:
-    if len(str(car.serial_number)) > 2:
-        border = len(str(car.serial_number))-2
-        str_serial_number = str(car.serial_number)
-        serial_number_top = int(str_serial_number[:border])
-        serial_number_end = int(str_serial_number[border:])
+    str_number = str(car.serial_number)
+    if len(str_number) > 2:
+        border = len(str_number)-2
+        serial_number_top = int(str_number[:border])
+        serial_number_end = int(str_number[border:])
     else:
         serial_number_top = ""
         serial_number_end = car.serial_number
@@ -59,15 +59,15 @@ def serial_number_divide(car: get_object_or_404) -> list:
 
 class CarEditView(View):
     def get(self, request: HttpRequest, car_id: int):
-        car = get_object_or_404(Car, pk=car_id)
-        serial_number = serial_number_divide(car)
+        dflt_car = get_object_or_404(Car, pk=car_id)
+        serial_number = serial_number_divide(dflt_car)
         serial_number_top = serial_number[0]
         serial_number_end = serial_number[1]
         return render(
             request, 
             "car_edit.html", 
             {
-                "car":car, 
+                "car":dflt_car, 
                 "top":serial_number_top,
                 "end":serial_number_end,
             }
