@@ -49,11 +49,11 @@ def serial_number_divide(car: Car) -> list:
     str_number = str(car.serial_number)
     if len(str_number) > 2:
         border = len(str_number)-2
-        serial_number_top = int(str_number[:border])
-        serial_number_end = int(str_number[border:])
+        serial_number_top = str_number[:border]
+        serial_number_end = str_number[border:]
     else:
         serial_number_top = ""
-        serial_number_end = car.serial_number
+        serial_number_end = str_number
     return [serial_number_top,serial_number_end]
 
 class CarEditView(View):
