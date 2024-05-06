@@ -239,11 +239,6 @@ class SnippetEditView(View):
 
     def post(self, request: HttpRequest, snippet_id: int):
         req = request.POST
-        post_snippet = get_object_or_404(Snippet, pk=snippet_id)
-        post_trouble = get_object_or_404(DutiesTrouble, snippet_id=snippet_id)
-        post_process = get_list_or_404(Process, snippet_id=snippet_id)
-        checklist_id = post_snippet.checklist_id
-        # スニペットフォーム保存
         # checklists_id挿入のための
         # モデルデータ作成
         gasoline = req.get("gasoline_amount")
@@ -253,6 +248,8 @@ class SnippetEditView(View):
         if oil == "":
             oil = 0.0
 
+        post_snippet = get_object_or_404(Snippet, pk=snippet_id)
+        checklist_id = post_snippet.checklist_id
         snippet = Snippet(
             id=post_snippet.pk,
             checklist_id=checklist_id,
@@ -284,6 +281,7 @@ class SnippetEditView(View):
         snippet.save()
 
         # 業務トラブルフォーム保存
+        post_trouble = get_object_or_404(DutiesTrouble, snippet_id=snippet_id)
         duties_trouble = DutiesTrouble(
             id=post_trouble.id,
             snippet_id=post_trouble.snippet_id,
@@ -294,6 +292,7 @@ class SnippetEditView(View):
         duties_trouble.save()
 
         # 工程テーブルフォーム保存
+        post_process = get_list_or_404(Process, snippet_id=snippet_id)
         def_count = len(post_process)
         for i in range(def_count):
             process = Process(
