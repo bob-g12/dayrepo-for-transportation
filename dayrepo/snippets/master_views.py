@@ -72,6 +72,7 @@ class CarEditView(View):
                 "end":serial_number_end,
             }
         )
+        
     def post(self, request: HttpRequest, car_id: int):
         req = request.POST
         number = int(
