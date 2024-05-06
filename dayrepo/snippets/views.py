@@ -296,7 +296,7 @@ class SnippetEditView(View):
         def_count = len(post_process)
         for i in range(def_count):
             process = Process(
-                id= post_process[i].id,
+                id=post_process[i].id,
                 snippet_id=snippet,
                 start_time=req.getlist("start_time")[i + 1],
                 end_time=req.getlist("end_time")[i + 1],
