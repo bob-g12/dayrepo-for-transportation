@@ -316,6 +316,7 @@ class SnippetEditView(View):
             else:
                 process.is_load_situation = False
             process.save()
+
         add_count = len(req.getlist("via_point")) - def_count
         if add_count == 0:
             return redirect(to="snippet_list")
