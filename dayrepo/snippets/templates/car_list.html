@@ -14,7 +14,7 @@
 <button onclick="location.href='{% url 'car_edit' car.id %}'">車両編集</button>
 <form method="post" action="{% url 'db_delete' car.id 'car' %}">
     {% csrf_token %}
-    <button type="submit">点検削除</button>
+    <button type="submit">車両情報削除</button>
 </form>
 <hr>
 {% endfor %}
