@@ -18,4 +18,5 @@ urlpatterns = [
     path("excel/<int:snippet_pk>/", views.excelfile_download,name="excelfile_download"),
     path("cars/", master_views.car_list,name="car_list"),
     path("new/car/", master_views.new_car,name="new_car"),
+    path("edit/car/<int:car_id>/", master_views.car_edit,name="car_edit"),
 ]

@@ -41,7 +41,7 @@ def get_employee(request):
 
 
 class SnippetListView(View):
-    def get(self, request):
+    def get(self, request: HttpRequest):
         # 記録してある投稿の全データを投稿時間を元にソートして表示
         # snippets は存在する時点で提出済みとみなす
         snippets = Snippet.objects.all().order_by("-create_at")
@@ -66,7 +66,7 @@ snippet_list = SnippetListView.as_view()
 # snippet画面の表示/POST後処理
 class SnippetView(View):
     # 新規入力画面へ
-    def get(self, request, checklist_id):
+    def get(self, request: HttpRequest, checklist_id: int):
         # 投稿ボタンで投稿ページへ
         return render(
             request,
@@ -81,7 +81,7 @@ class SnippetView(View):
         )
 
     # 投稿機能
-    def post(self, request, checklist_id):
+    def post(self, request: HttpRequest, checklist_id: int):
         req = request.POST
         checklist = Checklist.objects.get(pk=checklist_id)
         # スニペットフォーム保存
@@ -199,12 +199,12 @@ checklist_post = ChecklistView.as_view()
 
 
 class ChecklistEditView(View):
-    def get(self, request, checklist_id):
+    def get(self, request: HttpRequest, checklist_id: int):
         checklist = get_object_or_404(Checklist, pk=checklist_id)
         edit_form = ChecklistForm(instance=checklist)
         return render(request, "checklist_edit.html", {"form": edit_form})
 
-    def post(self, request, checklist_id):
+    def post(self, request: HttpRequest, checklist_id: int):
         post = get_object_or_404(Checklist, pk=checklist_id)
         form = ChecklistForm(request.POST, instance=post)
         form.save()
@@ -214,7 +214,7 @@ checklist_edit = ChecklistEditView.as_view()
 
 
 class SnippetEditView(View):
-    def get(self, request, snippet_id):
+    def get(self, request: HttpRequest, snippet_id: int):
         post_snippet = get_object_or_404(Snippet, pk=snippet_id)
         post_trouble = get_object_or_404(DutiesTrouble, snippet_id=snippet_id)
         post_process = get_list_or_404(Process, snippet_id=snippet_id)
@@ -237,13 +237,8 @@ class SnippetEditView(View):
             },
         )
 
-    def post(self, request, snippet_id):
+    def post(self, request: HttpRequest, snippet_id: int):
         req = request.POST
-        post_snippet = get_object_or_404(Snippet, pk=snippet_id)
-        post_trouble = get_object_or_404(DutiesTrouble, snippet_id=snippet_id)
-        post_process = get_list_or_404(Process, snippet_id=snippet_id)
-        checklist_id = post_snippet.checklist_id
-        # スニペットフォーム保存
         # checklists_id挿入のための
         # モデルデータ作成
         gasoline = req.get("gasoline_amount")
@@ -253,9 +248,10 @@ class SnippetEditView(View):
         if oil == "":
             oil = 0.0
 
+        post_snippet = get_object_or_404(Snippet, pk=snippet_id)
         snippet = Snippet(
             id=post_snippet.pk,
-            checklist_id=checklist_id,
+            checklist_id=post_snippet.checklist_id,
             # 末尾の [0] について
             # 入力項目のうち同一名のデータは、
             # request.POST に配列で記録され、
@@ -284,6 +280,7 @@ class SnippetEditView(View):
         snippet.save()
 
         # 業務トラブルフォーム保存
+        post_trouble = get_object_or_404(DutiesTrouble, snippet_id=snippet_id)
         duties_trouble = DutiesTrouble(
             id=post_trouble.id,
             snippet_id=post_trouble.snippet_id,
@@ -291,15 +288,15 @@ class SnippetEditView(View):
             trouble_cause=req.get("trouble_cause"),
             trouble_support=req.get("trouble_support"),
         )
-        post_trouble.delete()
         duties_trouble.save()
 
         # 工程テーブルフォーム保存
-        form_process_count = len(req.getlist("via_point"))
-        for i in range(form_process_count):
+        post_process = get_list_or_404(Process, snippet_id=snippet_id)
+        def_count = len(post_process)
+        for i in range(def_count):
             process = Process(
                 id=post_process[i].id,
-                snippet_id=post_process[i].snippet_id,
+                snippet_id=snippet,
                 start_time=req.getlist("start_time")[i + 1],
                 end_time=req.getlist("end_time")[i + 1],
                 start_point=req.getlist("start_point")[i + 1],
@@ -316,9 +313,32 @@ class SnippetEditView(View):
                 process.is_load_situation = True
             else:
                 process.is_load_situation = False
-            post_process[i].delete()
             process.save()
-        post_snippet = snippet
+
+        add_count = len(req.getlist("via_point")) - def_count
+        if add_count == 0:
+            return redirect(to="snippet_list")
+            
+        for i in range(add_count):
+            process = Process(
+                snippet_id=snippet,
+                start_time=req.getlist("start_time")[def_count + i + 1],
+                end_time=req.getlist("end_time")[def_count + i + 1],
+                start_point=req.getlist("start_point")[def_count + i + 1],
+                end_point=req.getlist("end_point")[def_count + i + 1],
+                via_point=req.getlist("via_point")[def_count + i],
+                client=req.getlist("client")[def_count + i],
+                goods=req.getlist("goods")[def_count + i],
+                load_situation=req.getlist("load_situation")[def_count + i],
+                load_mileage=req.getlist("load_mileage")[def_count + i],
+                hollow_mileage=req.getlist("hollow_mileage")[def_count + i],
+                is_load_situation=req.getlist("is_load_situation")[def_count + i],
+            )
+            if process.is_load_situation == "on":
+                process.is_load_situation = True
+            else:
+                process.is_load_situation = False
+            process.save()
         # トップ画面へ
         return redirect(to="snippet_list")
 
