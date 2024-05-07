@@ -401,6 +401,13 @@ class DbDeletePattern():
         for process in process_list:
             process.delete()
 
+    # 選択した車両情報を削除する
+    def car_del(self,target_id:int):
+        car = Car.objects.get(
+            pk=target_id
+        )
+        car.delete()
+
 def db_delete(request:HttpRequest, target_id:int, delete_type:str):
     if request.method != 'POST':
         raise ValueError(
@@ -416,7 +423,10 @@ def db_delete(request:HttpRequest, target_id:int, delete_type:str):
         del_pattern.checklist_del(target_id)
     elif delete_type == "all":
         del_pattern.all_del(target_id)
-    
+    elif delete_type == "car":
+        del_pattern.car_del(target_id)
+        return redirect(to="car_list")
+
     return redirect(to="snippet_list")
 
 
