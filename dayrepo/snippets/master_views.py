@@ -7,7 +7,7 @@ from .forms import CarForm
 
 class CarListView(View):
     def get(self, request: HttpRequest):
-        cars = Car.objects.all().order_by("-now_mileage")
+        cars = Car.objects.all().order_by("-now_mileage").filter(is_display_check=False)
 
         return render(
             request,
