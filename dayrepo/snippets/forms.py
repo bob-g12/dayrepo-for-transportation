@@ -68,7 +68,7 @@ class ProcessForm(forms.ModelForm):
 
 class ChecklistForm(forms.ModelForm):
     car_id = CustomChecklistCarsModelChoiceField(
-        queryset=Car.objects.all(),
+        queryset=Car.objects.all().filter(is_display_check=True),
         empty_label="車両番号を選択してください",
         label="車両番号",
     )
