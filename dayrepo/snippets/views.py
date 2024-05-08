@@ -2,6 +2,9 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest
 from django.views.generic import View
 from django.shortcuts import redirect, get_object_or_404, get_list_or_404
+import tkinter as tk
+import tkinter.messagebox as messagebox
+import warnings
 from .models import Account, Car, Snippet, DutiesTrouble, Checklist, Process
 from .forms import SnippetForm, DutiesTroubleForm, ProcessForm, ChecklistForm
 import openpyxl
@@ -45,7 +48,6 @@ class SnippetListView(View):
         # 記録してある投稿の全データを投稿時間を元にソートして表示
         # snippets は存在する時点で提出済みとみなす
         snippets = Snippet.objects.all().order_by("-create_at")
-
         # bool -> True = 1. False = 0
         # 未提出 = is_snippet_make が False
         # filter(is_snippet_make=0) で is_snippet_make が 0 のデータ、
@@ -406,7 +408,8 @@ class DbDeletePattern():
         car = Car.objects.get(
             pk=target_id
         )
-        car.delete()
+        car.is_display_check = True
+        car.save()
 
 def db_delete(request:HttpRequest, target_id:int, delete_type:str):
     if request.method != 'POST':
