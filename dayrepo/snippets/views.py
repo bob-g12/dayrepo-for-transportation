@@ -2,9 +2,6 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpRequest
 from django.views.generic import View
 from django.shortcuts import redirect, get_object_or_404, get_list_or_404
-import tkinter as tk
-import tkinter.messagebox as messagebox
-import warnings
 from .models import Account, Car, Snippet, DutiesTrouble, Checklist, Process
 from .forms import SnippetForm, DutiesTroubleForm, ProcessForm, ChecklistForm
 import openpyxl
@@ -403,14 +400,6 @@ class DbDeletePattern():
         for process in process_list:
             process.delete()
 
-    # 選択した車両情報を削除する
-    def car_del(self,target_id:int):
-        car = Car.objects.get(
-            pk=target_id
-        )
-        car.is_display_check = True
-        car.save()
-
 def db_delete(request:HttpRequest, target_id:int, delete_type:str):
     if request.method != 'POST':
         raise ValueError(
@@ -426,9 +415,6 @@ def db_delete(request:HttpRequest, target_id:int, delete_type:str):
         del_pattern.checklist_del(target_id)
     elif delete_type == "all":
         del_pattern.all_del(target_id)
-    elif delete_type == "car":
-        del_pattern.car_del(target_id)
-        return redirect(to="car_list")
 
     return redirect(to="snippet_list")
 
