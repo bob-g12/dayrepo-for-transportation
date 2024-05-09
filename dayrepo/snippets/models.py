@@ -108,7 +108,7 @@ class Car(models.Model):
         blank=False, 
         null=False
     )
-    is_display_check = models.BooleanField(
+    is_delete = models.BooleanField(
         verbose_name="表示設定", 
         blank=False,
         null=False,
