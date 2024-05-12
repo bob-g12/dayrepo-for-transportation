@@ -108,11 +108,11 @@ class Car(models.Model):
         blank=False, 
         null=False
     )
-    is_delete = models.BooleanField(
+    is_active = models.BooleanField(
         verbose_name="表示設定", 
         blank=False,
         null=False,
-        default=False,
+        default=True,
     )
 
     def __str__(self):
