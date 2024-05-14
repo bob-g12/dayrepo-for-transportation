@@ -109,7 +109,7 @@ class Car(models.Model):
         null=False
     )
     is_active = models.BooleanField(
-        verbose_name="表示設定", 
+        verbose_name="運行車両設定", 
         blank=False,
         null=False,
         default=True,
