@@ -19,5 +19,5 @@ urlpatterns = [
     path("cars/", master_views.car_list,name="car_list"),
     path("new/car/", master_views.new_car,name="new_car"),
     path("edit/car/<int:car_id>/", master_views.car_edit,name="car_edit"),
-    path("delete/car/<int:car_id>/", master_views.car_del,name="car_delete"),
+    path("hide/car/<int:car_id>/", master_views.car_hide,name="car_hide"),
 ]

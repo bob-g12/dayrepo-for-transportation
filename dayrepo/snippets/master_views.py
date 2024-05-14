@@ -91,7 +91,7 @@ class CarEditView(View):
 
 car_edit = CarEditView.as_view()
 
-def car_del(request:HttpRequest,car_id:int):
+def car_hide(request:HttpRequest,car_id:int):
     if request.method != 'POST':
         raise ValueError(
             "本来入るはずのない処理に入りました。お手数ですが、システムにお問合せください。"
