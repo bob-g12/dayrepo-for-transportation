@@ -10,11 +10,11 @@
         </strong> 
     </p>
     <p> 現在のメーター値 <strong>{{ car.now_mileage }}</strong> km </p>
+    <button onclick="location.href='{% url 'car_edit' car.id %}'">車両編集</button>
+    <form method="post" action="{% url 'car_hide' car.id %}">
+        {% csrf_token %}
+        <button type="submit">車両情報削除</button>
+    </form>
 </div>
-<button onclick="location.href='{% url 'car_edit' car.id %}'">車両編集</button>
-<form method="post" action="{% url 'car_hide' car.id %}">
-    {% csrf_token %}
-    <button type="submit">車両情報削除</button>
-</form>
 <hr>
 {% endfor %}
