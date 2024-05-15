@@ -6,7 +6,7 @@ from .models import Car
 from .forms import CarForm
 
 class CarListView(View):
-    def get(self, request: HttpRequest):
+    def get(self, request:HttpRequest):
         cars = Car.objects.all().order_by("-now_mileage").filter(is_active=True)
 
         return render(
@@ -91,7 +91,7 @@ class CarEditView(View):
 
 car_edit = CarEditView.as_view()
 
-def car_hide(request:HttpRequest,car_id:int):
+def car_hide(request:HttpRequest, car_id:int):
     if request.method != 'POST':
         raise ValueError(
             "本来入るはずのない処理に入りました。お手数ですが、システムにお問合せください。"
