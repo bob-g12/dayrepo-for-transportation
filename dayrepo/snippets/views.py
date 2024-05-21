@@ -45,7 +45,7 @@ class SnippetListView(View):
         # 記録してある投稿の全データを投稿時間を元にソートして表示
         # snippets は存在する時点で提出済みとみなす
         snippets = Snippet.objects.all().order_by("-create_at")
-
+        
         # bool -> True = 1. False = 0
         # 未提出 = is_snippet_make が False
         # filter(is_snippet_make=0) で is_snippet_make が 0 のデータ、
@@ -416,7 +416,7 @@ def db_delete(request:HttpRequest, target_id:int, delete_type:str):
         del_pattern.checklist_del(target_id)
     elif delete_type == "all":
         del_pattern.all_del(target_id)
-    
+
     return redirect(to="snippet_list")
 
 

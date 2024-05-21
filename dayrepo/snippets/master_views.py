@@ -6,8 +6,8 @@ from .models import Car
 from .forms import CarForm
 
 class CarListView(View):
-    def get(self, request: HttpRequest):
-        cars = Car.objects.all().order_by("-now_mileage")
+    def get(self, request:HttpRequest):
+        cars = Car.objects.all().order_by("-now_mileage").filter(is_display=True)
 
         return render(
             request,
@@ -89,5 +89,16 @@ class CarEditView(View):
         car_trouble.save()
         return redirect(to="car_list")
 
-
 car_edit = CarEditView.as_view()
+
+def car_hide(request:HttpRequest, car_id:int):
+    if request.method != 'POST':
+        raise ValueError(
+            "本来入るはずのない処理に入りました。お手数ですが、システムにお問合せください。"
+        )
+    car = Car.objects.get(
+        pk=car_id
+    )
+    car.is_display = False
+    car.save()
+    return redirect(to="car_list")

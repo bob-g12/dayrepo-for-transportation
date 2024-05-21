@@ -108,6 +108,12 @@ class Car(models.Model):
         blank=False, 
         null=False
     )
+    is_display = models.BooleanField(
+        verbose_name="車両表示", 
+        blank=False,
+        null=False,
+        default=True,
+    )
 
     def __str__(self):
 
