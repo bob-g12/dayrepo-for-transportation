@@ -108,8 +108,8 @@ class Car(models.Model):
         blank=False, 
         null=False
     )
-    is_active = models.BooleanField(
-        verbose_name="運行車両登録", 
+    is_display = models.BooleanField(
+        verbose_name="車両表示", 
         blank=False,
         null=False,
         default=True,

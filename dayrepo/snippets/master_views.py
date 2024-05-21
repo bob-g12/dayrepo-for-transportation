@@ -7,7 +7,7 @@ from .forms import CarForm
 
 class CarListView(View):
     def get(self, request:HttpRequest):
-        cars = Car.objects.all().order_by("-now_mileage").filter(is_active=True)
+        cars = Car.objects.all().order_by("-now_mileage").filter(is_display=True)
 
         return render(
             request,
@@ -99,6 +99,6 @@ def car_hide(request:HttpRequest, car_id:int):
     car = Car.objects.get(
         pk=car_id
     )
-    car.is_active = False
+    car.is_display = False
     car.save()
     return redirect(to="car_list")

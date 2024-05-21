@@ -36,7 +36,7 @@ class Migration(migrations.Migration):
                 ('kana', models.CharField(max_length=1, verbose_name='車両_かな')),
                 ('serial_number', models.IntegerField(max_length=5, verbose_name='車両_一連指定番号')),
                 ('now_mileage', models.IntegerField(verbose_name='走行距離')),
-                ('is_active', models.BooleanField(default=True, verbose_name='運行車両登録')),
+                ('is_display', models.BooleanField(default=True, verbose_name='運行車両登録')),
             ],
             options={
                 'verbose_name': '車両',
